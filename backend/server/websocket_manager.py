@@ -11,7 +11,7 @@ from gpt_researcher.utils.enum import Tone
 from multi_agents.main import run_research_task
 from gpt_researcher.actions import stream_output  # Import stream_output
 from gpt_researcher import GPTResearcher
-
+import json
 
 class WebSocketManager:
     """Manage websockets"""
@@ -87,7 +87,8 @@ class WebSocketManager:
 async def run_research(task, websocket):
     start_time = datetime.datetime.now()
     print("task", task)
-    topics = task.split(";")
+    query = json.loads(task).get('query')
+    data = json.loads(task).get('data')
     researcher = GPTResearcher(
         # query=self.query,
         # query=f"how {topic} relate to mental health",
@@ -99,17 +100,24 @@ async def run_research(task, websocket):
         # websocket=self.websocket,
         # headers=self.headers
     )
-    # for topic in topics:
-    for topic in topics:
-        if topic:
-            print("Topic: ", topic)
-            #await researcher.conduct_research(f"how {topic.strip()} relate to mental health")
-            await researcher.conduct_research(topic.strip())
+    if data:
+        await researcher.conduct_data_research(data)
+    else:
+        topics = query.split(";")
+        report = ''
+        # for topic in topics:
+        for topic in topics:
+            if topic:
+                print("Topic: ", topic)
+                #await researcher.conduct_research(f"how {topic.strip()} relate to mental health")
+                await researcher.conduct_research(topic.strip())
 
     end_time = datetime.datetime.now()
     await websocket.send_json(
         {"type": "logs", "output": f"\nTotal run time: {end_time - start_time}\n"}
     )
+
+    #return report
 
 async def run_agent(task, report_type, report_source, source_urls, tone: Tone, websocket, headers=None, config_path=""):
     """Run the agent."""

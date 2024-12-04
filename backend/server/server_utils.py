@@ -9,7 +9,6 @@ from gpt_researcher.document.document import DocumentLoader
 # Add this import
 from backend.utils import write_md_to_pdf, write_md_to_word, write_text_to_md
 
-
 def sanitize_filename(filename: str) -> str:
     return re.sub(r"[^\w\s-]", "", filename).strip()
 
@@ -22,14 +21,14 @@ async def handle_diagnose_command(websocket, data: str, manager):
         print("Error: Missing task or report_type")
         return
 
-    sanitized_filename = sanitize_filename(f"task_{int(time.time())}_{task}")
+    sanitized_filename = sanitize_filename(f"task_{int(time.time())}")
 
     report = await manager.start_diagnose(
         task, report_type, report_source, source_urls, tone, websocket, headers
     )
-    report = str(report)
-    file_paths = await generate_report_files(report, sanitized_filename)
-    await send_file_paths(websocket, file_paths)
+    #report = str(report)
+    #file_paths = await generate_report_files(report, sanitized_filename)
+    #await send_file_paths(websocket, file_paths)
 
 async def handle_research_command(websocket, data: str, manager):
     json_data = json.loads(data[9:])
@@ -43,7 +42,7 @@ async def handle_research_command(websocket, data: str, manager):
         task, websocket
     )
     report = str(report)
-    #file_paths = await generate_report_files(report, sanitized_filename)
+    file_paths = await generate_report_files(report, sanitized_filename)
     #await send_file_paths(websocket, file_paths)
 
 async def handle_human_feedback(data: str):

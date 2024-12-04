@@ -4,8 +4,44 @@ from datetime import date, datetime, timezone
 from .utils.enum import Tone
 from typing import List, Dict, Any
 
-
 def generate_search_queries_prompt(
+    question: str,
+    max_iterations: int = 3,
+    context: List[Dict[str, Any]] = [],
+):
+    """Generates the search queries prompt for the given question.
+    Args:
+        question (str): The question to generate the search queries prompt for
+        parent_query (str): The main question (only relevant for detailed reports)
+        report_type (str): The report type
+        max_iterations (int): The maximum number of search queries to generate
+        context (str): Context for better understanding of the task with realtime web information
+
+    Returns: str: The search queries prompt for the given question
+    """
+
+    task = question
+    max_iterations = 2
+    context_prompt = f"""
+You are a seasoned research assistant tasked with generating search queries to find relevant information for the following task: "{task}".
+Context: {context}
+
+Use this context to inform and refine your search queries. The context provides real-time web information that can help you generate more specific and relevant queries. Consider any current events, recent developments, or specific details mentioned in the context that could enhance the search queries.
+""" if context else "The queries should focus on clarifying relation of topics that have critical points with mental health and disorders. Feel free to suggest as many queries as possible."
+
+
+    dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])
+    dynamic_example += ", ..." if max_iterations > 1 else ""
+    return f"""Write search queries to search online that form an objective understanding of the mental health from the subject's data: "{task}"
+
+Assume the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
+
+{context_prompt}
+You must respond with a list of strings in the following format: [{dynamic_example}].
+The response should contain ONLY the list.
+"""
+
+def generate_search_queries_prompt_backup(
     question: str,
     max_iterations: int = 3,
     context: List[Dict[str, Any]] = [],

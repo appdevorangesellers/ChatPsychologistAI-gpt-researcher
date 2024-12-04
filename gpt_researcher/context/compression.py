@@ -86,4 +86,6 @@ class ContextCompressor:
         if cost_callback:
             cost_callback(estimate_embedding_cost(model=OPENAI_EMBEDDING_MODEL, docs=self.documents))
         relevant_docs = await asyncio.to_thread(compressed_docs.invoke, query)
-        return self.__pretty_print_docs(relevant_docs, max_results)
+        #return self.__pretty_print_docs(relevant_docs, max_results)
+        self.__pretty_print_docs(relevant_docs, max_results)
+        return relevant_docs

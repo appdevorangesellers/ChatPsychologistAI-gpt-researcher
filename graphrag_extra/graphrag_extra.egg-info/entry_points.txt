@@ -1,0 +1,2 @@
+[console_scripts]
+graphrag_extra = graphrag_extra.cli.main:app

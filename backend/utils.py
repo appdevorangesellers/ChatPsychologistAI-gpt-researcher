@@ -19,6 +19,19 @@ async def write_to_file(filename: str, text: str) -> None:
     async with aiofiles.open(filename, "w", encoding='utf-8') as file:
         await file.write(text_utf8)
 
+async def write_to_txt_file(text: str, filename: str = "") -> str:
+    """Writes text to a Markdown file and returns the file path.
+
+    Args:
+        text (str): Text to write to the Markdown file.
+
+    Returns:
+        str: The file path of the generated Markdown file.
+    """
+    file_path = f"ragtest/input/{filename[:60]}.txt"
+    await write_to_file(file_path, text)
+    return urllib.parse.quote(file_path)
+
 async def write_text_to_md(text: str, filename: str = "") -> str:
     """Writes text to a Markdown file and returns the file path.
 

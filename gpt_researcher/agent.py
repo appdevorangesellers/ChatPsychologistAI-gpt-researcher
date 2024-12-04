@@ -10,10 +10,17 @@ from .skills.browser import BrowserManager
 from .skills.context_manager import ContextManager
 from .skills.writer import ReportGenerator
 from .skills.researcher import ResearchConductor
+from .skills.data_researcher import DataResearchConductor
 from .utils.enum import Tone
 from .vector_store import VectorStoreWrapper
 from langchain_chroma import Chroma
-
+from pathlib import Path
+from graphrag.cli.index import index_cli
+from graphrag.logging.types import ReporterType
+from graphrag.index.emit.types import TableEmitterType
+from graphrag.logging.types import ReporterType
+import asyncio
+import subprocess
 
 class GPTResearcher:
     def __init__(
@@ -41,23 +48,53 @@ class GPTResearcher:
         self.memory = Memory(
             self.cfg.embedding_provider, self.cfg.embedding_model, **self.cfg.embedding_kwargs
         )
-        self.vector_store = VectorStoreWrapper(Chroma(persist_directory="./scrape-embeddings",
-                                                      embedding_function=self.memory.get_embeddings()
-                                                      ))
+        #self.vector_store = VectorStoreWrapper(Chroma(persist_directory="./scrape-embeddings",
+        #                                              embedding_function=self.memory.get_embeddings()
+        #                                              ))
+        self.vector_store = None
         self.research_conductor: ResearchConductor = ResearchConductor(self)
+        self.data_research_conductor: DataResearchConductor = DataResearchConductor(self)
         self.report_generator: ReportGenerator = ReportGenerator(self)
         self.context_manager: ContextManager = ContextManager(self)
         self.scraper_manager: BrowserManager = BrowserManager(self)
 
+    async def conduct_data_research(self, query):
+        print("conduct_data_research")
+        # self.context = await self.research_conductor.conduct_research()
+        await self.data_research_conductor.conduct_research(query)
+
     async def conduct_research(self, query):
         print("conduct_research")
         # self.context = await self.research_conductor.conduct_research()
-        await self.research_conductor.conduct_research(query)
+        # await self.research_conductor.conduct_research(query)
+        # await index_cli(root=Path('./ragtest'))
+
+        #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+        output = subprocess.check_call(['graphrag_extra', 'init2'])
+        print("output: ", str(output))
+        emit = TableEmitterType.Parquet.value
+        '''a = await asyncio.to_thread(
+            index_cli,
+                root_dir=Path('./ragtest'),
+                verbose=False,
+                resume=None,
+                memprofile=False,
+                cache=True,
+                reporter=ReporterType(ReporterType.RICH),
+                config_filepath=None,
+                emit=[TableEmitterType(value.strip()) for value in emit.split(",")],
+                dry_run=False,
+                skip_validation=False,
+                output_dir=None,
+
+        )'''
+
         # return self.context
 
     async def write_report(self, query) -> str:
         context = await self.research_conductor.get_relevant_context(query)
         return await self.report_generator.write_report(query, context)
+
 
     def get_research_sources(self) -> List[Dict[str, Any]]:
         return self.research_sources

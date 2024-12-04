@@ -46,10 +46,11 @@ async def generate_sub_queries(
         query,
         max_iterations=cfg.max_iterations or 1,
         context=context
+        # context=[]
     )
 
     print("gen_queries_prompt", gen_queries_prompt)
-
+    #print(c)
     try:
         response = await create_chat_completion(
             model=cfg.strategic_llm_model,
@@ -71,6 +72,9 @@ async def generate_sub_queries(
             llm_kwargs=cfg.llm_kwargs,
             cost_callback=cost_callback,
         )
+
+    print("gen_queries_prompt response", response)
+    # print(c)
 
     return json_repair.loads(response)
 

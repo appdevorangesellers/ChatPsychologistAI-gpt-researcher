@@ -5,7 +5,9 @@ import random
 from ..actions.query_processing import plan_research_outline, get_search_results
 from ..actions.utils import stream_output
 from ..document import DocumentLoader
-
+from ..actions import (
+    generate_files,
+)
 
 class ResearchConductor:
     """Manages and coordinates the research process."""
@@ -16,8 +18,8 @@ class ResearchConductor:
     async def get_relevant_context(self, query):
         query_as_dict = json.loads(query)
 
-        background = query_as_dict.get('Background')
-        background_web_context = await self.__get_context_by_search(f"Psychological analysis and research based on the subject's {background}")
+        #background = query_as_dict.get('Background')
+        background_web_context = await self.__get_context_by_search(query)
 
         # list(json.loads(self.query).keys())[1:]
         document_data = await DocumentLoader(self.researcher.cfg.doc_path).load()
@@ -36,7 +38,7 @@ class ResearchConductor:
                 self.researcher.websocket,
             )
 
-        return context
+        # return context
 
 
     async def conduct_research(self, query):
@@ -44,7 +46,7 @@ class ResearchConductor:
         Runs the GPT Researcher to conduct research
         """
         # Reset visited_urls and source_urls at the start of each research task
-        self.researcher.visited_urls.clear()
+        '''self.researcher.visited_urls.clear()
         if self.researcher.verbose:
             await stream_output(
                 "logs",
@@ -64,9 +66,9 @@ class ResearchConductor:
         if len(document_data) > 0 and self.researcher.vector_store:
             self.researcher.vector_store.load(document_data)
 
-        # await self.__get_context_by_search(query, document_data)
+        # await self.__get_context_by_search(query, document_data)'''
 
-        await self.__get_context_by_search(query)
+        context = await self.__get_context_by_search(query)
 
         # self.researcher.context = f"Context from local documents:
         # {docs_context}\n\nContext from web sources: {web_context}"
@@ -80,7 +82,7 @@ class ResearchConductor:
             )
 
         # return self.researcher.context
-        return
+        return context
 
 
     async def __get_context_by_vectorstore(self, query):
@@ -137,8 +139,8 @@ class ResearchConductor:
             )
 
         # Using asyncio.gather to process the sub_queries asynchronously
-        # context = await asyncio.gather(
-        await asyncio.gather(
+        context = await asyncio.gather(
+        # await asyncio.gather(
             *[
                 self.__process_sub_query(sub_query, scraped_data)
                 for sub_query in sub_queries
@@ -215,7 +217,7 @@ class ResearchConductor:
                 f"🤷 No content found for '{sub_query}'...",
                 self.researcher.websocket,
             )
-        return content
+        # return content
         # return scraped_data
 
 
@@ -288,6 +290,13 @@ class ResearchConductor:
         if self.researcher.vector_store:
             self.researcher.vector_store.load(scraped_content)
 
+        await asyncio.gather(
+            *[
+                generate_files(item["raw_content"], item["url"])
+                for item in scraped_content
+            ]
+        )
+
         if self.researcher.verbose:
             await stream_output(
                 "logs",
@@ -296,8 +305,7 @@ class ResearchConductor:
                 self.researcher.websocket,
             )
 
-        # return scraped_content
-
+        #return scraped_content
 
     async def plan_research(self, query):
         await stream_output(
