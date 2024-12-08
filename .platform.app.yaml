@@ -41,6 +41,8 @@ hooks:
     # Install dependencies
     # poetry lock --no-update
     # poetry install
+    cp ./graphrag_extra/settings.yaml ./ragtest
+    cp -r ./graphrag_extra/prompts ./ragtest
 
 
 source:
