@@ -62,13 +62,7 @@ mounts:
   '.cache':
     source: local
     source_path: cache
-  'ragtest/cache':
-    source: local
-  'ragtest/input':
-    source: local
-  'ragtest/logs':
-    source: local
-  'ragtest/output':
+  'ragtest':
     source: local
   '.config':
     source: tmp
