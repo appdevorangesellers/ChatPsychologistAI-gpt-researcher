@@ -110,13 +110,12 @@ async def handle_research_data(user_key:str, data_ref: str):
         print(search_queries)
     except Exception as e:
         search_queries = ''
-        return "error"
 
     try:
         user_data = get_user(user_key)
         data = user_data.get(data_ref, {})
     except Exception as e:
-        data = ''
+        print("empty data to research")
         return "error"
 
     researcher = GPTResearcher()
