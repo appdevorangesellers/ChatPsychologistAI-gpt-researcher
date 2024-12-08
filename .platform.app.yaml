@@ -24,7 +24,10 @@ web:
 dependencies:
   python3:
     poetry: '1.8.3'
-
+variables:
+  env:
+    POETRY_VIRTUALENVS_IN_PROJECT: true
+    POETRY_VIRTUALENVS_CREATE: true
 hooks:
   # The build hook is run after any build flavor.
   # More information: https://docs.platform.sh/create-apps/hooks/hooks-comparison.html#build-hook
@@ -32,9 +35,7 @@ hooks:
     set -eu
 
     python3.12 -m pip install --upgrade uvicorn
-    chmod u+x /app
   deploy: |
-    chmod u+x /app
     # Install dependencies
     poetry lock --no-update
     poetry install
