@@ -1,5 +1,5 @@
 name: 'app'
-type: 'python:3.11'
+type: 'python:3.12'
 relationships:
   rediscache: "cache:redis"
 disk: 2048
@@ -31,7 +31,7 @@ hooks:
   build: |
     set -eu
 
-    python3.11 -m pip install --upgrade uvicorn
+    python3.12 -m pip install --upgrade uvicorn
   deploy: |
     # Install dependencies
     poetry lock --no-update
