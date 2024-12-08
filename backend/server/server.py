@@ -65,6 +65,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#
+class ResearchData(BaseModel):
+    user_key: str
+    data_ref: str
+
+
 # Constants
 DOC_PATH = os.getenv("DOC_PATH", "./my-docs")
 
@@ -89,8 +95,8 @@ async def read_admin_root(request: Request):
     return templates.TemplateResponse("admin.html", {"request": request, "report": None})
 
 @app.post("/research-data")
-async def research_data(user_key:str, data: str):
-    return await handle_research_data(user_key, data)
+async def research_data(research_data: ResearchData):
+    return await handle_research_data(research_data.user_key, research_data.data_ref)
 
 @app.post("/write-final-report")
 async def write_final_report(user_key:str):

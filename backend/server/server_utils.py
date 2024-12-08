@@ -33,6 +33,7 @@ def handle_fetch_search_queries(user_key: str):
         print(search_queries)
     except Exception as e:
         search_queries = ''
+        return "error"
 
     return search_queries
 
@@ -73,6 +74,7 @@ async def handle_write_final_report(user_key: str):
     except Exception as e:
         search_queries = ''
         mental_data = ''
+        return "error"
 
     researcher = GPTResearcher()
     report = await researcher.write_report(search_queries, mental_data)
@@ -87,11 +89,13 @@ async def handle_write_final_report(user_key: str):
     return file_path
 
 
-async def handle_research_data(user_key:str, data: str):
+async def handle_research_data(user_key:str, data_ref: str):
     # Initialize Firebase
+    DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
     cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {
+            'databaseURL': DATABASE_URL,
             'storageBucket': 'chat-psychologist-ai.appspot.com'
         })
 
@@ -106,6 +110,14 @@ async def handle_research_data(user_key:str, data: str):
         print(search_queries)
     except Exception as e:
         search_queries = ''
+        return "error"
+
+    try:
+        user_data = get_user(user_key)
+        data = user_data.get(data_ref, {})
+    except Exception as e:
+        data = ''
+        return "error"
 
     researcher = GPTResearcher()
     await researcher.conduct_data_research(data)
