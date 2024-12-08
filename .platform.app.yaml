@@ -1,0 +1,59 @@
+name: 'app'
+type: 'python:3.12'
+relationships:
+  rediscache: "cache:redis"
+disk: 2048
+web:
+  commands:
+    start: "poetry run uvicorn main:app --port $PORT --workers 1"
+  locations:
+    "/index":
+      root: 'public'
+      passthru: true
+      index: [ "index.html" ]
+      allow: true
+    "/":
+      root: 'public'
+      passthru: true
+      allow: true
+    "/static":
+      root: "static"
+      expires: 1h
+      allow: true
+
+dependencies:
+  python3:
+    poetry: '1.8.3'
+
+hooks:
+  # The build hook is run after any build flavor.
+  # More information: https://docs.platform.sh/create-apps/hooks/hooks-comparison.html#build-hook
+  build: |
+    set -eu
+
+    python3.12 -m pip install --upgrade uvicorn
+  deploy: |
+    # Install dependencies
+    poetry lock --no-update
+    poetry install
+
+
+source:
+  ######################################################################################################################
+  ##                                                                                                                  ##
+  ## This source operation is part of the Platform.sh process of updating and maintaining our collection of           ##
+  ## templates. For more information see https://docs.platform.sh/create-apps/source-operations.html and              ##
+  ## https://github.com/platformsh/source-operations                                                                  ##
+  ##                                                                                                                  ##
+  ##                  YOU CAN SAFELY DELETE THIS COMMENT AND THE LINES BENEATH IT                                     ##
+  ##                                                                                                                  ##
+  ######################################################################################################################
+  operations:
+    auto-update:
+      command: |
+        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
+
+mounts:
+  '.cache':
+    source: local
+    source_path: cache
