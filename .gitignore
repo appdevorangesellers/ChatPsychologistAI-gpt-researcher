@@ -52,4 +52,8 @@ gpt_researcher_orig/
 databaseKey.json
 
 #
-ragtest/
+ragtest/cache
+ragtest/input
+ragtest/logs
+ragtest/output
+ragtest/.env
