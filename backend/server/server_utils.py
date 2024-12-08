@@ -109,7 +109,7 @@ async def handle_research_data(user_key:str, data_ref: str):
         search_queries = search_queries.split(';')
         print(search_queries)
     except Exception as e:
-        search_queries = ''
+        search_queries = []
 
     try:
         user_data = get_user(user_key)
