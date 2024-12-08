@@ -8,6 +8,112 @@ from fastapi.responses import JSONResponse
 from gpt_researcher.document.document import DocumentLoader
 # Add this import
 from backend.utils import write_md_to_pdf, write_md_to_word, write_text_to_md
+from gpt_researcher import GPTResearcher
+from firebase_admin import credentials, db, initialize_app, storage
+import firebase_admin
+
+def get_user(user_key):
+    user_data = db.reference('users').child(user_key).get()
+    return user_data
+
+def handle_fetch_search_queries(user_key: str):
+    # Initialize Firebase
+    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/search_queries')
+
+    try:
+        search_queries = blob.download_as_bytes()
+        search_queries = search_queries.decode("utf-8") + '\n'
+        print(search_queries)
+    except Exception as e:
+        search_queries = ''
+
+    return search_queries
+
+
+async def handle_fetch_final_report_download_url(user_key: str, file_name: str):
+    # Initialize Firebase
+    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/{file_name}')
+    return blob.public_url
+
+
+async def handle_write_final_report(user_key: str):
+    # Initialize Firebase
+    DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
+    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': DATABASE_URL,
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+    try:
+        user_data = get_user(user_key)
+        search_queries = handle_fetch_search_queries(user_key)
+        mental_data = {}
+        if user_data.get('personal_info_phase_1_completed', False):
+            mental_data.update(user_data.get('personal_info_responses_phase_1', {}))
+        if user_data.get('personal_info_phase_2_completed', False):
+            mental_data.update(user_data.get('personal_info_responses_phase_2', {}))
+        if user_data.get('personal_info_phase_3_completed', False):
+            mental_data.update(user_data.get('personal_info_responses_phase_3', {}))
+    except Exception as e:
+        search_queries = ''
+        mental_data = ''
+
+    researcher = GPTResearcher()
+    report = await researcher.write_report(search_queries, mental_data)
+    print(researcher.get_data_research_sub_queries())
+    report = str(report)
+    sanitized_filename = sanitize_filename(f"final_report_{int(time.time())}")
+    file_path = await generate_report_files(report, sanitized_filename)
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/{sanitized_filename}.md')
+    blob.upload_from_filename(file_path)
+    return file_path
+
+
+async def handle_research_data(user_key:str, data: str):
+    # Initialize Firebase
+    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/search_queries')
+
+    try:
+        search_queries = blob.download_as_bytes()
+        search_queries = search_queries.decode("utf-8")
+        search_queries = search_queries.split(';')
+        print(search_queries)
+    except Exception as e:
+        search_queries = ''
+
+    researcher = GPTResearcher()
+    await researcher.conduct_data_research(data)
+    print(researcher.get_data_research_sub_queries())
+    search_queries.extend(researcher.get_data_research_sub_queries())
+    blob.upload_from_string(';'.join(search_queries))
+
+    return search_queries
 
 def sanitize_filename(filename: str) -> str:
     return re.sub(r"[^\w\s-]", "", filename).strip()
@@ -56,10 +162,11 @@ async def handle_chat(websocket, data: str, manager):
     await manager.chat(json_data.get("message"), websocket)
 
 async def generate_report_files(report: str, filename: str) -> Dict[str, str]:
-    pdf_path = await write_md_to_pdf(report, filename)
-    docx_path = await write_md_to_word(report, filename)
+    #pdf_path = await write_md_to_pdf(report, filename)
+    #docx_path = await write_md_to_word(report, filename)
     md_path = await write_text_to_md(report, filename)
-    return {"pdf": pdf_path, "docx": docx_path, "md": md_path}
+    #return {"pdf": pdf_path, "docx": docx_path, "md": md_path}
+    return md_path
 
 
 async def send_file_paths(websocket, file_paths: Dict[str, str]):

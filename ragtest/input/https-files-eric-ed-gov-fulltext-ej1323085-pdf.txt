@@ -1,0 +1,3438 @@
+Financial Debt and Mental Health of Young Adults
+Jinhee
+I
+D
+:
+p
+0
+0
+5
+0
+Kim,a
+and Swarn Chatterjeeb
+Abstract
+I
+D
+:
+t
+i
+0
+0
+1
+0
+The
+I
+D
+:
+p
+0
+0
+6
+5
+purpose of this study is to examine the debt burdens, perceived capabilities, and mental health of young
+adults. Panel data constructed from the 2009 to 2013 waves of the Panel Study of Income Dynamics (PSID) and
+its Transition to Adulthood (TA) supplement are used in this study. The multinomial logistic regression analysis
+findings showed that the amount of revolving debt was negatively associated with young adults’ mental health.
+On the other hand, perceived abilities in acting responsibly, in solving problems, and in managing money were
+positively associated with the mental health of young adults. The fixed effects regression analysis results indicate
+that the amounts of credit card and student loan debt from the previous period were negatively associated with
+an increase in the mental health continuum scores of young adults over time. A discussion of the implications of
+this study’s key findings for scholars, policymakers, and practitioners is included.
+Keywords:
+I
+D
+:
+t
+i
+0
+0
+1
+5
+debt
+I
+D
+:
+p
+0
+0
+7
+0
+, financial well-being, flourishing, mental health, young adults
+S
+tudent loan and credit card debt burdens among
+young adults in the United States have increased in
+the past two decades. With the rise in education costs
+and stagnant government grants, the student loan burden has
+increased substantially (Cilluffo, 2017; Davidson, 2017).
+More than 35 million Americans are currently paying stu-
+dent loan debt (Williams, 2014). The rapid growth of debt
+among young people has drawn the attention of researchers,
+educators, and policymakers. Student loan debt has a nega-
+tive effect on household savings and increases households’
+probability of delinquency of debts and bankruptcy, thus
+affecting their financial well-being over time (Elliot & Nam,
+2013; Rothstein & Rouse, 2011). Student loan debt has also
+been associated with a delay in decisions to marry or have
+a child (Gicheva, 2016; Velez et al., 2019). Furthermore,
+higher debt for young people has been associated with worse
+health outcomes (Dugan & Kafka, 2014; Kim & Chatterjee,
+2019).
+In
+I
+D
+:
+p
+0
+0
+8
+0
+addition to student loan debt, high unsecured debt, such
+as credit card debt, is also found to affect the well-being of
+households negatively. People use unsecured debt to pur-
+chase goods and services and take on unsecured debt at
+higher interest to supplement the unexpected shortfall in
+their regular income (Dwyer, 2018; Houle & Berger, 2017).
+Hodson et al. (2014) found that transitioning young adults
+perceive unsecured debt as an investment, and they perceive
+their ability to accrue debt as empowering, and although
+unsecured debt has a positive association with the percep-
+tion of well-being for young adults in the short run if an
+unpaid, unsecured debt can have an adverse effect on peo-
+ples’ mental health over the long term. Consistent with this,
+Sun and Houle’s (2018) study found that higher levels of
+unsecured debt were associated with negative mental health
+outcomes over time.
+The
+I
+D
+:
+p
+0
+0
+8
+5
+higher debt was associated with worse mental and
+physical health (Sweet et al., 2013). Some argue that the
+more student loans people have, the worse their mental
+health outcomes will be (Williams, 2014). Unsecured debt
+can adversely affect self-esteem and general self-efficacy
+(Dwyer et al., 2011), lower young adults’ perceived well-
+being (Zhang & Kemp, 2009), and lead to less frequent
+volunteerism (Stevenson, 2008) and academic behavior
+(Hogan et al., 2013). Financial strain from debts is associ-
+ated with anxiety, depression, and lower physical health in
+a
+I
+D
+:
+p
+0
+0
+5
+5
+Professor, Department of Family Science, School of Public Health University of Maryland, 1142 School of Public Health, College Park, MD 20742.
+E-mail: jinkim@umd.edu
+b
+I
+D
+:
+p
+0
+0
+6
+0
+Professor, Department of Financial Planning, Housing and Consumer Economics, University of Georgia, 205 Dawson Hall, 305 Sanford Dr, Athens, GA
+30622. E-mail: swarn@uga.edu
+Pdf_Folio:187
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021, 187-201
+187
+© 2021 Association for Financial Counseling and Planning Education®
+http://dx.doi.org/10.1891/JFCP-18-00048
+
+undergraduate students (Archuleta et al., 2013; Cooke et al.,
+2004; Shim et al., 2009).
+The
+I
+D
+:
+p
+0
+0
+9
+0
+association between financial capability and positive
+mental health of young people has rarely been studied.
+Past studies have generally focused on negative outcomes
+such as anxiety and depression rather than positive emo-
+tional states or well-being (Keyes, 2002). Seligman (2002)
+suggested that examining behavior that positively affects
+young adults’ well-being is necessary for developing poli-
+cies to improve the mental health of college students. The
+purpose of the current study is to examine whether debt-
+and financial-capability-related characteristics are associ-
+ated with the flourishing or languishing of young adults,
+based on Keyes’s mental health continuum, and to explore
+the relationship between student loan and credit card debt
+and the mental health of young adults.
+Review
+I
+D
+:
+t
+i
+0
+0
+2
+0
+of Literature
+Debt Burden and Mental Health
+Financial
+I
+D
+:
+p
+0
+0
+9
+5
+strain resulting from financial problems such as
+reduced income and increased debt has been previously
+associated with perceived psychological stress and poorer
+mental health (Kahn & Pearlin, 2006). Debt has been specif-
+ically linked to subjects’ psychological functioning (Brown
+et al., 2005), depressive symptoms (Hojman et al., 2016),
+and mental disorders (Jenkins et al., 2008). Credit card debt
+has been linked to financial stress and negative health out-
+comes (Adams & Moore, 2007; Nelson et al., 2008).
+Debt Burden and Mental Health of Young Adults. There
+I
+D
+:
+p
+0
+1
+0
+0
+has been a steady increase in the number of college stu-
+dents reporting psychological problems (Cooke et al., 2004;
+Eisenberg et al., 2009; Fink, 2014; Roberts et al., 1999).
+During periods of economic uncertainty, the potential health
+risks of carrying a financial burden from the cost of a col-
+lege education may be larger if there is unstable employment
+to maintain stable income than otherwise anticipated (Law,
+2014).
+Detrimental Effects of Credit Card and Financial Debt
+on Mental Health. Financial
+I
+D
+:
+p
+0
+1
+0
+5
+difficulty resulting from col-
+lege students’ financial debt (Cooke et al., 2004; Richard-
+son et al., 2017) was associated with mental health problems
+of undergraduate students. Concerns related to finances
+increased for undergraduate students as they progressed
+through college (Cooke et al., 2004). Furthermore, Robb
+(2017) found that financially stressed students were also
+more likely to report lower subjective financial well-being.
+High levels of financial debts were associated with poor
+social functioning (Hoeve et al., 2014).
+Detrimental Effects of Student Loan Debt on Mental
+Health. Very
+I
+D
+:
+p
+0
+1
+1
+0
+few studies have examined the association
+between subjective well-being and student loan debt of
+young adults (Tay et al., 2017). However, understanding
+the relationship between student loan debt and well-being,
+including its impact on positive emotions, and whether stu-
+dent loan debt also affects young adults’ ability to thrive
+across multiple domains of life can help broaden the debate
+on student loan debt (Nissen et al., 2019). Tay et al. (2017)
+found that the association between student loan debt and
+financial satisfaction was mediated by financial worry.
+Heckman et al. (2014) identified debt and financial insuffi-
+ciency to be two significant financial stressors for college
+students. Other studies have found that student loan debt was
+negatively associated with life satisfaction, psychological
+well-being, and financial wellness of individuals (Aboagye
+& Jung, 2018; Kim & Chatterjee, 2019). Letkiewicz et al.
+(2014) found that students who had higher amounts of stu-
+dent loan debt (more than $50,000) were more likely to
+take longer than 4 years to graduate from college. Addition-
+ally, Johnson et al. (2016) found that students had very little
+knowledge regarding student loans. Lee et al. (2019) found
+that student loan debt increased the risk of debt delinquency
+among households.
+Mental Health as a Continuum
+Unlike
+I
+D
+:
+p
+0
+1
+1
+5
+other areas of psychology, which study psycholog-
+ical deficiencies in individuals, the field of positive psy-
+chology emphasizes factors that improve the well-being of
+individuals. Keyes (2002) suggested a continuum of men-
+tal health, including flourishing, moderate mental health,
+and languishing. Keyes and Waterman (2003) suggested
+that an individual’s perceived or subjective well-being is a
+self-assessment of their mental health and their psycholog-
+ical and social functioning. This categorization presents a
+broader paradigm of mental health beyond the more con-
+ventionally accepted states of mental disorder or absence of
+mental disorder (Keyes, 2002, 2006).
+Studies
+I
+D
+:
+p
+0
+1
+2
+0
+show that those flourishing are more adaptive
+to challenges than non-flourishers (Bergsma et al., 2011;
+Diener & Seligman, 2004; Huppert, 2009; Kobau et al.,
+Pdf_Folio:188
+188
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+2011). Using the Panel Study of Income Dynamics (PSID)
+Child Development Supplement (CDS), Keyes (2002)
+found that 40% of young respondents were flourishing, 6%
+were languishing, and the rest were moderately mentally
+healthy. Flourishing describes the level at which life expe-
+riences have gone well for individuals (Diener et al., 2010;
+Henderson et al., 2014; Keyes, 2002; Seligman, 2011).
+Flourishing encompasses the emotional, psychological, and
+social well-being of individuals (Keyes, 2002). Flourishing
+individuals engage in adaptive coping strategies and exhibit
+innovative and flexible behavior, while depressed or lan-
+guishing individuals engage in more maladaptive coping
+strategies (Faulk et al., 2013; Fredrickson & Losada, 2005).
+Based
+I
+D
+:
+p
+0
+1
+2
+5
+on the broaden-and-build theory of positive emotions,
+Faulk et al. (2013) suggested that positive emotions could
+expand the coping strategies and decision-making abilities
+of young adults. Fredrickson and Losada (2005) suggested
+that individuals, who experienced at least 2.9 positive emo-
+tions for every negative emotion (3:1 for practical purposes),
+were more likely to flourish (Faulk et al., 2013). How-
+ever, limited information is available about the impact of
+debt burden on positive psychology or positive mental well-
+being of young adults.
+Factors of Languishing and Flourishing
+Based
+I
+D
+:
+p
+0
+1
+3
+0
+on Keyes’ (2002, 2003) mental health continuum,
+an individual’s mental health may be associated with other
+social, psychological, or cognitive-functioning-related fac-
+tors (Garmezy, 1993; Luthar, 1991; Werner, 2000). Finan-
+cial situation variables such as debt burden, income, and
+wealth have been associated with the mental health of young
+adults (Cooke et al., 2004; Sweet et al., 2013; Tay et al.,
+2017; Walsemann et al., 2015). Studies by Cooke et al.
+(2004) and Sweet et al. (2013) found debt burden to be
+negatively associated with mental health outcomes, stud-
+ies by Tay et al. (2017) and Walsemann et al. (2015) found
+that family resources, problem-solving abilities, and income
+moderated the association between debt and subjective well-
+being of individuals.
+Sociodemographic
+I
+D
+:
+p
+0
+1
+3
+5
+variables such as education, age, gen-
+der, and race have been associated with children’s mental
+health and resiliency (Keyes, 2002; Schotanus-Dijkstra et
+al., 2016). Educational attainment was positively associated
+with flourishing mentally and had higher perceived well-
+being (Keyes, 2002; Schotanus-Dijkstra et al., 2016). Also,
+young adults were more likely to flourish mentally when
+compared with older adults (Keyes, 2002). Women were
+found to have more extreme emotional responses to both
+positive and negative situations (Schotanus-Dijkstra et al.,
+2016). Whites were positively associated with flourishing
+mentally, and conversely, were negatively associated with
+languishing (Keyes, 2002).
+It
+I
+D
+:
+p
+0
+1
+4
+0
+has also been found that attributes such as having a sta-
+ble family background and receiving affection and warmth
+from parents and caregivers are positively associated with
+a flourishing mental state (Garmezy, 1993). Closeness to
+parents is another factor that reduces the risk of children’s
+negative behavior (Werner, 2000). Additionally, parents’
+educational attainment (Luthar, 1991) and family financial
+situation have also been associated with the financial well-
+being of young adults (Kim & Chatterjee, 2013).
+Young
+I
+D
+:
+p
+0
+1
+4
+5
+adults’ level of social engagement could also influ-
+ence their mental health. Low (2011) found that civic
+and community engagement was positively correlated with
+flourishing among first-year college students. Positively
+perceived experiences from community engagement or
+service-learning have been linked to reduced mental health
+issues such as depression, substance abuse, or anxiety
+(Ottenritter, 2004). These positive experiences are included
+in the psychological and social dimensions of the Keyes
+continuum (Keyes, 2007; Low, 2011).
+This
+I
+D
+:
+p
+0
+1
+5
+0
+article adds to the literature by examining whether
+debt burdens and perceived financial capabilities of young
+adults are associated with young adults’ flourishing and
+languishing mental health outcomes after controlling for
+health, other sociodemographic factors, parental influence,
+and social engagement levels.
+Methods
+I
+D
+:
+t
+i
+0
+0
+5
+5
+Data
+This
+I
+D
+:
+p
+0
+1
+5
+5
+study uses data from the PSID and its Transition to
+Adulthood (TA) supplement to examine the associations
+among debt burdens, perceived financial capability, and
+the physical and psychological well-being of young adults.
+The PSID is a longitudinal study of a nationally represen-
+tative sample of U.S. men, women, and children, as well
+as their families. For approximately the past four decades,
+the study has collected annual data from these families and
+individuals with regard to their demographic, economic,
+Pdf_Folio:189
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+189
+
+and employment behavior. The TA supplement includes
+data on young adults aged 17–29. For the empirical anal-
+ysis of this study, data on parental influence, student loan
+debt, social participation, psychological and cognitive well-
+being, development, and perceived ability were drawn from
+the TA supplement. Respondents under 18 years of age were
+excluded from the analysis. This study uses a panel con-
+structed from the 2009 to 2013 waves of the PSID and its
+TA supplement.
+Variables
+Dependent Variables. The
+I
+D
+:
+p
+0
+1
+6
+0
+dependent variables for this
+study were constructed based on a composite mental health
+continuum scale that measured the emotional, social, and
+psychological well-being of the respondents, which is
+included in the PSID-TA dataset. The scale was originally
+included in the Midlife in the United States study (MIDUS)
+and has since been available in the PSID-TA supplement for
+the 2009–2013 waves. The scale itself comprises three dif-
+ferent sub-scales: the MIDUS scale of emotional well-being
+(Cronbach’s alpha = 0.87) (Kessler et al., 1998); Ryff’s scale
+of psychological well-being (Cronbach’s alpha = 0.79) (Ryff
+& Keyes, 1995); and Keyes’s scale of social well-being
+(Cronbach’s alpha = .80) (Keyes, 1998). The emotional
+well-being sub-component developed originally by Kessler
+et al. (1998) comprised of three items related to emotional
+well-being—happiness, interest in life, and feeling satisfied.
+All three items were coded as 1 = lowest and 6 = high-
+est. The psychological well-being sub-component was orig-
+inally developed by Ryff and Keyes (1995) and included
+the following six items—feeling good about managing daily
+responsibility, perception of having trusting relationships,
+feeling challenged to grow, feeling confident of own ideas,
+liking one’s own personality, and feeling of having direction
+in life. All six items were coded as 1 = lowest and 6 = high-
+est. The social well-being sub-component was developed by
+Keyes (1998) and comprised of the following five items:
+feeling of having something to contribute to in society, feel-
+ing of belonging to the community, feeling of society get-
+ting better, feeling that people are generally good, feeling
+the way that society works makes sense. All six items were
+coded as 1 = lowest and 6 = highest. The scores from these
+sub-components were then scaled to the participants’ scores
+on the composite flourishing-languishing continuum scale
+and ranged from 1 = least flourishing to 18 = most flourish-
+ing. This composite scale is computed and made available in
+the PSID-TA dataset. Respondents with higher scores on the
+composite scale (range: 1–18) are considered to be flourish-
+ing mentally, while respondents with lower scores are con-
+sidered to be languishing mentally. The Cronbach’s alpha
+for the scale in our study was .77.
+Keyes
+I
+D
+:
+p
+0
+1
+6
+5
+(2002) sorted the respondents into three groups based
+on their scores on the Keyes mental health continuum scale.
+From this scale, Keyes constructed separate binary variables
+for flourishing and languishing based on the respondents’
+scores on the scale. The respondents in the top tertile of
+scores in the scale were coded as flourishing, those in the
+bottom tertile of the scale were coded as languishing, and
+those who were in the middle tertile were coded as moder-
+ate. Similarly, we follow this methodology in our study to
+construct a categorical variable where 3 = flourishing (score
+in the top tertile of the Keyes scale); 2 = moderate or sta-
+ble (score in the middle tertile of the Keyes scale); 1 = lan-
+guishing (score in the bottom tertile of the Keyes scale). We
+also use the composite scale in the secondary analysis of this
+study to examine changes in the scale over time.
+Independent Variables. The
+I
+D
+:
+p
+0
+1
+7
+0
+independent variables for this
+study are grouped into three major categories—financial
+situation and perceived abilities, health, educational attain-
+ment, sociodemographic, and social engagement-related
+factors. These variables are described below:
+Financial Situation and Perceived Ability.
+The
+I
+D
+:
+p
+0
+1
+7
+5
+finan-
+cial situation variables included continuous variables for
+income, family wealth, student loan debt, and credit card
+debt. Log values of these variables were included in the
+empirical models estimated in this study. The perceived
+abilities variables were perceived responsibility (7-point
+Likert-type scale: 1 = not at all well; 7 = extremely well),
+problem-solving ability (1 = not at all well; 7 = extremely
+well); ability to pay off credit card debt (1 = not at all well;
+7 = extremely well); and the ability to manage money (1 =
+not at all well; 7 = extremely well).
+Health.
+For
+I
+D
+:
+p
+0
+1
+8
+0
+perceived health status, those respondents
+who reported being in excellent health were coded as 1 and
+0 if otherwise.
+Sociodemographic Factors.
+The
+I
+D
+:
+p
+0
+1
+8
+5
+sociodemographic vari-
+ables include demographic factors related to education, age,
+gender, race, and ethnicity. Educational attainment variables
+Pdf_Folio:190
+190
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+comprise four binary variables: graduated from college (1 =
+yes; 0 = otherwise); currently in college (1 = yes; 0 = oth-
+erwise); dropped out of college (1 = yes; 0 = otherwise);
+and never attended college (1 = yes; 0 = otherwise). In the
+empirical models used in this study, the currently in col-
+lege variable has been used as the reference group, and the
+other educational attainment variables have been compared
+against this variable. Age is included as a continuous vari-
+able, and gender is coded as female (1 = yes; 0 = male). Four
+binary variables for race/ethnicity included in this study are
+non-Hispanic White, Black, Hispanic, and other races. In the
+empirical analyses, the non-Hispanic White category was
+used as the reference group.
+Among
+I
+D
+:
+p
+0
+1
+9
+0
+the parental influence-related variables, mother and
+father’s number of years of education were included in
+the model. The PSID-TA dataset also includes information
+on the emotional closeness of respondents to their parents.
+Closeness to father (1 = least close; 7 = very close) and
+closeness to mother (1 = least close; 7 = very close) were
+also included as control variables in this category.
+Social Engagement.
+The
+I
+D
+:
+p
+0
+1
+9
+5
+social interaction variables
+included five binary variables based on whether the respon-
+dents participated in social activities while in school or
+college. These binary variables included participation in
+volunteering activities, social activism; school clubs; art,
+music, or theater performances; and sports. These variables
+were coded as binary (1 = yes; 0 = otherwise).
+Analyses
+The
+I
+D
+:
+p
+0
+2
+0
+0
+descriptive statistics of the dataset, along with a table of
+correlation of mental flourishing with financial situation and
+perceived abilities-related factors, are presented in Tables 1
+and 2. In this study, the first dependent variableYit is cate-
+gorical (1 = languishing; 2 = moderate (base); 3 = flourish-
+ing), and the second dependent variable is continuous. The
+data comprised a panel constructed from three consecutive
+waves (2009, 2011, and 2013) of the PSID and its TA sup-
+plements. In this study, therefore,
+Yit = 𝑭𝒊𝒏′
+𝒊𝒕𝑲+ 𝑨𝒃𝒊𝒍′
+𝒊𝒕Γ + 𝑺𝒐𝑫𝒆′
+𝒊𝒕𝛾+ 𝑺𝒐𝒄′
+𝒊𝒕𝜔+ εi
+(1)
+Where
+I
+D
+:
+p
+0
+2
+2
+5
+Fin is a vector of financial situation-related factors
+including income, family wealth, student loan debt, and
+credit card debt. Abil is a vector of the perceived abilities
+variables, SoDe is a vector of the sociodemographic vari-
+ables, Soc is a vector of the social engagement variables,
+and 𝜀is the error term with ε ∼N (0, 1). In the first analysis
+of this study, a multinomial logit is estimated on a pooled
+panel using a pooled panel model (see Table 3) with moder-
+ate (category = 2) as the control group is compared against
+flourishing (category = 3) and languishing (category = 1).
+In
+I
+D
+:
+p
+0
+2
+4
+0
+the second analysis, the determinants of mental health
+score (Yit) as a function of the control factors can be written
+as
+Yit = f (𝑭𝒊𝒏′
+𝒊𝒕𝑲+ 𝑨𝒃𝒊𝒍′
+𝒊𝒕Γ + 𝑺𝒐𝑫𝒆′
+𝒊𝒕𝛾+ 𝑺𝒐𝒄′
+𝒊𝒕𝜔)
+The
+I
+D
+:
+p
+0
+2
+4
+5
+parameters are estimated using the ordinary least
+squares (OLS) regression model. The model is estimated for
+change in mental health continuum score (ranges 1−18) as
+the dependent variables, with only time-varying factors as
+control variables in a fixed effects model. Panel data esti-
+mation method has been applied in this study because this
+approach helps to remove the unobserved error terms that
+might otherwise be correlated with the control variables in
+the estimation model (Wooldridge, 2010).
+Results
+I
+D
+:
+t
+i
+0
+1
+0
+5
+The
+I
+D
+:
+p
+0
+2
+5
+0
+results of the descriptive statistics are shown in Table
+1. The descriptive statistics indicate that 32% of the respon-
+dents reported having student loans, and 20% reported
+having credit card debt. The average amount of student
+outstanding loans for the respondents was $19,889, and
+the average amount of credit card debt among the respon-
+dents was $2,021. Regarding educational attainment, 11%
+of the respondents had graduated from college, 43% were
+in college, 17% had dropped out of college, and 29% never
+attended college. Demographically, 44% of the respondents
+were White and 52% were female. Approximately 25% of
+the respondents reported participating in some volunteering
+activities and 19% participated in sports.
+Correlations
+I
+D
+:
+p
+0
+2
+5
+5
+between the mental health continuum score,
+financial situation, and abilities-related variables were cal-
+culated. Among the financial situation variables, family
+wealth had a significant and positive correlation with flour-
+ishing mentally (𝜌= 5.8%), and conversely, credit card debt
+had a significant negative correlation with mental health
+score (𝜌= −10.5%). All of the perceived abilities-related
+variables had a significant and positive correlation with
+mental health scores. The correlation table and a correlation
+matrix of all the variables included in the analyses of this
+study are available upon request.
+Pdf_Folio:191
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+191
+
+TABLE 1.
+Descriptive
+I
+D
+:
+p
+0
+2
+0
+5
+Statistics (N = 3,852)
+Variables
+Mean (SD)
+%
+I
+D
+:
+t
+0
+0
+0
+5
+Financial situation
+I
+D
+:
+t
+0
+0
+1
+0
+Income
+I
+D
+:
+t
+0
+0
+1
+5
+$10,574 ($14,237)
+I
+D
+:
+t
+0
+0
+2
+0
+Family wealth
+I
+D
+:
+t
+0
+0
+2
+5
+$180,335 ($356,713)
+I
+D
+:
+t
+0
+0
+3
+0
+Have student loans
+I
+D
+:
+t
+0
+0
+3
+5
+I
+D
+:
+t
+0
+0
+4
+0
+32
+I
+D
+:
+t
+0
+0
+4
+5
+Student loan debt
+I
+D
+:
+t
+0
+0
+5
+0
+$19,889 ($16,786)
+I
+D
+:
+t
+0
+0
+5
+5
+Have credit card debt
+I
+D
+:
+t
+0
+0
+6
+0
+I
+D
+:
+t
+0
+0
+6
+5
+20
+I
+D
+:
+t
+0
+0
+7
+0
+Credit card debt
+I
+D
+:
+t
+0
+0
+7
+5
+$2,021 ($7,693)
+I
+D
+:
+t
+0
+0
+8
+0
+Health status
+I
+D
+:
+t
+0
+0
+8
+5
+Excellent health
+I
+D
+:
+t
+0
+0
+9
+0
+I
+D
+:
+t
+0
+0
+9
+5
+23
+I
+D
+:
+t
+0
+1
+0
+0
+Educational attainment
+I
+D
+:
+t
+0
+1
+0
+5
+Graduated
+I
+D
+:
+t
+0
+1
+1
+0
+11
+I
+D
+:
+t
+0
+1
+1
+5
+In college
+I
+D
+:
+t
+0
+1
+2
+0
+43
+I
+D
+:
+t
+0
+1
+2
+5
+Dropped out of college
+I
+D
+:
+t
+0
+1
+3
+0
+17
+I
+D
+:
+t
+0
+1
+3
+5
+No college
+I
+D
+:
+t
+0
+1
+4
+0
+29
+I
+D
+:
+t
+0
+1
+4
+5
+Perceived ability
+I
+D
+:
+t
+0
+1
+5
+0
+Fin. responsible (1 = least; 7 = most)
+I
+D
+:
+t
+0
+1
+5
+5
+4.9 (1.24)
+I
+D
+:
+t
+0
+1
+6
+0
+Problem-solving ability (1 = least; 7 = most)
+I
+D
+:
+t
+0
+1
+6
+5
+6 (1.37)
+I
+D
+:
+t
+0
+1
+7
+0
+Credit card payoff ability (1 = least; 7 = most)
+I
+D
+:
+t
+0
+1
+7
+5
+3.9 (2.94)
+I
+D
+:
+t
+0
+1
+8
+0
+Money management ability (1 = least; 7 = most)
+I
+D
+:
+t
+0
+1
+8
+5
+5.5 (1.63)
+I
+D
+:
+t
+0
+1
+9
+0
+Race/ethnicity
+I
+D
+:
+t
+0
+1
+9
+5
+White
+I
+D
+:
+t
+0
+2
+0
+0
+46
+I
+D
+:
+t
+0
+2
+0
+5
+Black
+I
+D
+:
+t
+0
+2
+1
+0
+42
+I
+D
+:
+t
+0
+2
+1
+5
+Hispanic
+I
+D
+:
+t
+0
+2
+2
+0
+8
+I
+D
+:
+t
+0
+2
+2
+5
+Other
+I
+D
+:
+t
+0
+2
+3
+0
+4
+I
+D
+:
+t
+0
+2
+3
+5
+Gender
+I
+D
+:
+t
+0
+2
+4
+0
+Female
+I
+D
+:
+t
+0
+2
+4
+5
+52
+I
+D
+:
+t
+0
+2
+5
+0
+Male
+I
+D
+:
+t
+0
+2
+5
+5
+48
+I
+D
+:
+t
+0
+2
+6
+0
+Parental influence
+I
+D
+:
+t
+0
+2
+6
+5
+Mother’s years of education
+I
+D
+:
+t
+0
+2
+7
+0
+18 (5.98)
+I
+D
+:
+t
+0
+2
+7
+5
+18
+I
+D
+:
+t
+0
+2
+8
+0
+Father’s years of education
+I
+D
+:
+t
+0
+2
+8
+5
+14 (6.21)
+I
+D
+:
+t
+0
+2
+9
+0
+14
+I
+D
+:
+t
+0
+2
+9
+5
+Close to father (1 = least; 7 = most)
+I
+D
+:
+t
+0
+3
+0
+0
+4.6 (1.91)
+I
+D
+:
+t
+0
+3
+0
+5
+4.9
+I
+D
+:
+t
+0
+3
+1
+0
+Close to mother (1 = least; 7 = most)
+I
+D
+:
+t
+0
+3
+1
+5
+4.9 (1.43)
+I
+D
+:
+t
+0
+3
+2
+0
+4.7
+I
+D
+:
+t
+0
+3
+2
+5
+Social engagement
+I
+D
+:
+t
+0
+3
+3
+0
+Volunteering
+I
+D
+:
+t
+0
+3
+3
+5
+25
+I
+D
+:
+t
+0
+3
+4
+0
+Social action groups
+I
+D
+:
+t
+0
+3
+4
+5
+3
+I
+D
+:
+t
+0
+3
+5
+0
+School clubs
+I
+D
+:
+t
+0
+3
+5
+5
+15
+I
+D
+:
+t
+0
+3
+6
+0
+Art, music, or theater
+I
+D
+:
+t
+0
+3
+6
+5
+15
+I
+D
+:
+t
+0
+3
+7
+0
+Sports
+I
+D
+:
+t
+0
+3
+7
+5
+19
+I
+D
+:
+t
+0
+3
+8
+0
+Mental health
+I
+D
+:
+t
+0
+3
+8
+5
+Keyes (1 = min; 18 = max)
+I
+D
+:
+t
+0
+3
+9
+0
+14 (2.48)
+I
+D
+:
+t
+0
+3
+9
+5
+Flourishing
+I
+D
+:
+t
+0
+4
+0
+0
+41.31
+I
+D
+:
+t
+0
+4
+0
+5
+Moderate
+I
+D
+:
+t
+0
+4
+1
+0
+30.48
+I
+D
+:
+t
+0
+4
+1
+5
+Languishing
+I
+D
+:
+t
+0
+4
+2
+0
+28.21
+Determinants of Mentally Flourishing and Languishing
+Young Adults
+The
+I
+D
+:
+p
+0
+2
+6
+0
+results for the multinomial logit for the determinants
+of mental flourishing and languishing relative to the ref-
+erence group of young adults who were neither languish-
+ing nor flourishing (moderate mental health) are shown in
+Table 2. Among the financial situation-related variables,
+family wealth (b = 0.088; p < .05) was positively associated,
+and the amount of outstanding credit card debt (b = −0.03;
+p < .05) was negatively associated with flourishing men-
+tally. Among the perceived ability and health-related fac-
+tors, perceived sense of responsibility (b = 0.401; p < .001),
+problem-solving skills (b = 0.178; p < .001), ability to man-
+age money (b = 0.408; p < .001), and being in excellent
+Pdf_Folio:192
+192
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+TABLE 2.
+Multinomial Logistic Regression Results on Determinants of Flourishing and Languishing Mentally
+Flourishing
+Languishing
+1
+2
+3
+4
+5
+6
+Coef.
+St. Error
+Sig
+Coef.
+St. Error
+Sig
+Intercept
+−5.775
+2.050
+***
+3.092
+2.952
+Financial situation
+Log income
+0.009
+0.014
+−0.022
+0.012
+*
+Log family wealth
+0.088
+0.039
+*
+−0.103
+0.203
+Log Student loan
+−0.008
+0.011
+−0.034
+0.161
+Log total CC debt
+−0.030
+0.017
+*
+0.032
+0.015
+*
+Perceived ability
+Fin. responsible
+0.401
+0.068
+***
+−0.084
+0.063
+Problem-solving ability
+0.178
+0.042
+***
+−0.125
+0.050
+**
+CC payoff ability
+0.021
+0.017
+0.007
+0.023
+Money management ability
+0.408
+0.062
+***
+−0.282
+0.072
+***
+Health
+Excellent health
+0.333
+0.094
+***
+−0.04
+0.05434
+Educational attainment
+Ref: currently in college
+Graduated college
+0.406
+0.338
+−0.488
+0.238
+**
+Dropped out of college
+−0.560
+0.149
+***
+−0.061
+0.198
+No college
+−0.246
+0.157
+−0.154
+0.183
+Demographic
+Age
+0.036
+0.011
+**
+0.001
+0.028
+Female
+0.120
+0.099
+−0.220
+0.134
+Race (ref: White)
+Black
+0.171
+0.117
+−0.005
+0.160
+Hispanic
+−0.039
+0.166
+0.340
+0.204
+Other
+−0.149
+0.204
+0.224
+0.183
+Parental influence
+Mother educ.
+0.015
+0.032
+−0.002
+0.003
+Father educ.
+0.002
+0.002
+−0.004
+0.002
+**
+Close to mother
+0.098
+0.033
+***
+−0.168
+0.044
+***
+Close to father
+0.001
+0.001
+−0.084
+0.040
+**
+Social engagement
+Volunteered
+−0.098
+0.088
+−0.099
+0.060
+Social activities
+0.087
+0.065
+−0.094
+0.005
+***
+School club
+−0.029
+0.084
+−0.055
+0.047
+Art, music, theater
+−0.008
+0.030
+0.048
+0.045
+Sports
+−0.061
+0.130
+−0.119
+0.148
+*p < .05. **p < .01. ***p < .001.
+Pdf_Folio:193
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+193
+
+TABLE 3.
+Fixed
+I
+D
+:
+p
+0
+2
+3
+0
+Effects Analysis of Change in the Keyes Mental Health Continuum Scale (Ranges 1–18)
+Using Time-Varying Factors
+Variable Name
+Coef
+Robust St. Error
+Sig
+I
+D
+:
+t
+1
+5
+8
+5
+I
+D
+:
+t
+1
+5
+9
+0
+Intercept
+I
+D
+:
+t
+1
+5
+9
+5
+2.043
+I
+D
+:
+t
+1
+6
+0
+0
+0.257
+I
+D
+:
+t
+1
+6
+0
+5
+***
+I
+D
+:
+t
+1
+6
+1
+0
+I
+D
+:
+t
+1
+6
+1
+5
+L1.Flourishing
+I
+D
+:
+t
+1
+6
+2
+0
+0.776
+I
+D
+:
+t
+1
+6
+2
+5
+0.035
+I
+D
+:
+t
+1
+6
+3
+0
+***
+I
+D
+:
+t
+1
+6
+3
+5
+Financial situation
+I
+D
+:
+t
+1
+6
+4
+0
+Log income
+I
+D
+:
+t
+1
+6
+4
+5
+0.002
+I
+D
+:
+t
+1
+6
+5
+0
+0.001
+I
+D
+:
+t
+1
+6
+5
+5
+*
+I
+D
+:
+t
+1
+6
+6
+0
+I
+D
+:
+t
+1
+6
+6
+5
+Log family wealth
+I
+D
+:
+t
+1
+6
+7
+0
+0.126
+I
+D
+:
+t
+1
+6
+7
+5
+0.062
+I
+D
+:
+t
+1
+6
+8
+0
+**
+I
+D
+:
+t
+1
+6
+8
+5
+I
+D
+:
+t
+1
+6
+9
+0
+Log student loans
+I
+D
+:
+t
+1
+6
+9
+5
+0.001
+I
+D
+:
+t
+1
+7
+0
+0
+0.001
+I
+D
+:
+t
+1
+7
+0
+5
+I
+D
+:
+t
+1
+7
+1
+0
+I
+D
+:
+t
+1
+7
+1
+5
+Log CC debt
+I
+D
+:
+t
+1
+7
+2
+0
+0.004
+I
+D
+:
+t
+1
+7
+2
+5
+0.003
+I
+D
+:
+t
+1
+7
+3
+0
+I
+D
+:
+t
+1
+7
+3
+5
+I
+D
+:
+t
+1
+7
+4
+0
+L1 student loans
+I
+D
+:
+t
+1
+7
+4
+5
+−0.003
+I
+D
+:
+t
+1
+7
+5
+0
+0.001
+I
+D
+:
+t
+1
+7
+5
+5
+***
+I
+D
+:
+t
+1
+7
+6
+0
+I
+D
+:
+t
+1
+7
+6
+5
+L1 CC debt
+I
+D
+:
+t
+1
+7
+7
+0
+−0.007
+I
+D
+:
+t
+1
+7
+7
+5
+0.004
+I
+D
+:
+t
+1
+7
+8
+0
+*
+I
+D
+:
+t
+1
+7
+8
+5
+Perceived ability
+I
+D
+:
+t
+1
+7
+9
+0
+Fin responsible
+I
+D
+:
+t
+1
+7
+9
+5
+0.128
+I
+D
+:
+t
+1
+8
+0
+0
+0.012
+I
+D
+:
+t
+1
+8
+0
+5
+***
+I
+D
+:
+t
+1
+8
+1
+0
+I
+D
+:
+t
+1
+8
+1
+5
+Problem-solving ability
+I
+D
+:
+t
+1
+8
+2
+0
+0.013
+I
+D
+:
+t
+1
+8
+2
+5
+0.006
+I
+D
+:
+t
+1
+8
+3
+0
+*
+I
+D
+:
+t
+1
+8
+3
+5
+I
+D
+:
+t
+1
+8
+4
+0
+Credit card payoff ability
+I
+D
+:
+t
+1
+8
+4
+5
+0.001
+I
+D
+:
+t
+1
+8
+5
+0
+0.001
+I
+D
+:
+t
+1
+8
+5
+5
+I
+D
+:
+t
+1
+8
+6
+0
+I
+D
+:
+t
+1
+8
+6
+5
+Money management ability
+I
+D
+:
+t
+1
+8
+7
+0
+0.014
+I
+D
+:
+t
+1
+8
+7
+5
+0.005
+I
+D
+:
+t
+1
+8
+8
+0
+**
+I
+D
+:
+t
+1
+8
+8
+5
+Health
+I
+D
+:
+t
+1
+8
+9
+0
+Excellent Health
+I
+D
+:
+t
+1
+8
+9
+5
+0.129
+I
+D
+:
+t
+1
+9
+0
+0
+0.026
+I
+D
+:
+t
+1
+9
+0
+5
+***
+F
+I
+D
+:
+p
+0
+2
+3
+5
+statistic: 182.47; p < .001. *p < .05. **p < .01. ***p < .001.
+health (b = 0.333; p < .001) were positively associated with
+flourishing mentally. Among the sociodemographic factors,
+the likelihood of flourishing mentally decreased with drop-
+ping out of college (b = −0.561; p < .001). Age (b = 0.036;
+p < .01) was positively associated with flourishing mentally.
+Among the factors related to parental influence, closeness
+to the mother (b = 0.098; p < .001) was significant and pos-
+itively associated with flourishing mentally.
+Compared
+I
+D
+:
+p
+0
+2
+6
+5
+to the baseline of respondents with moderate
+mental health scores, the determinants of respondents who
+languished are shown in Columns 4–6 of Table 2. The results
+indicate that income (b = −0.022; p < .05) was negatively
+associated, and the amount of credit card debt (b = 0.032; p
+< .05) was positively associated with the likelihood of lan-
+guishing mentally. Perceived problem-solving (b = −0.125;
+p < .01) and money management (b = −0.282; p < .001) abil-
+ities reduced the likelihood of languishing among respon-
+dents. Graduating from college (b = −0.488; p < .01) was
+also negatively associated with the likelihood of languishing
+mentally. Among parental influence-related factors, close-
+ness to the mother (b = −0.168; p < .001), closeness to
+the father (b = −0.084; p < .01), and the father’s education
+(b = −0.004; p < .01) were negatively associated with lan-
+guishing for the respondents. Participation in social activi-
+ties (b = −0.094; p < .001) was negatively associated with
+languishing mentally.
+Factors Associated With the Dynamics of Positive
+Change in Psychological Well-Being
+The
+I
+D
+:
+p
+0
+2
+7
+0
+results shown in Table 3 indicate the association
+between time-varying factors and change in mental health
+continuum score across the period of this study (2009–
+2013). The results show that flourishing mentally (b = 0.776;
+p < .001) in the previous period was positively associated
+with change in mental health score. Among the financial
+situation-related factors, income (b = 0.002; p < .05) and
+family wealth (b = 0.126; p < .01) in the current period were
+positively associated with an increase in mental health (bet-
+ter mental health) score. Conversely, the amount of student
+loans (b = −0.003; p < .001) and credit card debt (b = −0.007;
+p < .01) in the previous period were negatively associated
+with an increase in mental health score. Among the per-
+ceived abilities and health-related factors, the perceptions of
+being responsible (b = 0.128; p < .001), being a problem-
+solver (b = 0.013; p < .05), being good at managing money
+(b = 0.014; p < .01), and being in excellent health (b = 0.129;
+p < .001) were positively associated with an increase in men-
+tal health score over time.
+Discussion
+I
+D
+:
+t
+i
+0
+1
+2
+0
+This
+I
+D
+:
+p
+0
+2
+7
+5
+study examined the factors associated with the mental
+health state of young adults, with a specific focus on finan-
+cial well-being and their perceived financial capabilities.
+The results from the fixed effects analysis with time-varying
+Pdf_Folio:194
+194
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+factors indicate that the amounts of student loans and credit
+card debt in the previous period were associated with nega-
+tive changes in mental health continuum scores across time.
+Additionally, the amount of credit card debt was negatively
+associated with flourishing and positively associated with
+languishing in the cross-sectional analyses. These findings
+are consistent with those of Heckman et al. (2014) study,
+which found debt to be positively associated with financial
+stress among college students. In another study, Lim et al.
+(2014) found that, among other factors, student loan debt
+was a predictor of stress among students.
+Interestingly,
+I
+D
+:
+p
+0
+2
+8
+0
+income was negatively associated with being
+languishing, not flourishing, while family wealth was posi-
+tively associated only with flourishing. Both family wealth
+and income might affect young adults’ mental health signif-
+icantly but in different ways. Being financially responsible
+and having excellent health are positively associated with
+being flourishing but not languishing. These findings sug-
+gest that focusing only on negative mental health outcomes
+may underestimate the effect of family wealth, being finan-
+cially responsible, and health on the positive end of the men-
+tal health continuum, or flourishing.
+Similarly,
+I
+D
+:
+p
+0
+2
+8
+5
+previous studies have found using cross-sectional
+data that financial debt was associated with poorer health
+(Fitch et al., 2011; Hoeve et al., 2014). However, debt has
+not been studied previously in relation to the flourishing-
+languishing mental health continuum across time. In our
+study, credit card debt was associated with a decreased like-
+lihood of flourishing and increased likelihood of languish-
+ing. These findings suggest that credit card debt burden
+could decrease positive mental health, while young adults
+may not exhibit the languishing or mental health disorder
+from credit card debt. Additionally, student loan debt in
+the previous period was also associated with a decrease in
+flourishing over the current period. This negative associa-
+tion between student loan debt and flourishing is consistent
+with findings from previous studies that found student loan
+debt was negatively associated with life satisfaction across
+time (Kim & Chatterjee, 2019) and was detrimental to young
+adults’ mental health (Walsemann et al., 2015). Similarly,
+in another study, Archuleta et al. (2013) found that student
+loan debt was associated with financial anxiety and distress.
+However, the overall negative effects of a financial bur-
+den on young adults’ well-being might not have been fully
+explored. The negative effects on flourishing may decrease
+optimal human functioning (Seligman et al., 2005), which
+is a key asset for well-being and long-term social and eco-
+nomic prosperity (Barry, 2009). These findings add to the
+literature by showing that both student loan debt and credit
+card debt negatively affect the mental health of young adults
+across time.
+This
+I
+D
+:
+p
+0
+2
+9
+0
+study found that those using adaptive coping strate-
+gies were more likely to be flourishing. On the other hand,
+individuals who are languishing may benefit from par-
+ticipation in social activities (Low, 2011) and improving
+perceived financial management capabilities. Perceived
+abilities such as being financially responsible, solving prob-
+lems, and managing money increased the likelihood of
+flourishing mentally significantly, while perceived ability in
+problem-solving and money management were negatively
+associated with languishing. These results are consistent
+with previous studies that found problem-solving abilities
+and financial self-efficacy to be positively associated with
+the psychological well-being of young adults (Garmezy et
+al., 1984; Heckman et al., 2014; Lim et al., 2014; Robb,
+2017). The present study also extends these findings to
+show that, in addition to problem-solving abilities, task-
+specific perceptions of individuals’ abilities such as the abil-
+ity to manage money and the perception of being financially
+responsible were associated with the psychological well-
+being of young adults.
+Similarly,
+I
+D
+:
+p
+0
+2
+9
+5
+Britt et al. (2016) found that financial knowl-
+edge was significantly associated with greater awareness
+of options, resulting in reduced anxiety while borrowing.
+Poor financial capability and debt have been linked to men-
+tal health problems such as depression and anxiety among
+young adults (Adams & Moore, 2007). Furthermore, this
+finding related to the positive association between perceived
+abilities and flourishing/languishing in our study suggests
+that interventions to improve people’s perceived abilities in
+managing money might contribute positively to their emo-
+tional, psychological, and social functioning.
+The
+I
+D
+:
+p
+0
+3
+0
+0
+negative association between closeness to parents and
+languishing and the positive association between closeness
+to parents and flourishing were consistent with the find-
+ings from previous studies that found a positive associa-
+tion between receiving better family and social support and
+the physical and mental health of young adults (Schotanus-
+Dijkstra et al., 2016). Consistent with previous research
+Pdf_Folio:195
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+195
+
+(Low, 2011), engagement in social activities was associated
+with both flourishing and languishing states of young adults.
+These findings were consistent with those from previous
+studies, which found that participation and engagement in
+social and community events had a positive association with
+mental health and a negative association with depression
+or mental languishing (Keyes, 2007; Low, 2011; Ottenrit-
+ter, 2004). Providing opportunities to participate in various
+social activities might be important to the mental health of
+young adults.
+Limitations and Future Directions
+Given
+I
+D
+:
+p
+0
+3
+0
+5
+the limitations of the dataset and the young age of
+the respondents, detailed information on the effect of finan-
+cial asset holdings on the mental health continuum was not
+included in the analyses. However, future studies are needed
+to examine the role of financial asset holdings of the respon-
+dents in the model. Although this study used panel data and
+examined respondents across time, more studies are needed
+to establish causality between flourishing and the covariates
+that were found to be significantly associated with flourish-
+ing in this study. The mental health and functioning of young
+adults is an issue of universal interest. Future studies exam-
+ining the predictors of flourishing among young adults in
+other countries should be encouraged. It will be important
+to examine the enduring factors that remain associated with
+flourishing as these young adults grow older and reach the
+asset accumulation phase of their life cycle.
+Implications
+The
+I
+D
+:
+p
+0
+3
+1
+0
+findings from the current study show that perceived
+financial capability is positively associated with mentally
+flourishing and negatively associated with mentally lan-
+guishing. Additional research is needed to see the long-term
+effects of financial capability on mental health. This rela-
+tionship could also be bi-directional; that is, mental health
+states could influence perceived confidence in peoples’
+financial capability and financial well-being, as languishing
+has been found to be negatively associated with productiv-
+ity and psychosocial functioning in a previous study (Keyes,
+2007).
+In
+I
+D
+:
+p
+0
+3
+1
+5
+light of the growing concerns about the financial debts of
+young people, the findings suggest that the ability to man-
+age consumer debt such as credit cards and student loans
+is important and that a better ability to manage debt may
+be beneficial for the mental health and well-being of young
+adults. Financial and mental health counselors need to be
+aware of this relationship and make appropriate referrals for
+young adults as needed. Financial educators and counselors,
+when counseling young adults with debt burdens, may need
+to help their clients realize the negative financial conse-
+quences of debts such as delinquency, bankruptcies, and
+decreased net worth for their mental health and well-being.
+Furthermore, they can coach young people in improving
+their financial management skills and abilities to understand
+the lifelong impacts of borrowing and make informed deci-
+sions in borrowing. More targeted education and counseling
+may be needed for those young people who exhibit signs of
+overborrowing or potential debt problems. Financial educa-
+tion programs have been found to improve financial man-
+agement skills and confidence (Fernandes et al., 2014). Such
+financial education and counseling can be used as an inter-
+vention, especially for moderately mentally healthy people.
+Understanding and promoting the well-being and mental
+flourishing of young adults may be as important as address-
+ing mental illness.
+The
+I
+D
+:
+p
+0
+3
+2
+0
+finding that participation in social activities was neg-
+atively associated with languishing underscores the impor-
+tance of promoting greater opportunities for group-oriented
+activities across neighborhoods, as this can improve both
+social capital and sense of well-being among young
+adults. Schools should also emphasize similar activities
+that encourage student participation. A related recent study
+found experiential learning to be an effective method of
+financial socialization of children (LeBaron et al., 2019).
+Financial education programs based on experiential learn-
+ing, such as peer financial education or providing educa-
+tion and mentoring opportunities in the community, could
+benefit young adults. By engaging in their own behaviors
+and others’, young adults may increase their participation in
+social activities as well as improve their own financial capa-
+bility, both of which will lead to improved mental health. It
+is suggested that policies should address the financial and
+mental health of young adults, such as the inclusion of health
+and financial clinics on college campuses. Young adults who
+are not currently in college need opportunities to improve
+social engagement and financial capabilities at a low or min-
+imal cost.
+The
+I
+D
+:
+p
+0
+3
+2
+5
+findings from this study indicate that while endow-
+ment factors such as family wealth, closeness to mother,
+and health are positively associated with a flourishing
+Pdf_Folio:196
+196
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+state of mind in young adults, perception of one’s abil-
+ity or self-efficacy-related factors, such as the percep-
+tion of being financially responsible, confidence in one’s
+problem-solving, and money management abilities are also
+positively associated with flourishing. And additionally,
+dropping out of college and higher levels of credit card debt
+are negatively associated with flourishing. These associa-
+tions between flourishing and perceived ability, debt bur-
+den, and educational attainment also have policy implica-
+tions. Keyes (2002) suggests that flourishing is positively
+associated with better psychosocial functioning, overall
+health, and well-being of individuals. Asebedo et al. (2020)
+found that implementing positive psychology-based inter-
+ventions can be effective in improving peoples’ financial
+self-efficacy, their overall financial well-being. LeBaron et
+al. (2019) found that experiential learning was an impor-
+tant tool for financial socialization. Financial socialization-
+related practices by parents, such as opening a bank account
+for their children and regularly monitoring their children’s
+spending, were positively associated with better financial
+practices among young adults as they grew older (Kim &
+Chatterjee, 2013). Perhaps, creating greater access to finan-
+cial education opportunities that integrate experiential learn-
+ing into the curriculum could be beneficial in building con-
+fidence in young adults’ perception of their abilities to man-
+age money and debt. Creating campus-based programs that
+encourage college and high school students to complete
+their studies, provide financial education opportunities, and
+educate them to practice positive financial management can
+be useful strategies that may be useful in improving the
+flourishing state of mind among young adults.
+References
+I
+D
+:
+t
+i
+0
+1
+3
+5
+Aboagye, J., & Jung, J. Y. (2018). Debt holding, finan-
+cial behavior, and financial satisfaction. Journal of
+Financial Counseling and Planning, 29(2), 208–218.
+https://doi.org/10.1891/1052-3073.29.2.208
+Adams, T., & Moore, M. (2007). High-risk health and
+credit behavior among 18–25-year-old college students.
+Journal of American College Health, 56(2), 101–108.
+https://doi.org/10.3200/JACH.56.2.101-108
+Archuleta, K. L., Dale, A., & Spann, S. M. (2013). Col-
+lege students and financial distress: Exploring debt,
+financial satisfaction, and financial anxiety. Journal of
+Financial Counseling and Planning, 24(2), 50–62.
+Asebedo, S. D., Seay, M. C., Little, T. D., Enete, S.,
+& Gray, B. (2020). Three good things or three
+good financial things? Applying a positive psychol-
+ogy intervention to the personal finance domain.
+The
+Journal
+of
+Positive
+Psychology,
+16,
+1–11.
+https://doi.org/10.1080/17439760.2020.1752779
+Barry, M. (2009). Addressing the determinants of positive
+mental health: Concepts, evidence and practice. Inter-
+national Journal of Mental Health Promotion, 11(3),
+4–17. https://doi.org/10.1080/14623730.2009.9721788
+Bergsma, A., ten Have, M., Veenhoven, R., & de Graaf,
+R. (2011). Most people with mental disorders are
+happy: A 3-year follow-up in the Dutch general popu-
+lation. Journal of Positive Psychology, 6(4), 253–259.
+https://doi.org/10.1080/17439760.2011.577086
+Britt, S. L., Mendiola, M. R., Schink, G. H., Tibbetts, R. H.,
+& Jones, S. H. (2016). Financial stress, coping strategy,
+and academic achievement of college students. Journal
+of Financial Counseling and Planning, 27(2), 172–183.
+https://doi.org/10.1891/1052-3073.27.2.172
+Brown, S., Taylor, K., & Price, W. S. (2005). Debt and
+distress: Evaluating the psychological cost of credit.
+Journal of Economic Psychology, 26(5), 642–663.
+https://doi.org/10.1016/j.joep.2005.01.002
+Cilluffo, A. (2017). Five facts about student loans Pew
+Research
+Center.
+http://www.pewresearch.org/fact-
+tank/2017/08/24/5-facts-about-student-loans/
+Cooke, R., Barkham, M., Audin, K., Bradley, M., & Davy,
+J. (2004). Student debt and its relation to student men-
+tal health. Journal of Further Higher Education, 28(1),
+53–66. https://doi.org/10.1080/0309877032000161814
+Davidson, P. (2017). Are student loans as big of a prob-
+lem as people think?
+USA Today. https://www.
+usatoday.com/story/money/2017/07/07/student-loans-
+big-problem-people-think/101842736/
+Diener, E., & Seligman, M. E. (2004). Beyond money:
+Toward
+an
+economy
+of
+well-being.
+Psycholog-
+ical
+Science
+in
+the
+Public
+Interest,
+5,
+1–31.
+https://doi.org/10.1111/j.0963-7214.2004.00501001.x
+Diener, E., Wirtz, D., Tov, W., Kim-Prieto, C., Choi, D.,
+Oishi, S., & Biswas-Diener, R. (2010). New well-being
+measures: Short scales to assess flourishing and posi-
+tive and negative feelings. Social Indicators Research,
+97,
+143–156.
+https://doi.org/10.1007/s11205-009-
+9493-y
+Dugan, A., & Kafka, S. (2014). Student debt linked to worse
+health and less wealth. Gallup Poll Briefing.
+Dwyer,
+R.
+E.
+(2018).
+Credit,
+debt,
+and
+inequal-
+ity.
+Annual
+Review
+of
+Sociology,
+44,
+237–261.
+Pdf_Folio:197
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+197
+
+https://doi.org/10.1146/annurev-soc-060116-053420
+Dwyer, R. E., McCloud, L., & Hodson, R. (2011).
+Youth
+debt,
+mastery,
+and
+self-esteem:
+Class-
+stratified
+effects
+of
+indebtedness
+on
+self-
+concept.
+Social
+Science
+Research,
+40,
+27–741.
+https://doi.org/10.1016/j.ssresearch.2011.02.001
+Eisenberg,
+D.,
+Downs,
+M.
+F.,
+Golberstein,
+E.,
+&
+Zivin, K. (2009). Stigma and help seeking for
+mental
+health
+among
+college
+students.
+Medi-
+cal Care Research and Review, 66(5), 522–541.
+https://doi.org/10.1177/1077558709335173
+Elliot, W., & Nam, I. (2013). Is student debt jeopardizing the
+short-term financial health of U.S. households? Fed-
+eral Reserve Bank of St. Louis Review, 95(5), 405–424.
+https://doi.org/10.20955/r.95.405-424
+Faulk, K. E., Gloria, C. T., & Steinhardt, M. A.
+(2013).
+Coping
+profiles
+characterize
+individ-
+ual
+flourishing,
+languishing,
+and
+depression.
+Anxiety,
+Stress
+&
+Coping,
+26(4),
+378–390.
+https://doi.org/10.1080/10615806.2012.708736
+Fernandes, D., Lynch, J. G., Jr., & Netemeyer, R. G. (2014).
+Financial literacy, financial education, and downstream
+financial
+behaviors.
+Management
+Science,
+60(8),
+1861–1883. https://doi.org/10.1287/mnsc.2013.1849
+Fink, J. E. (2014). Flourishing: Exploring predictors of
+mental health within the college environment. Jour-
+nal of American College Health, 62(6), 380–388.
+https://doi.org/10.1080/07448481.2014.917647
+Fitch,
+C.,
+Hamilton,
+S.,
+Bassett,
+P.,
+&
+Davey,
+R.
+(2011).
+The
+relationship
+between
+personal
+debt
+and
+mental
+health:
+A
+systematic
+review.
+Men-
+tal
+Health
+Review
+Journal,
+16(4),
+153–166.
+https://doi.org/10.1108/13619321111202313
+Fredrickson, B. L., & Losada, M. F. (2005). Posi-
+tive affect and the complex dynamics of human
+flourishing. American Psychologist, 60(7), 678–686.
+https://doi.org/10.1037/0003-066X.60.7.678
+Garmezy,
+N.
+(1993).
+Children
+in
+poverty:
+Resilience
+despite
+risk.
+Psychiatry:
+Interper-
+sonal and Biological Processes, 56(1), 127–136.
+https://doi.org/10.1080/00332747.1993.11024627
+Garmezy, N., Masten, A. S., & Telegen, A. (1984).
+The
+study
+of
+stress
+and
+competence
+in
+chil-
+dren:
+A building block
+for developmental psy-
+chopathology.
+Child
+Development,
+55,
+97–111.
+https://doi.org/10.2307/1129837
+Gicheva,
+D.
+(2016).
+Student
+loans
+or
+mar-
+riage?
+A
+look
+at
+the
+highly
+educated.
+Eco-
+nomics
+of
+Education
+Review,
+53,
+207–216.
+https://doi.org/10.1016/j.econedurev.2016.04.006
+Heckman, S., Lim, H., & Montalto, C. (2014). Fac-
+tors related to financial stress among college stu-
+dents. Journal of Financial Therapy, 5(1), 19–39.
+https://doi.org/10.4148/1944-9771.1063
+Henderson, L. W., Knight, T., & Richardson, B. (2014).
+The hedonic and eudaimonic validity of the orienta-
+tions to happiness scale. Social Indicators Research,
+115, 1087–1099. https://doi.org/10.1007/s11205-013-0
+264-4
+Hodson, R., Dwyer, R. E., & Neilson, L. A. (2014). Credit
+card blues: The middle class and the hidden costs of
+easy credit. The Sociological Quarterly, 55(2), 315–
+340. https://doi.org/10.1111/tsq.12059
+Hoeve, M., Stams, G. J., Zouwen, M., Vergeer, M.,
+Jurrius, K., & Asscher, J. J. (2014). A system-
+atic review of financial debt in adolescents and
+young
+adults:
+Prevalence,
+correlates
+and
+asso-
+ciations
+with
+crime.
+PLoS
+ONE,
+9(8),
+1–16.
+https://doi.org/10.1371/journal.pone.0104909
+Hogan, E. A., Bryant, S. K., & Overymyer-Day, L. E.
+(2013). Relationships between college students’ credit
+card debt, undesirable academic behaviors and cog-
+nitions, and academic performance. College Student
+Journal, 47(1), 102–112.
+Hojman, D. A., Miranda, Á. R., & Ruiz-Tagle, J.
+(2016).
+Debt
+trajectories
+and
+mental
+health.
+Social
+Science
+&
+Medicine,
+167,
+54–62.
+https://doi.org/10.1016/j.socscimed.2016.08.027
+Houle, J. N., & Berger, L. (2017). Children with disabili-
+ties and trajectories of parents’ unsecured debt across
+the life course. Social Science Research, 64, 184–196.
+https://doi.org/10.1016/j.ssresearch.2016.10.006
+Huppert, F. (2009). A new approach to reducing disorder
+and improving well-being. Perspectives on Psychologi-
+cal Science, 4, 108–111. https://doi.org/10.1111/j.1745-
+6924.2009.01100.x
+Jenkins,
+R.,
+Bhugra,
+D.,
+Bebbington,
+P.,
+Brugha,
+T., Farrell, M., Coid, J., Fryers, T., Weich, S.,
+Singleton, N., & Meltzer, H. (2008). Debt, income
+and
+mental
+disorder
+in
+the
+general
+population.
+Psychological
+Medicine,
+38(10),
+1485–1493.
+https://doi.org/10.1017/S0033291707002516
+Pdf_Folio:198
+198
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+Johnson, C. L., O’Neill, B., Worthy, S. L., Lown, J. M.,
+& Bowen, C. F. (2016). What are student loan bor-
+rowers thinking? Insights from focus groups on college
+selection and student loan decision making. Journal of
+Financial Counseling and Planning, 27(2), 184–198.
+https://doi.org/10.1891/1052-3073.27.2.184
+Kahn, J. R., & Pearlin, L. I. (2006). Financial Strain
+over the Life Course and Health among Older Adults.
+Journal of Health and Social Behavior, 47(1), 17–31.
+https://doi.org/10.1177/002214650604700102
+Kessler, R. C., Andrews, G., Mroczek, D., Ustun, B.,
+& Wittchen, H. U. (1998). The world health orga-
+nization
+composite
+international
+diagnostic
+inter-
+view short-form (cidi-sf). International Journal of
+Methods in Psychiatric Research, 7(4), 171–185.
+https://doi.org/10.1002/mpr.47
+Keyes,
+C.
+L.
+M.
+(1998).
+Social
+well-being.
+Social
+Psychology
+Quarterly,
+61(2),
+121–140.
+https://doi.org/10.2307/2787065
+Keyes, C. L. M. (2002). The mental health contin-
+uum: From languishing to flourishing in life. Jour-
+nal of Health and Social Behavior, 43(2), 207–222.
+https://doi.org/10.2307/3090197
+Keyes, C. L. M. (2003). Complete mental health: An agenda
+for the 21st century. In Flourishing: Positive psychol-
+ogy and the life well-lived (pp. 293–312). American
+Psychological Association.
+Keyes, C. L. M. (2006). Mental health in adoles-
+cence:
+Is
+America’s
+youth
+flourishing?
+Ameri-
+can
+Journal
+of
+Orthopsychiatry,
+76,
+395–402.
+https://doi.org/10.1037/0002-9432.76.3.395
+Keyes, C. L. M. (2007). Promoting and protecting mental
+health as flourishing. American Psychologist, 62, 95–
+108. https://doi.org/10.1037/0003-066X.62.2.95
+Keyes, C. L. M., & Waterman, M. B. (2003). Dimensions
+of well-being and mental health in adulthood. In M.
+H. Bornstein, L. Davidson, C. L. M. Keyes, & K. A.
+Moore (Eds.), Crosscurrents in contemporary psychol-
+ogy. Well-being: Positive development across the life
+course (pp. 477–497). Lawrence Erlbaum Associates
+Publishers.
+Kim, J., & Chatterjee, S. (2013). Childhood financial
+socialization and young adults’ financial management.
+Journal of Financial Counseling and Planning, 24(1),
+61–79.
+Kim, J., & Chatterjee, S. (2019). Student loans, health, and
+life satisfaction of US households: Evidence from a
+panel study. Journal of Family and Economic Issues,
+40, 36–50. https://doi.org/10.1007/s10834-018-9594-3
+Kobau, R., Seligman, M. E. P., Peterson, C., Diener, E.,
+Zack, M. M., Chapman, D., & Thompson, W. (2011).
+Mental health promotion in public health: Perspec-
+tives and strategies from positive psychology. Ameri-
+can Journal of Public Health, 101(8), e1–e9. https://
+doi.org/http://doi.org/10.2105/AJPH.2010.300083
+Law, S. (2014). Education and its risks. Antistasis, 4(1),
+16–20. https://doi.org/10.1002/dhe.30010
+LeBaron, A. B., Runyan, S. D., Jorgensen, B. L., Marks,
+L. D., Li, X., & Hill, E. J. (2019). Practice makes per-
+fect: Experiential learning as a method for financial
+socialization. Journal of Family Issues, 40(4), 435–463.
+https://doi.org/10.1177/2167696820902673
+Lee, J. M., Lee, Y. G., & Kim, S. (2019). Loan
+type and debt delinquency among Millennial and
+non-Millennial
+households.
+Family
+and
+Con-
+sumer Sciences Research Journal, 47(4), 342–358.
+https://doi.org/10.1111/fcsr.12315
+Letkiewicz, J., Lim, H., Heckman, S., Bartholomae, S., Fox,
+J. J., & Montalto, C. P. (2014). The path to graduation:
+Factors predicting on-time graduation rates. Journal of
+College Student Retention: Research, Theory & Prac-
+tice, 16(3), 351–371. https://doi.org/10.2190/CS.16.3.c
+Lim, H., Heckman, S., Montalto, C. P., & Letkiewicz,
+J. (2014). Financial stress, self-efficacy, and finan-
+cial help-seeking behavior of college students. Jour-
+nal of Financial Counseling and Planning, 25(2),
+148–160.
+Low, K. G. (2011). Flourishing, substance use, and engage-
+ment in students entering college: A preliminary study.
+Journal of American College Health, 59(6), 555–561.
+https://doi.org/10.1080/07448481.2011.563432
+Luthar, S. S. (1991). Vulnerability and resilience: A study
+of
+high￿risk
+adolescents.
+Child
+Development,
+62(3),
+600–616.
+https://doi.org/10.1111/j.1467-
+8624.1991.tb01555.x
+Nelson, M. C., Lust, K., Story, M., & Ehlinger, E.
+(2008). Credit card debt, stress, and key health
+risk
+behaviors
+among
+college
+students.
+Ameri-
+can Journal of Health Promotion, 22, 400–412.
+https://doi.org/10.4278/ajhp.22.6.400
+Pdf_Folio:199
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+199
+
+Nissen, S., Hayward, B., & McManus, R. (2019). Student
+debt and well-being: a research agenda. Kōtuitui: New
+Zealand Journal of Social Sciences Online, 14(2), 245–
+256. https://doi.org/10.1080/1177083X.2019.1614635
+Ottenritter, N. (2004). Service learning, social justice, and
+campus health. Journal of American College Health,
+52, 189–191. https://doi.org/10.3200/JACH.52.4.189-
+192
+Richardson, T., Elliott, P., Roberts, R., & Jansen, M. (2017).
+a longitudinal study of financial difficulties and men-
+tal health in a national sample of british undergradu-
+ate students. Community Mental Health Journal, 53(3),
+344–352. https://doi.org/10.1007/s10597-016-0052-0
+Robb, C. A. (2017). College student financial stress: Are the
+kids alright? Journal of Family and Economic Issues,
+38(4), 514–527. https://doi.org/10.1007/s10834-017-
+9527-6
+Roberts, R., Golding, J., Towell, T., & Weinreb, I.
+(1999). The effects of economic circumstances on
+British students’ mental and physical health. Jour-
+nal of American College Health, 48(3), 103–109.
+https://doi.org/10.1080/07448489909595681
+Rothstein, J., & Rouse, C. E. (2011). Constrained after
+college: Student loans and early-career occupational
+choices. Journal of Public Economics, 95, 149–163.
+Ryff, C. D., & Keyes, C. L. M. (1995). The struc-
+ture of psychological well-being revisited. Journal of
+Personality and Social Psychology, 69(4), 719–727.
+https://doi.org/10.1037/0022-3514.69.4.719
+Schotanus-Dijkstra, M., Pieterse, M. E., Drossaert, C. H. C.,
+Westerhof, G. J., de Graaf, R., ten Have, M., Walburg, J.
+A., & Bohlmeijer, E. T. (2016). What factors are asso-
+ciated with flourishing? Results from a large represen-
+tative national sample. Journal of Happiness Studies:
+An Interdisciplinary Forum on Subjective Well-Being,
+17(4),
+1351–1370.
+https://doi.org/10.1007/s10902-
+015-9647-3
+Seligman, M. E. P. (2002). Authentic happiness. Free Press.
+Seligman, M. E. P. (2011). Flourish: A visionary new
+understanding of happiness and well-being. Simon &
+Schuster.
+Seligman, M. E. P., Steen, T. A., Park, N., & Peterson, C.
+(2005). Positive psychology progress: Empirical vali-
+dation of interventions. American Psychologist, 60(5),
+410–421. https://doi.org/10.1037/0003-066X.60.5.410
+Shim, S., Xiao, J. J., Barber, B., & Lyons, A. C.
+(2009).
+Pathways
+to
+life
+success:
+A
+model
+of
+financial well-being for young adults. Journal of
+Applied Developmental Psychology, 30, 708–723.
+https://doi.org/10.1016/j.appdev.2009.02.003
+Stevenson, J. S. (2008). The relationship between student
+credit card debt, volunteerism, academic achievement,
+and health. [Unpublished doctoral dissertation]. George
+Fox University. ProQuest, 1–29.
+Sun, A. R., & Houle, J. N. (2018). Trajectories of unse-
+cured debt across the life course and mental health
+at midlife. Society and Mental Health, 10(1), 61–79.
+https://doi.org/10.1177/2156869318816742
+Sweet, E., Nandi, A., Adam, E. K., & McDade, T. W.
+(2013). The high price of debt: household finan-
+cial debt and its impact on mental and physi-
+cal health. Social Science & Medicine, 91, 94–100.
+https://doi.org/10.1016/j.socscimed.2013.05.009
+Tay, L., Batz, C., Parrigon, S., & Kuykendall, L. (2017).
+Debt and subjective well-betive health care. Jour-
+nal
+of
+Happiness
+Studies:
+An
+Interdisciplinary
+Forum on Subjective Well-Being, 9(3), 449–469.
+https://doi.org/10.1007/s10902-016-9758-5
+Velez, E., Cominole, M., & Bentz, A. (2019). Debt
+burden
+after
+college:
+The
+effect
+of
+student
+loan
+debt
+on
+graduates’
+employment,
+additional
+schooling,
+family
+formation,
+and
+home
+own-
+ership.
+Education
+Economics,
+27(2),
+186–206.
+https://doi.org/10.1080/09645292.2018.1541167
+Walsemann, K. M., Gee, G. C., & Gentile, D. (2015).
+Sick
+of
+our
+loans:
+Student
+borrowing
+and
+the
+mental
+health
+of
+young
+adults
+in
+the
+United
+States. Social Science & Medicine, 124, 85–93.
+https://doi.org/10.1016/j.socscimed.2014.11.027
+Werner, E. E. Protective factors and individual resilience.
+In J. P. Shonkoff & S. J. Meisels (Eds.), Handbook of
+early childhood intervention (pp. 115–132). Cambridge
+University Press.
+Williams, J. J. (2014). The remediation of higher educa-
+tion and the harm of student debt. Comparative Liter-
+ature, 66(1), 43–51. https://doi.org/10.1215/00104124-
+2414923
+Wooldridge, J. M. (2010). Econometric analysis of cross
+section and panel data. MIT Press.
+Zhang, J., & Kemp, S. (2009). The relationships between
+student debt and motivation, happiness, and academic
+achievement. New Zealand Journal of Psychology, 38,
+24–29.
+Pdf_Folio:200
+200
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+
+Disclosure
+I
+D
+:
+p
+0
+3
+3
+0
+. The authors have no relevant financial interest
+or affiliations with any commercial interests related to the
+subjects discussed within this article.
+Funding
+I
+D
+:
+p
+0
+3
+3
+1
+. The author(s) received no specific grant or finan-
+cial support for the research, authorship, and/or publication
+of this article.
+Pdf_Folio:201
+Journal of Financial Counseling and Planning, Volume 32, Number 2, 2021
+201
+

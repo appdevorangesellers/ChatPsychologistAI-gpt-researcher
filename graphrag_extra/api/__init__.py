@@ -17,7 +17,8 @@ from graphrag.api.query import (
 )
 from graphrag.prompt_tune.types import DocSelectionType
 from graphrag_extra.api.query import (
-    global_extract as global_search
+    global_extract as global_search,
+    local_extract as local_search,
 )
 
 __all__ = [  # noqa: RUF022

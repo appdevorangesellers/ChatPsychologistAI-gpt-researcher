@@ -17,5 +17,8 @@ class PyMuPDFScraper:
         using PyMuPDFLoader from the provided link.
         """
         loader = PyMuPDFLoader(self.link)
-        doc = loader.load()
-        return str(doc)
+        docs = loader.load()
+        content = ''
+        for d in docs:
+            content += f"{d.page_content}\n"
+        return content, [], docs[0].metadata.get('source')

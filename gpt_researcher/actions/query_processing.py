@@ -50,7 +50,7 @@ async def generate_sub_queries(
     )
 
     print("gen_queries_prompt", gen_queries_prompt)
-    #print(c)
+    # print(c)
     try:
         response = await create_chat_completion(
             model=cfg.strategic_llm_model,

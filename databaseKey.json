@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "chat-psychologist-ai",
+  "private_key_id": "60020320b4c8b59362f8bca93840da795bb17d3f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHqTIqHmAljGws\n5dF4Su8hDXp9dQ61OGme9MySILsDn4Baz+zHyw8U6ju8/bGI3D3za4AangVzl3D9\nrw85R3PNfG9IYrt1UPlZevxsIznfdaA3S6KlAKa/O8ggLBbyIWPfYo5DJjHAha3M\n6VPDb8dYdTQhwo85ZG0NIH8p2+yHFHhh1GCN2qJA91SMHMB9S2NwrFI0CcnQHE4w\nhDyeAw9xqzY7rueLggFvvMGspwet9XQaDwwxlqGmhi7ygZuiVE++0nCc67KyaNcF\nFD8CUGeBrFMAr0tvnrpx1oY8PeE6O54CWxGTl7GqIHrNXv/MW80xEgCcc5NlIom+\nIeCetuMFAgMBAAECggEAIE1sc0oEzi5g1ga8lBSziYpvtdp5bbJZzEDY1A99kkF8\n97RKH6znnL+kuJfm4DiZwUc0K5pDUYc/3Zs0AFViE+28514p6/oUzXhLXId6dn/G\nUwvmnYF0eN4IK8RWVgg26047q/uC8x3tl4hsZ+Muwk38CDY9C9EGn6gRSsltBBFv\nSJL71Ff9sWu/Gl89tVzhso09p/6C96FcE97gHy3IBY9zPZFtDJhE38Q+r7KAKS7S\nGuJ3UvReuqzuaCOBvbnQwoqASY2XEAqN60gBouG+1yLHRjJeORCL/Fnt9MiGpWsB\nPtbn2WGSlNFcyaVmCNRA4cf8gwwf06TcidiFieFHRQKBgQD4kQ7mP0QD538btyW8\ni4fBnc21R382aNjzLFokEC5OuB3WFeeurkT3Ji64Dkjs2fKc1dvmXzrP2Qhpchxb\nNEt640nOhJkf+H2oLUXQb7RDK12+6vIErgAZ25Uju9c1C6khVv4xA6KDRHHuyMi1\nf/ysO+3YpgVE/w/DpScz/NnR7wKBgQDNobtyvfIAzJouG+qH7PgrEpAwGc62HoJO\naFC6B01rlZ1KliD5mywm8g2/vTHy2mjkHkFvnr72gCp46ixGRF9aLDePuFQaf1q0\noSVaS1n4OozonTJK8muiOy+VSJemjsVRhxIP5uol9iMsKmRqjKLiU7FYAjKmMTq6\nWLGta1m+SwKBgQDCa8vIooGTwDW2uvlkUYr9EW4+Nc82Aqp3AiD7hkCCSBbmRjny\nctL0scPnKR03TX4r2EbpGWGKA4tF1wCBAhVr6G3pf+O5kwbOTaMG1uibhUcNNv3Y\nVTU1BIDR83HwRs+iiUXHlr09iYLIL/p1pMdA/JscUzdZ8VsmP367djH1twKBgAsU\nOrA88av/WhM/58v5BYn0jxY4Xb3MOQMWdbsAJ7izL+1T12T7ak6S3hDFlcpa4Cni\nQ25LJEjNsPwgyc/jYSvPlBLHQKjI0c9Hm2aZBrjsFql1xr7o/smX3MFzTtBngtQY\nre1zaIwxDcYUZqKi/yeokLaIL8hqgJqHqtMIJKavAoGBAIv7w7gbP7EARv+E3M/v\nxo5GHywCviXxsyJ/j8+X5nWddCfdccJ6mQU0wX7pqsYFX14dt+2dHu/KhJyIcPwm\n8ByMhOfFFYUi+g5wRjuEa/WQrDTXskfVTA48Ft0CgAhls5HPv/Wy7CDlw2pdGC4u\n1ulcOCuT3pPSlBLOHaY4nsXz\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-1hpoa@chat-psychologist-ai.iam.gserviceaccount.com",
+  "client_id": "115635044323283685934",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-1hpoa%40chat-psychologist-ai.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

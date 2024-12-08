@@ -14,6 +14,7 @@ class ResearchConductor:
 
     def __init__(self, researcher):
         self.researcher = researcher
+        self.sub_queries = []
 
     async def get_relevant_context(self, query):
         query_as_dict = json.loads(query)
@@ -127,6 +128,8 @@ class ResearchConductor:
         # Generate Sub-Queries including original query
         sub_queries = await self.plan_research(query)
         # sub_queries.append(query)
+        print('sub_queries', sub_queries)
+        self.sub_queries = sub_queries
 
         if self.researcher.verbose:
             await stream_output(
@@ -147,6 +150,7 @@ class ResearchConductor:
             ]
         )
         # return context
+
 
 
     async def __process_sub_query_with_vectorstore(self, sub_query: str):
@@ -204,9 +208,9 @@ class ResearchConductor:
             # scraped_data = await self.__scrape_data_by_query(sub_query)
             await self.__scrape_data_by_query(sub_query)
 
-        content = await self.researcher.context_manager.get_similar_content_by_query(sub_query, scraped_data)
+        #content = await self.researcher.context_manager.get_similar_content_by_query(sub_query, scraped_data)
 
-        if content and self.researcher.verbose:
+        '''if content and self.researcher.verbose:
             await stream_output(
                 "logs", "subquery_context_window", f"📃 {content}", self.researcher.websocket
             )
@@ -216,7 +220,7 @@ class ResearchConductor:
                 "subquery_context_not_found",
                 f"🤷 No content found for '{sub_query}'...",
                 self.researcher.websocket,
-            )
+            )'''
         # return content
         # return scraped_data
 

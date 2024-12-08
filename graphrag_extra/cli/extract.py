@@ -73,3 +73,34 @@ def run_global_extract(
     reporter.success(f"--context_data--\n{context_data}")
 
     return context_data
+
+def run_local_extract(
+    config_filepath: Path | None,
+    data_dir: Path | None,
+    root_dir: Path,
+    community_level: int,
+    response_type: str,
+    streaming: bool,
+    query: str,
+):
+    '''def test():
+        print("get_global_search_engine")
+    from graphrag import api
+    api.query.get_global_search_engine = get_global_extract_engine'''
+    from graphrag import cli
+
+    cli.query.api = api
+
+    response, context_data = cli.query.run_local_search(
+        config_filepath,
+        data_dir,
+        root_dir,
+        community_level,
+        response_type,
+        streaming,
+        query
+    )
+
+    reporter.success(f"--local_extract_response--\n{response}")
+
+    return context_data

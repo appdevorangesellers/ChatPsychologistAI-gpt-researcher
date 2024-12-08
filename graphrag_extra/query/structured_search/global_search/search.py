@@ -74,6 +74,19 @@ class GlobalExtract(GlobalSearch):
         llm_calls, prompt_tokens, output_tokens = {}, {}, {}
 
         start_time = time.time()
+        sub_queries = query.split('\\n')
+        print("sub_queries", sub_queries)
+        context_result = await asyncio.gather(*[
+            self.context_builder.build_context(
+                query=sub_query,
+                conversation_history=conversation_history,
+                **self.context_builder_params,
+            )
+            for sub_query in sub_queries
+        ])
+        print("context_result", context_result)
+        print(c)
+
         context_result = await self.context_builder.build_context(
             query=query,
             conversation_history=conversation_history,

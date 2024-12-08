@@ -22,6 +22,15 @@ from graphrag.logging.types import ReporterType
 import asyncio
 import subprocess
 
+async def read_stream(stream, prefix):
+    """Read and print lines from an async stream."""
+    output = []
+    async for line in stream:
+        decoded_line = line.decode().strip()
+        output.append(decoded_line)
+        print(f"{prefix}: {decoded_line}")
+    return '\n'.join(output)
+
 class GPTResearcher:
     def __init__(
             self,
@@ -62,42 +71,57 @@ class GPTResearcher:
         print("conduct_data_research")
         # self.context = await self.research_conductor.conduct_research()
         await self.data_research_conductor.conduct_research(query)
+        #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
 
     async def conduct_research(self, query):
         print("conduct_research")
+        #from .scraper.pymupdf.pymupdf import PyMuPDFScraper
         # self.context = await self.research_conductor.conduct_research()
-        # await self.research_conductor.conduct_research(query)
+        await self.research_conductor.conduct_research(query)
         # await index_cli(root=Path('./ragtest'))
+        #PyMuPDFScraper('https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf?sequence=1&isAllowed=y').scrape()
 
-        #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
-        output = subprocess.check_call(['graphrag_extra', 'init2'])
-        print("output: ", str(output))
-        emit = TableEmitterType.Parquet.value
-        '''a = await asyncio.to_thread(
-            index_cli,
-                root_dir=Path('./ragtest'),
-                verbose=False,
-                resume=None,
-                memprofile=False,
-                cache=True,
-                reporter=ReporterType(ReporterType.RICH),
-                config_filepath=None,
-                emit=[TableEmitterType(value.strip()) for value in emit.split(",")],
-                dry_run=False,
-                skip_validation=False,
-                output_dir=None,
-
-        )'''
-
+        subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+        # output = subprocess.check_call(['graphrag_extra', 'init2'])
         # return self.context
 
-    async def write_report(self, query) -> str:
-        context = await self.research_conductor.get_relevant_context(query)
-        return await self.report_generator.write_report(query, context)
+    async def write_report(self, search_queries, mental_data) -> str:
+        #from graphrag.query import factories
+        #from graphrag_extra.query.structured_search.global_search.search import GlobalSearch
+        #factories.GlobalSearch = GlobalSearch
+        # context = await self.research_conductor.get_relevant_context(query)
+        context = await self.data_research_conductor.extract_relevant_data(search_queries)
+        print("context", context)
+        return await self.report_generator.write_report(mental_data, context)
+        #GlobalSearch().asearch_test()
 
+        #subprocess.run(['graphrag_extra', 'extract', '--root', './ragtest', '--method', 'global', '--query', 'mental disorders'])
+        #subprocess.run(['graphrag', 'query', '--root', './ragtest', '--method', 'global', '--query', 'mental disorders'])
+
+
+        '''process = await asyncio.create_subprocess_exec(
+            'graphrag_extra', 'extract', '--root', './ragtest', '--method', 'local', '--query', 'mental disorders',
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
+
+        stdout_output, stderr_output = await asyncio.gather(
+            read_stream(process.stdout, "stdout"),
+            read_stream(process.stderr, "stderr")
+        )
+
+        rc = await process.wait()
+
+
+        print('---------------------')
+        print('stdout_output', stdout_output)
+        print('---------------------')'''
 
     def get_research_sources(self) -> List[Dict[str, Any]]:
         return self.research_sources
+
+    def get_data_research_sub_queries(self):
+        return self.data_research_conductor.sub_queries
 
     def add_research_sources(self, sources: List[Dict[str, Any]]) -> None:
         self.research_sources.extend(sources)

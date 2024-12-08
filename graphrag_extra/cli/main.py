@@ -108,10 +108,20 @@ def _extract_cli(
     ] = False,
 ):
     """Query a knowledge graph index."""
-    from graphrag_extra.cli.extract import run_global_extract
+    from graphrag_extra.cli.extract import run_global_extract, run_local_extract
     #from graphrag_extra.cli.extract import run_global_search
 
     match method:
+        case SearchType.LOCAL:
+            run_local_extract(
+                config_filepath=config,
+                data_dir=data,
+                root_dir=root,
+                community_level=community_level,
+                response_type=response_type,
+                streaming=streaming,
+                query=query,
+            )
         case SearchType.GLOBAL:
             # run_global_search(
             run_global_extract(

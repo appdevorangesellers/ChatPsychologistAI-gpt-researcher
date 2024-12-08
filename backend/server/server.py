@@ -12,7 +12,11 @@ from backend.server.websocket_manager import WebSocketManager
 from backend.server.server_utils import (
     get_config_dict,
     update_environment_variables, handle_file_upload, handle_file_deletion,
-    execute_multi_agents, handle_websocket_communication
+    execute_multi_agents, handle_websocket_communication,
+    handle_research_data,
+    handle_fetch_search_queries,
+    handle_write_final_report,
+    handle_fetch_final_report_download_url
 )
 
 # Models
@@ -84,6 +88,21 @@ async def read_root(request: Request):
 async def read_admin_root(request: Request):
     return templates.TemplateResponse("admin.html", {"request": request, "report": None})
 
+@app.post("/research-data")
+async def research_data(user_key:str, data: str):
+    return await handle_research_data(user_key, data)
+
+@app.post("/write-final-report")
+async def write_final_report(user_key:str):
+    return await handle_write_final_report(user_key)
+
+@app.get("/search-queries")
+def fetch_search_queries(user_key:str):
+    return handle_fetch_search_queries(user_key)
+
+@app.get("/final-report-url")
+async def fetch_final_report_url(user_key:str, file_name:str):
+    return await handle_fetch_final_report_download_url(user_key, file_name)
 
 @app.get("/files/")
 async def list_files():
