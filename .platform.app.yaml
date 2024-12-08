@@ -32,7 +32,9 @@ hooks:
     set -eu
 
     python3.12 -m pip install --upgrade uvicorn
+    chmod u+x /app
   deploy: |
+    chmod u+x /app
     # Install dependencies
     poetry lock --no-update
     poetry install
