@@ -39,8 +39,8 @@ hooks:
     poetry install
   deploy: |
     # Install dependencies
-    poetry lock --no-update
-    poetry install
+    # poetry lock --no-update
+    # poetry install
 
 
 source:
@@ -64,3 +64,5 @@ mounts:
     source_path: cache
   'ragtest':
     source: local
+  '.config':
+    source: tmp

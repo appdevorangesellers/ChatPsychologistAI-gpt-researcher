@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect, File, UploadFile, Header
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,6 +18,8 @@ from backend.server.server_utils import (
     handle_write_final_report,
     handle_fetch_final_report_download_url
 )
+import asyncio
+from contextlib import asynccontextmanager
 
 # Models
 
@@ -44,9 +46,15 @@ class ConfigRequest(BaseModel):
     SERPER_API_KEY: str = ''
     SEARX_URL: str = ''
 
+#
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Context manager for FastAPI lifespan, to start the background job processor."""
+    asyncio.create_task(background_job_processor())
+    yield
 
 # App initialization
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 # Static files and templates
 app.mount("/site", StaticFiles(directory="./frontend"), name="site")
@@ -74,8 +82,68 @@ class ResearchData(BaseModel):
 # Constants
 DOC_PATH = os.getenv("DOC_PATH", "./my-docs")
 
-# Startup event
+#
+running_jobs = set()
+queue_lock = asyncio.Lock()
+job_queue = asyncio.Queue()
 
+async def read_stream(stream, prefix):
+    """Read and print lines from an async stream."""
+    output = []
+    async for line in stream:
+        decoded_line = line.decode().strip()
+        output.append(decoded_line)
+        print(f"{prefix}: {decoded_line}")
+    return '\n'.join(output)
+
+async def run_command(root: str):
+    """Run the indexing command as an async subprocess."""
+    job_id = root
+    running_jobs.add(job_id)
+    print(f"Running job: {job_id}")
+
+    try:
+        process = await asyncio.create_subprocess_exec(
+            "graphrag", "index", "--root", root,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
+
+        stdout_output, stderr_output = await asyncio.gather(
+            read_stream(process.stdout, "stdout"),
+            read_stream(process.stderr, "stderr")
+        )
+
+        rc = await process.wait()
+        print(f"Indexing finished with return code: {rc}")
+
+        return {
+            "status": "success" if rc == 0 else "error",
+            "message": "Job completed",
+            "stdout": stdout_output,
+            "stderr": stderr_output
+        }
+    except Exception as e:
+        print(f"Error in run_command: {str(e)}")
+        return {"status": "error", "message": str(e)}
+    finally:
+        running_jobs.remove(job_id)
+        await process_next_job()
+
+async def process_next_job():
+    """Process the next job in the queue."""
+    if not job_queue.empty():
+        next_root = await job_queue.get()
+        asyncio.create_task(run_command(next_root))
+
+async def background_job_processor():
+    """Continuously process jobs from the queue."""
+    while True:
+        if not job_queue.empty() and len(running_jobs) == 0:
+            await process_next_job()
+        await asyncio.sleep(1)
+
+# Startup event
 
 @app.on_event("startup")
 def startup_event():
@@ -101,6 +169,22 @@ async def research_data(research_data: ResearchData):
 @app.post("/write-final-report")
 async def write_final_report(user_key:str):
     return await handle_write_final_report(user_key)
+
+@app.get("/run-index")
+async def run_index(root: Optional[str] = "./ragtest"):
+    """Endpoint to start the indexing job."""
+    print(f"Received request for /run-index - root: {root}")
+
+    async with queue_lock:
+        if root in running_jobs:
+            return {"status": "running", "message": "Job is currently running.", "queueSize": job_queue.qsize()}
+
+        await job_queue.put(root)
+        if len(running_jobs) == 0:
+            asyncio.create_task(process_next_job())
+            return {"status": "running", "message": "Job started.", "queueSize": job_queue.qsize()}
+        else:
+            return {"status": "queued", "message": "Job queued.", "queueSize": job_queue.qsize()}
 
 @app.get("/search-queries")
 def fetch_search_queries(user_key:str):

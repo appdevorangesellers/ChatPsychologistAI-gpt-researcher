@@ -50,3 +50,6 @@ gpt_researcher_orig/
 
 #Ignore db keys
 databaseKey.json
+
+#
+ragtest/
