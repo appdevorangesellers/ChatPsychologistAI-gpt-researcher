@@ -41,8 +41,8 @@ hooks:
     # Install dependencies
     # poetry lock --no-update
     # poetry install
-    cp ./extra_interface/settings.yaml ./rag
-    cp -r ./extra_interface/prompts ./rag
+    cp ./rag_interface/settings.yaml ./rag
+    cp -r ./rag_interface/prompts ./rag
 
 
 source:
