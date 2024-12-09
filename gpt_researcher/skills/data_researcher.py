@@ -30,7 +30,7 @@ class DataResearchConductor(ResearchConductor):
 
         try:
             process = await asyncio.create_subprocess_exec(
-                'graphrag_extra', 'extract', '--root', './ragtest', '--method', 'local', '--query', query,
+                'graphrag_extra', 'extract', '--root', './rag', '--method', 'local', '--query', query,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )

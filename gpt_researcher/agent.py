@@ -81,7 +81,7 @@ class GPTResearcher:
         # await index_cli(root=Path('./ragtest'))
         #PyMuPDFScraper('https://iris.who.int/bitstream/handle/10665/375767/9789240077263-eng.pdf?sequence=1&isAllowed=y').scrape()
 
-        subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+        # subprocess.run(['graphrag', 'index', '--root', './rag'])
         # output = subprocess.check_call(['graphrag_extra', 'init2'])
         # return self.context
 

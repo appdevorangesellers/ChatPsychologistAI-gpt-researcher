@@ -171,7 +171,7 @@ async def write_final_report(user_key:str):
     return await handle_write_final_report(user_key)
 
 @app.get("/run-index")
-async def run_index(root: Optional[str] = "./ragtest"):
+async def run_index(root: Optional[str] = "./rag"):
     """Endpoint to start the indexing job."""
     print(f"Received request for /run-index - root: {root}")
 

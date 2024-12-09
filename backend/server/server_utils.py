@@ -12,13 +12,29 @@ from gpt_researcher import GPTResearcher
 from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
 
+def get_firebase_cert():
+    return {
+      "type": "service_account",
+      "project_id": os.getenv('FIREBASE_PROJECT_ID'),
+      "private_key_id": os.getenv('FIREBASE_PRIVATE_KEY_ID'),
+      "private_key": os.getenv('FIREBASE_PRIVATE_KEY').replace("\\n", "\n"),
+      "client_email": "firebase-adminsdk-1hpoa@chat-psychologist-ai.iam.gserviceaccount.com",
+      "client_id": os.getenv('FIREBASE_CLIENT_ID'),
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": os.getenv('FIREBASE_CERT_URL'),
+      "universe_domain": "googleapis.com"
+    }
+
+
 def get_user(user_key):
     user_data = db.reference('users').child(user_key).get()
     return user_data
 
 def handle_fetch_search_queries(user_key: str):
     # Initialize Firebase
-    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    cred = credentials.Certificate(get_firebase_cert())
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {
             'storageBucket': 'chat-psychologist-ai.appspot.com'
@@ -40,7 +56,7 @@ def handle_fetch_search_queries(user_key: str):
 
 async def handle_fetch_final_report_download_url(user_key: str, file_name: str):
     # Initialize Firebase
-    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    cred = credentials.Certificate(get_firebase_cert())
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {
             'storageBucket': 'chat-psychologist-ai.appspot.com'
@@ -54,7 +70,7 @@ async def handle_fetch_final_report_download_url(user_key: str, file_name: str):
 async def handle_write_final_report(user_key: str):
     # Initialize Firebase
     DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
-    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    cred = credentials.Certificate(get_firebase_cert())
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {
             'databaseURL': DATABASE_URL,
@@ -92,7 +108,7 @@ async def handle_write_final_report(user_key: str):
 async def handle_research_data(user_key:str, data_ref: str):
     # Initialize Firebase
     DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
-    cred = credentials.Certificate(os.getenv('FIREBASE_DATABASE_CERTIFICATE'))
+    cred = credentials.Certificate(get_firebase_cert())
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {
             'databaseURL': DATABASE_URL,
