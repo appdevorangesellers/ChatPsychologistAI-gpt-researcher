@@ -43,7 +43,8 @@ hooks:
     # poetry install
     cp ./rag_interface/settings.yaml ./rag
     cp -r ./rag_interface/prompts ./rag
-    cp -r ./ragtest/output ./rag
+    # cp -r ./ragtest/output ./rag
+    cp -r ./rag_interface/input ./rag
 
 
 source:
@@ -67,9 +68,6 @@ mounts:
     source_path: cache
   'rag':
     source: local
-  'rag/input':
-    source: local
-    source_path: ragtest/input
   '.output':
     source: local
   '.config':
