@@ -72,3 +72,5 @@ mounts:
     source: local
   '.config':
     source: tmp
+  'outputs':
+    source: local
