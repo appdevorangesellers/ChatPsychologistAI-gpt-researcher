@@ -70,5 +70,7 @@ mounts:
   'rag/input':
     source: local
     source_path: ragtest/input
+  '.output':
+    source: local
   '.config':
     source: tmp
