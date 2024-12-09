@@ -41,8 +41,8 @@ hooks:
     # Install dependencies
     # poetry lock --no-update
     # poetry install
-    cp ./graphrag_extra/settings.yaml ./ragtest
-    cp -r ./graphrag_extra/prompts ./ragtest
+    cp ./extra_interface/settings.yaml ./rag
+    cp -r ./extra_interface/prompts ./rag
 
 
 source:
@@ -64,7 +64,10 @@ mounts:
   '.cache':
     source: local
     source_path: cache
-  'ragtest':
+  'rag':
     source: local
+  'rag/input':
+    source: local
+    source_path: ragtest/input
   '.config':
     source: tmp

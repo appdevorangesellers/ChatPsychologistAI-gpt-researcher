@@ -57,3 +57,4 @@ ragtest/input
 ragtest/logs
 ragtest/output
 ragtest/.env
+rag_interface/.env
