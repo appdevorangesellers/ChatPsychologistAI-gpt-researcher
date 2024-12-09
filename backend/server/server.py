@@ -53,7 +53,7 @@ async def lifespan(app: FastAPI):
     """Context manager for FastAPI lifespan, to start the background job processor."""
     startup_event()
     scheduled_run_index()
-    await run_index()
+    # await run_index()
     asyncio.create_task(background_job_processor())
     yield
 
