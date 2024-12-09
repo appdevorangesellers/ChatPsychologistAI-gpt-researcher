@@ -20,6 +20,7 @@ from backend.server.server_utils import (
 )
 import asyncio
 from contextlib import asynccontextmanager
+from fastapi_utilities import repeat_at
 
 # Models
 
@@ -50,11 +51,15 @@ class ConfigRequest(BaseModel):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Context manager for FastAPI lifespan, to start the background job processor."""
+    startup_event()
+    scheduled_run_index()
+    await run_index()
     asyncio.create_task(background_job_processor())
     yield
 
 # App initialization
 app = FastAPI(lifespan=lifespan)
+# app = FastAPI()
 
 # Static files and templates
 app.mount("/site", StaticFiles(directory="./frontend"), name="site")
@@ -144,15 +149,22 @@ async def background_job_processor():
         await asyncio.sleep(1)
 
 # Startup event
-
 @app.on_event("startup")
 def startup_event():
     os.makedirs("outputs", exist_ok=True)
     app.mount("/outputs", StaticFiles(directory="outputs"), name="outputs")
     os.makedirs(DOC_PATH, exist_ok=True)
+    print("startup_event")
 
+@repeat_at(cron="* */2 * * *")
+async def scheduled_run_index():
+    print("run_index")
+    return await run_index()
 # Routes
 
+@app.get("/get-items")
+async def get_items():
+    return items
 
 @app.get("/")
 async def read_root(request: Request):

@@ -49,6 +49,7 @@ python-slugify = "^8.0.4"
 graphrag = "^0.5.0"
 graphrag-extra = {path = "graphrag_extra"}
 firebase-admin = "^6.6.0"
+fastapi-utilities = "^0.3.0"
 
 [build-system]
 requires = ["poetry-core"]
