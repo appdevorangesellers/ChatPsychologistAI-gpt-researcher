@@ -17,7 +17,7 @@ def get_firebase_cert():
       "type": "service_account",
       "project_id": os.getenv('FIREBASE_PROJECT_ID'),
       "private_key_id": os.getenv('FIREBASE_PRIVATE_KEY_ID'),
-      "private_key": os.getenv('FIREBASE_PRIVATE_KEY').replace("\\n", "\n"),
+      "private_key": os.getenv('FIREBASE_PRIVATE_KEY').replace(r'\n', '\n'),
       "client_email": "firebase-adminsdk-1hpoa@chat-psychologist-ai.iam.gserviceaccount.com",
       "client_id": os.getenv('FIREBASE_CLIENT_ID'),
       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -49,7 +49,6 @@ def handle_fetch_search_queries(user_key: str):
         print(search_queries)
     except Exception as e:
         search_queries = ''
-        return "error"
 
     return search_queries
 

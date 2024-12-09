@@ -44,7 +44,7 @@ hooks:
     cp ./rag_interface/settings.yaml ./rag
     cp -r ./rag_interface/prompts ./rag
     # cp -r ./ragtest/output ./rag
-    cp -r ./rag_interface/input ./rag
+    # cp -r ./rag_interface/input ./rag
 
 
 source:

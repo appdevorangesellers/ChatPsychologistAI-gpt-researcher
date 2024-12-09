@@ -28,7 +28,7 @@ async def write_to_txt_file(text: str, filename: str = "") -> str:
     Returns:
         str: The file path of the generated Markdown file.
     """
-    file_path = f"ragtest/input/{filename[:60]}.txt"
+    file_path = f"rag/input/{filename[:60]}.txt"
     await write_to_file(file_path, text)
     return urllib.parse.quote(file_path)
 
