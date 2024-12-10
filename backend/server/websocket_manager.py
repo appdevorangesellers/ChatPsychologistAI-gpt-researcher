@@ -84,7 +84,7 @@ class WebSocketManager:
             await websocket.send_json({"type": "chat", "content": "Knowledge empty, please run the research first to obtain knowledge"})
 
 
-async def run_research(task, websocket):
+async def run_research(task, websocket = None):
     start_time = datetime.datetime.now()
     print("task", task)
     query = json.loads(task).get('query')
@@ -113,9 +113,10 @@ async def run_research(task, websocket):
                 await researcher.conduct_research(topic.strip())
 
     end_time = datetime.datetime.now()
-    await websocket.send_json(
-        {"type": "logs", "output": f"\nTotal run time: {end_time - start_time}\n"}
-    )
+    if websocket:
+        await websocket.send_json(
+            {"type": "logs", "output": f"\nTotal run time: {end_time - start_time}\n"}
+        )
 
     #return report
 

@@ -26,7 +26,12 @@ You are a seasoned research assistant tasked with generating search queries to f
 Context: {context}
 
 Use this context to inform and refine your search queries. The context provides real-time web information that can help you generate more specific and relevant queries. Consider any current events, recent developments, or specific details mentioned in the context that could enhance the search queries.
-""" if context else "The queries should focus on clarifying relation of topics that have critical points with mental health and disorders."
+""" if context else f"""
+You are a seasoned research assistant tasked with generating search queries to clarify relation of topics, that have critical points, with mental health and disorders for the subject.
+The queries are essential in providing insightful knowledge about making mental health diagnoses for the subject.
+
+Considering the importance of the queries to inform and refine your search queries.
+"""
 
 
     dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])

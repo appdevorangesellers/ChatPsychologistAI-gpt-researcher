@@ -16,7 +16,8 @@ from backend.server.server_utils import (
     handle_research_data,
     handle_fetch_search_queries,
     handle_write_final_report,
-    handle_fetch_final_report_download_url
+    handle_fetch_final_report_download_url,
+    handle_research_query
 )
 import asyncio
 from contextlib import asynccontextmanager
@@ -177,6 +178,10 @@ async def read_admin_root(request: Request):
 @app.post("/research-data")
 async def research_data(research_data: ResearchData):
     return await handle_research_data(research_data.user_key, research_data.data_ref)
+
+@app.post("/research-query")
+async def research_query(query: str):
+    return await handle_research_query(query)
 
 @app.post("/write-final-report")
 async def write_final_report(user_key:str):

@@ -42,12 +42,18 @@ https://main-bvxea6i-bkwpxl2cinmus.eu.platformsh.site/docs
     Copy .env.example to .env
     ```
 
-4. Activate the virtual environment
+4. Configure GraphRAG
+   ```bash
+    cp ./rag_interface/settings.yaml ./rag
+    cp -r ./rag_interface/prompts ./rag
+    ```
+
+5. Activate the virtual environment
 
     ```bash
     poetry shell
     ```
-4. Install dependencies and start the server:
+6. Install dependencies and start the server:
 
     ```bash
     poetry lock && poetry install
@@ -69,6 +75,15 @@ Step 1: Add the env variable `DOC_PATH` pointing to the folder where your docume
 export DOC_PATH="./rag/input"
 ```
 
+## How it works
+
+### Generate knowledge files (user's response)
+
+[![Website](https://img.shields.io/badge/Website-canva-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://www.canva.com/design/DAGY4TvXaMY/rQ5scSILu-Hjt5zpP8ke0Q/view?utm_content=DAGY4TvXaMY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbe769c0952)
+
+### Generate knowledge files (query)
+
+[![Website](https://img.shields.io/badge/Website-canva-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://www.canva.com/design/DAGY4wBWaEM/fSwjUJzZ1llGmndiEjgyVA/view?utm_content=DAGY4wBWaEM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h563273c992)
 
 <p align="right">
   <a href="#top">⬆️ Back to Top</a>

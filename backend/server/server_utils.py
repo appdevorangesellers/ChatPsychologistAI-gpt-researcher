@@ -11,6 +11,7 @@ from backend.utils import write_md_to_pdf, write_md_to_word, write_text_to_md
 from gpt_researcher import GPTResearcher
 from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
+from .websocket_manager import run_research
 
 def get_firebase_cert():
     return {
@@ -103,6 +104,8 @@ async def handle_write_final_report(user_key: str):
     blob.upload_from_filename(file_path)
     return file_path
 
+async def handle_research_query(query):
+    await run_research(json.dumps({'query': query}))
 
 async def handle_research_data(user_key:str, data_ref: str):
     # Initialize Firebase
