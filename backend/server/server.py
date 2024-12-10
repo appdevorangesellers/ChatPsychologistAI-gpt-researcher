@@ -156,9 +156,9 @@ def startup_event():
     os.makedirs(DOC_PATH, exist_ok=True)
     print("startup_event")
 
-@repeat_at(cron="* */2 * * *")
+@repeat_at(cron="15 */2 * * *")
 async def scheduled_run_index():
-    print("run_index")
+    print("-----scheduled_run_index-----")
     return await run_index()
 # Routes
 
