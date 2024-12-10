@@ -162,9 +162,9 @@ async def scheduled_run_index():
     return await run_index()
 # Routes
 
-@app.get("/get-items")
+'''@app.get("/get-items")
 async def get_items():
-    return items
+    return items'''
 
 @app.get("/")
 async def read_root(request: Request):
@@ -202,30 +202,30 @@ async def run_index(root: Optional[str] = "./rag"):
 def fetch_search_queries(user_key:str):
     return handle_fetch_search_queries(user_key)
 
-@app.get("/final-report-url")
+'''@app.get("/final-report-url")
 async def fetch_final_report_url(user_key:str, file_name:str):
-    return await handle_fetch_final_report_download_url(user_key, file_name)
+    return await handle_fetch_final_report_download_url(user_key, file_name)'''
 
-@app.get("/files/")
+'''@app.get("/files/")
 async def list_files():
     files = os.listdir(DOC_PATH)
     print(f"Files in {DOC_PATH}: {files}")
-    return {"files": files}
+    return {"files": files}'''
 
 
-@app.post("/api/multi_agents")
+'''@app.post("/api/multi_agents")
 async def run_multi_agents():
-    return await execute_multi_agents(manager)
+    return await execute_multi_agents(manager)'''
 
 
-@app.post("/upload/")
+'''@app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):
-    return await handle_file_upload(file, DOC_PATH)
+    return await handle_file_upload(file, DOC_PATH)'''
 
 
-@app.delete("/files/{filename}")
+'''@app.delete("/files/{filename}")
 async def delete_file(filename: str):
-    return await handle_file_deletion(filename, DOC_PATH)
+    return await handle_file_deletion(filename, DOC_PATH)'''
 
 
 @app.websocket("/ws")
