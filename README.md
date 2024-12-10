@@ -69,11 +69,12 @@ For other setups (e.g., Poetry or virtual environments), check the [Getting Star
 
 You can instruct the GPT Researcher to run research tasks based on your local documents. Currently supported file formats are: plain text(.txt).
 
-Step 1: Add the env variable `DOC_PATH` pointing to the folder where your documents are located.
+Add the env variable `DOC_PATH` pointing to the folder where your documents are located.
 
 ```bash
 export DOC_PATH="./rag/input"
 ```
+
 
 ## How it works
 
@@ -84,6 +85,13 @@ export DOC_PATH="./rag/input"
 ### Generate knowledge files (query)
 
 [![Website](https://img.shields.io/badge/Website-canva-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://www.canva.com/design/DAGY4wBWaEM/fSwjUJzZ1llGmndiEjgyVA/view?utm_content=DAGY4wBWaEM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h563273c992)
+
+
+## Deployment
+
+Check out `.platform.app.yaml` as an example how to deploy.
+
+Note: `persistent mounts/disk` needed for /rag, /.output, /.config, and /outputs.
 
 <p align="right">
   <a href="#top">⬆️ Back to Top</a>
