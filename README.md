@@ -6,9 +6,10 @@
 
 </div>
 
-# 🔎 Custom GPT Researcher
+# 🔎 Psychology Knowledge Base
 
-Custom GPT Researcher with GraphRAG is an autonomous agent designed for comprehensive web and local research on PSYCHOLOGY.
+Custom GPT Researcher generates/collects unstructured data from web sources.
+GraphRAG indexes unstructured data into knowledge graph.
 
 ## Demo
 https://main-bvxea6i-bkwpxl2cinmus.eu.platformsh.site/docs
@@ -78,13 +79,7 @@ export DOC_PATH="./rag/input"
 
 ## How it works
 
-### Generate knowledge files (user's response)
-
 [![Website](https://img.shields.io/badge/Website-canva-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://www.canva.com/design/DAGY4TvXaMY/rQ5scSILu-Hjt5zpP8ke0Q/view?utm_content=DAGY4TvXaMY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbe769c0952)
-
-### Generate knowledge files (query)
-
-[![Website](https://img.shields.io/badge/Website-canva-teal?style=for-the-badge&logo=world&logoColor=white&color=0891b2)](https://www.canva.com/design/DAGY4wBWaEM/fSwjUJzZ1llGmndiEjgyVA/view?utm_content=DAGY4wBWaEM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h563273c992)
 
 
 ## Deployment
