@@ -8,13 +8,22 @@ from ..document import DocumentLoader
 from ..actions import (
     generate_files,
 )
+from ..storage.file_pipeline_storage import create_file_storage
+from ..utils.storage_context import PipelineQueryStats
+from dataclasses import asdict
+import datetime
 
 class ResearchConductor:
     """Manages and coordinates the research process."""
 
-    def __init__(self, researcher):
+    def __init__(
+        self,
+        researcher,
+    ):
         self.researcher = researcher
         self.sub_queries = []
+        self.file_storage = create_file_storage('./outputs')
+        self.stats = PipelineQueryStats()
 
     async def get_relevant_context(self, query):
         query_as_dict = json.loads(query)
@@ -68,7 +77,8 @@ class ResearchConductor:
             self.researcher.vector_store.load(document_data)
 
         # await self.__get_context_by_search(query, document_data)'''
-
+        self.stats.query = query
+        self.stats.queried_at = str(datetime.datetime.now())
         context = await self.__get_context_by_search(query)
 
         # self.researcher.context = f"Context from local documents:
@@ -293,6 +303,12 @@ class ResearchConductor:
 
         if self.researcher.vector_store:
             self.researcher.vector_store.load(scraped_content)
+
+        self.stats.sub_queries[sub_query] = new_search_urls
+        await self.file_storage.set(
+            #"stats.json", json.dumps(asdict(self.stats), indent=4, ensure_ascii=False)
+            "stats.json", asdict(self.stats)
+        )
 
         await asyncio.gather(
             *[

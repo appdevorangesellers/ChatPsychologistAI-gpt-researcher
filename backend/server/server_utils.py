@@ -49,6 +49,7 @@ def handle_fetch_search_queries(user_key: str):
         search_queries = search_queries.decode("utf-8") + '\n'
         print(search_queries)
     except Exception as e:
+        print(e)
         search_queries = ''
 
     return search_queries
