@@ -5,7 +5,7 @@ relationships:
 disk: 4096
 web:
   commands:
-    start: "poetry run uvicorn main:app --port $PORT --workers 1"
+    start: "poetry run uvicorn main:app --port $PORT --workers 4"
   locations:
     "/index":
       root: 'public'
