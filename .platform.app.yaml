@@ -35,7 +35,7 @@ hooks:
   # More information: https://docs.platform.sh/create-apps/hooks/hooks-comparison.html#build-hook
   build: |
     set -eu
-    python3.12 -m pip install --upgrade uvicorn  
+    python3.11 -m pip install --upgrade uvicorn  
     poetry install
   deploy: |
     # Install dependencies
