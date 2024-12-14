@@ -24,6 +24,7 @@ class ResearchConductor:
         self.sub_queries = []
         self.file_storage = create_file_storage('./outputs')
         self.stats = PipelineQueryStats()
+        self.max_search_results_per_query = self.researcher.cfg.max_search_results_per_query
 
     async def get_relevant_context(self, query):
         query_as_dict = json.loads(query)
@@ -77,7 +78,7 @@ class ResearchConductor:
             self.researcher.vector_store.load(document_data)
 
         # await self.__get_context_by_search(query, document_data)'''
-        self.stats.query = query
+        self.stats.query = json.dumps(query)
         self.stats.queried_at = str(datetime.datetime.now())
         context = await self.__get_context_by_search(query)
 
@@ -92,6 +93,10 @@ class ResearchConductor:
                 self.researcher.websocket,
             )
 
+        await self.file_storage.set(
+            # "stats.json", json.dumps(asdict(self.stats), indent=4, ensure_ascii=False)
+            "stats.json", asdict(self.stats)
+        )
         # return self.researcher.context
         return context
 
@@ -269,6 +274,8 @@ class ResearchConductor:
         Returns:
             list: A list of scraped content results.
         """
+        print("__scrape_data_by_query")
+
         new_search_urls = []
 
         # Iterate through all retrievers
@@ -278,7 +285,7 @@ class ResearchConductor:
 
             # Perform the search using the current retriever
             search_results = await asyncio.to_thread(
-                retriever.search, max_results=self.researcher.cfg.max_search_results_per_query
+                retriever.search, max_results=self.max_search_results_per_query
             )
 
             # Collect new URLs from search results
@@ -305,10 +312,6 @@ class ResearchConductor:
             self.researcher.vector_store.load(scraped_content)
 
         self.stats.sub_queries[sub_query] = new_search_urls
-        await self.file_storage.set(
-            #"stats.json", json.dumps(asdict(self.stats), indent=4, ensure_ascii=False)
-            "stats.json", asdict(self.stats)
-        )
 
         await asyncio.gather(
             *[

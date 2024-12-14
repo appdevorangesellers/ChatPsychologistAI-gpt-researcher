@@ -43,22 +43,21 @@ class TavilySearch():
         return api_key
 
     def _search(self,
-                query: str,
-                search_depth: Literal["basic", "advanced"] = "basic",
-                topic: str = "general",
-                days: int = 2,
-                max_results: int = 5,
-                include_domains: Sequence[str] = None,
-                exclude_domains: Sequence[str] = None,
-                include_answer: bool = False,
-                include_raw_content: bool = False,
-                include_images: bool = False,
-                use_cache: bool = True,
-                ) -> dict:
+        query: str,
+        search_depth: Literal["basic", "advanced"] = "basic",
+        topic: str = "general",
+        days: int = 2,
+        max_results: int = 5,
+        include_domains: Sequence[str] = None,
+        exclude_domains: Sequence[str] = None,
+        include_answer: bool = False,
+        include_raw_content: bool = False,
+        include_images: bool = False,
+        use_cache: bool = True,
+    ) -> dict:
         """
         Internal search method to send the request to the API.
         """
-
         data = {
             "query": query,
             "search_depth": search_depth,
@@ -89,6 +88,9 @@ class TavilySearch():
         Returns:
 
         """
+        print("max_results", max_results)
+        # print(c)
+
         try:
             # Search the query
             results = self._search(

@@ -11,6 +11,7 @@ from .skills.context_manager import ContextManager
 from .skills.writer import ReportGenerator
 from .skills.researcher import ResearchConductor
 from .skills.data_researcher import DataResearchConductor
+from .skills.question_researcher import QuestionResearchConductor
 from .utils.enum import Tone
 from .vector_store import VectorStoreWrapper
 from langchain_chroma import Chroma
@@ -48,7 +49,7 @@ class GPTResearcher:
         self.research_sources = []
         self.websocket = websocket
         self.agent = "🧠 Psychological Assessment Agent"
-        self.role = "You are an experienced psychological assessment assistant. Your main task is to offer a comprehensive, insightful, and unbiased analysis of the provided information, offering general guidance based on psychological theories and frameworks. However, be aware that a full diagnosis requires professional evaluation by a licensed mental health expert."
+        self.role = "You are an experienced psychological assessment assistant. Your main task is to offer a comprehensive, insightful, and unbiased analysis of the provided information, offering general guidance based on psychological theories and frameworks."
         self.visited_urls = set()
         self.verbose = verbose
         self.context = []
@@ -63,6 +64,7 @@ class GPTResearcher:
         self.vector_store = None
         self.research_conductor: ResearchConductor = ResearchConductor(self)
         self.data_research_conductor: DataResearchConductor = DataResearchConductor(self)
+        self.question_research_conductor: QuestionResearchConductor = QuestionResearchConductor(self)
         self.report_generator: ReportGenerator = ReportGenerator(self)
         self.context_manager: ContextManager = ContextManager(self)
         self.scraper_manager: BrowserManager = BrowserManager(self)
@@ -71,6 +73,12 @@ class GPTResearcher:
         print("conduct_data_research")
         # self.context = await self.research_conductor.conduct_research()
         await self.data_research_conductor.conduct_research(query)
+        #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+
+    async def conduct_question_research(self, query):
+        print("conduct_question_research")
+        # self.context = await self.research_conductor.conduct_research()
+        await self.question_research_conductor.conduct_research(query)
         #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
 
     async def conduct_research(self, query):

@@ -6,7 +6,7 @@ DEFAULT_CONFIG: BaseConfig = {
     "SIMILARITY_THRESHOLD": 0.6,
     "FAST_LLM": "openai:gpt-4o-mini",
     #"SMART_LLM": "openai:gpt-4o-2024-08-06",
-    "SMART_LLM": "openai:gpt-4o",
+    "SMART_LLM": "openai:gpt-4o-mini",
     #"STRATEGIC_LLM": "openai:o1-preview",
     "STRATEGIC_LLM": "openai:o1-mini",
     "FAST_TOKEN_LIMIT": 2000,

@@ -4,8 +4,12 @@ from datetime import date, datetime, timezone
 from .utils.enum import Tone
 from typing import List, Dict, Any
 
+
 def generate_search_queries_prompt(
-    question: str,
+    query: str,
+    type: str,
+    question: str = None,
+    data: str = None,
     max_iterations: int = 3,
     context: List[Dict[str, Any]] = [],
 ):
@@ -19,24 +23,35 @@ def generate_search_queries_prompt(
 
     Returns: str: The search queries prompt for the given question
     """
-
-    task = question
+    task = query
     context_prompt = f"""
 You are a seasoned research assistant tasked with generating search queries to find relevant information for the following task: "{task}".
 Context: {context}
 
 Use this context to inform and refine your search queries. The context provides real-time web information that can help you generate more specific and relevant queries. Consider any current events, recent developments, or specific details mentioned in the context that could enhance the search queries.
-""" if context else f"""
-You are a seasoned research assistant tasked with generating search queries to clarify relation of topics, that have critical points, with mental health and disorders for the subject.
-The queries are essential in providing insightful knowledge about making mental health diagnoses for the subject.
-
-Considering the importance of the queries to inform and refine your search queries.
+""" if type=='query' and context else f"""
+You are a seasoned research assistant tasked with generating search queries that provides insightful knowledge about psychology.
+Questionnaire: {context}
+""" if type=='question' else f"""
+You are a psychologist about to make mental diagnoses based on this subject's mental data. You have to investigate which area is critical/negative for mental health and can lead to possible mental disorders.
+Mental data: {context}
 """
 
+    dynamic_example = ""
+    if type == 'data':
+        dynamic_example = "{'area 1': 'summary of area 1'}, {'area 2': 'summary of area 2', ...}"
+    else:
+        dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])
+        dynamic_example += ", ..." if max_iterations > 1 else ""
 
-    dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])
-    dynamic_example += ", ..." if max_iterations > 1 else ""
-    return f"""Write search queries to search online that form an objective understanding of the mental health from the subject's data: "{task}"
+    goal = f"""
+Write search queries to find out Mental Health Disorders and Symptoms that have relations to these topics and their content in the questionnaire.
+""" if type=='question' else f"""
+Identify the most critical or concerning areas based on the provided data that could contribute to mental health disorders.
+""" if type=='data' else f"""
+Write search queries to search online that form an objective opinion from the following task: {task}
+"""
+    return f"""{goal}
 
 Assume the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
 
@@ -118,7 +133,7 @@ Analyst Reports: "{context}"
 ---
 Mental data: "{question}"
 ---
-Using the above reports which focused on different topics with critical points, conduct a comprehensive psychological analysis and research based on the subject's mental data to reduce short summaries about mental health and to diagnose mental disorders in details.
+Using the above reports which focused on critical or concerning areas with related potential mental health issues, conduct a comprehensive psychological analysis and research based on the subject's mental data to reduce detailed summaries about mental health and together with analysis reports, to diagnose potential mental disorders in details.
 The report should dedicate one section for mental diagnoses along with detailed explanation for the diagnoses, since this part is the most crucial part of the report. If you can't diagnose any disorder, just say so. Do not make anything up.
 The report should focus on the end-goal of the query, should be well structured, informative, 
 in-depth, and comprehensive, with facts and numbers if available and at least {total_words} words.

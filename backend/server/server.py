@@ -19,6 +19,7 @@ from backend.server.server_utils import (
     handle_fetch_final_report_download_url,
     handle_research_query,
     #handle_research_questions
+    handle_file_to_index
 )
 import asyncio
 from contextlib import asynccontextmanager
@@ -54,7 +55,7 @@ class ConfigRequest(BaseModel):
 async def lifespan(app: FastAPI):
     """Context manager for FastAPI lifespan, to start the background job processor."""
     startup_event()
-    scheduled_run_index()
+    # scheduled_run_index()
     # await run_index()
     asyncio.create_task(background_job_processor())
     yield
@@ -198,6 +199,7 @@ async def write_final_report(user_key:str):
 async def run_index(root: Optional[str] = "./rag"):
     """Endpoint to start the indexing job."""
     print(f"Received request for /run-index - root: {root}")
+    await handle_file_to_index('./rag/input', DOC_PATH)
 
     async with queue_lock:
         if root in running_jobs:

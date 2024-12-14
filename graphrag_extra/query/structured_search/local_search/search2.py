@@ -48,7 +48,7 @@ class LocalExtract(LocalSearch):
         """Build local search context that fits a single context window and generate answer for the user query."""
         start_time = time.time()
 
-        #sub_queries = query.split('\n')
+        sub_queries = query.split(';')
         #print("sub_queries", sub_queries)
 
         '''context_results = [
@@ -71,6 +71,7 @@ class LocalExtract(LocalSearch):
         #for q in sub_queries:
         for q in query:
             if len(q.strip()) == 0: continue
+            q = f"What potential mental health issues/disorders stand out from data: {q}"
             search_prompt = ""
             llm_calls, prompt_tokens, output_tokens = {}, {}, {}
             context_result = self.context_builder.build_context(

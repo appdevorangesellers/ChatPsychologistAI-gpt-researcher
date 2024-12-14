@@ -21,13 +21,6 @@ web:
       expires: 1h
       allow: true
 
-workers:
-  queue:
-    size: S
-    commands:
-      start: |
-        poetry run graphrag index --root ./rag 
-
 dependencies:
   python3:
     poetry: '*'

@@ -46,13 +46,14 @@ def handle_fetch_search_queries(user_key: str):
 
     try:
         search_queries = blob.download_as_bytes()
-        search_queries = search_queries.decode("utf-8") + '\n'
+        search_queries = search_queries.decode("utf-8")
         print(search_queries)
     except Exception as e:
         print(e)
         search_queries = ''
 
-    return search_queries
+    search_queries = [f"####{str(list(i.keys())[0])}-{str(list(i.values())[0])}" for i in json.loads(search_queries)]
+    return ";".join(search_queries)
 
 
 async def handle_fetch_final_report_download_url(user_key: str, file_name: str):
@@ -91,10 +92,10 @@ async def handle_write_final_report(user_key: str):
     except Exception as e:
         search_queries = ''
         mental_data = ''
-        return "error"
+        return e
 
     researcher = GPTResearcher()
-    report = await researcher.write_report(search_queries, mental_data)
+    report = await researcher.write_report(f"What potential mental health issues/disorders stand out from these data together: {search_queries}", mental_data)
     print(researcher.get_data_research_sub_queries())
     report = str(report)
     sanitized_filename = sanitize_filename(f"final_report_{int(time.time())}")
@@ -104,6 +105,35 @@ async def handle_write_final_report(user_key: str):
     blob = bucket.blob(f'research/{user_key}/{sanitized_filename}.md')
     blob.upload_from_filename(file_path)
     return file_path
+
+async def handle_research_questions(user_key:str, data_refs: str):
+    # Initialize Firebase
+    DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
+    cred = credentials.Certificate(get_firebase_cert())
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': DATABASE_URL,
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+    try:
+        user_data = get_user(user_key)
+        refs = data_refs.split(";")
+        q_by_topic = None
+        for ref in refs:
+            data = user_data.get(ref, {})
+            q_by_topic = [{'topic': t, 'content': list(data[t].keys())} for t in data.keys() if data[t]]
+            print(q_by_topic)
+    except Exception as e:
+        print("empty data to research")
+        return "error"
+
+    researcher = GPTResearcher()
+    await researcher.conduct_question_research(q_by_topic)
+    print(researcher.get_data_research_sub_queries())
+
+    return search_queries
+
 
 async def handle_research_query(query):
     await run_research(json.dumps({'query': query}))
@@ -125,7 +155,8 @@ async def handle_research_data(user_key:str, data_ref: str):
     try:
         search_queries = blob.download_as_bytes()
         search_queries = search_queries.decode("utf-8")
-        search_queries = search_queries.split(';')
+        # search_queries = search_queries.split(';')
+        search_queries = json.loads(search_queries)
         print(search_queries)
     except Exception as e:
         search_queries = []
@@ -141,7 +172,8 @@ async def handle_research_data(user_key:str, data_ref: str):
     await researcher.conduct_data_research(data)
     print(researcher.get_data_research_sub_queries())
     search_queries.extend(researcher.get_data_research_sub_queries())
-    blob.upload_from_string(';'.join(search_queries))
+    # blob.upload_from_string(';'.join(search_queries))
+    blob.upload_from_string(json.dumps(search_queries))
 
     return search_queries
 
@@ -230,6 +262,21 @@ def update_environment_variables(config: Dict[str, str]):
     for key, value in config.items():
         os.environ[key] = value
 
+async def handle_file_to_index(dest_path: str, DOC_PATH: str):
+    from os import walk
+
+    i = 0
+    for (dirpath, dirnames, filenames) in walk(DOC_PATH):
+        for file in filenames:
+            if i < 20:
+                file_path = os.path.join(dirpath, file)
+                print(f"{file_path} moved to {dest_path}")
+                await _move_document(file_path, dest_path)
+                i += 1
+
+async def _move_document(file_path: str, dest_path):
+    os.rename(file_path, os.path.join(
+        dest_path, os.path.basename(file_path)))
 
 async def handle_file_upload(file, DOC_PATH: str) -> Dict[str, str]:
     file_path = os.path.join(DOC_PATH, os.path.basename(file.filename))
