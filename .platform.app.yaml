@@ -5,7 +5,7 @@ relationships:
 disk: 4096
 web:
   commands:
-    start: "poetry run uvicorn main:app --port $PORT --workers 4"
+    start: "poetry run uvicorn main:app --port $PORT --workers 1"
   locations:
     "/index":
       root: 'public'
@@ -20,6 +20,14 @@ web:
       root: "static"
       expires: 1h
       allow: true
+      
+crons:
+  graphindexer:
+    spec: 50 */1 * * *
+    commands:
+      start: |
+        # Only run for the production environment, aka main branch
+        poetry run graphrag index --root ./rag
 
 dependencies:
   python3:
