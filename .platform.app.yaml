@@ -24,10 +24,10 @@ web:
 workers:
   queue:
     size: S
-  commands:
-    start: |
-      ./worker.sh 
-      
+    commands:
+      start: |
+        poetry run graphrag index --root ./rag 
+
 dependencies:
   python3:
     poetry: '*'
