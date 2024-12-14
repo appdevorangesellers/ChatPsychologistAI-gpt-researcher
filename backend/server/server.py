@@ -33,6 +33,8 @@ class ResearchRequest(BaseModel):
     report_type: str
     agent: str
 
+class FinalReportRequest(BaseModel):
+    user_key: str
 
 class ConfigRequest(BaseModel):
     ANTHROPIC_API_KEY: str
@@ -85,7 +87,7 @@ app.add_middleware(
 class ResearchData(BaseModel):
     user_key: str
     data_ref: str
-
+    write_report: bool
 
 # Constants
 DOC_PATH = os.getenv("DOC_PATH", "./my-docs")
@@ -181,7 +183,9 @@ async def read_admin_root(request: Request):
 
 @app.post("/research-data")
 async def research_data(research_data: ResearchData):
-    return await handle_research_data(research_data.user_key, research_data.data_ref)
+    await handle_research_data(research_data.user_key, research_data.data_ref)
+    if research_data.write_report:
+        await write_final_report(FinalReportRequest.model_validate({'user_key': research_data.user_key}))
 
 '''@app.post("/research-questions")
 async def research_questions(research_data: ResearchData):
@@ -192,8 +196,9 @@ async def research_query(query: str):
     return await handle_research_query(query)
 
 @app.post("/write-final-report")
-async def write_final_report(user_key:str):
-    return await handle_write_final_report(user_key)
+async def write_final_report(final_report_request: FinalReportRequest):
+    print("write_final_report")
+    return await handle_write_final_report(final_report_request.user_key)
 
 @app.get("/run-index")
 async def run_index(root: Optional[str] = "./rag"):
@@ -216,9 +221,9 @@ async def run_index(root: Optional[str] = "./rag"):
 def fetch_search_queries(user_key:str):
     return handle_fetch_search_queries(user_key)
 
-'''@app.get("/final-report-url")
+@app.get("/final-report-url")
 async def fetch_final_report_url(user_key:str, file_name:str):
-    return await handle_fetch_final_report_download_url(user_key, file_name)'''
+    return await handle_fetch_final_report_download_url(user_key, file_name)
 
 '''@app.get("/files/")
 async def list_files():

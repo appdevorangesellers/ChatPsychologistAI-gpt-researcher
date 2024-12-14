@@ -12,6 +12,7 @@ from gpt_researcher import GPTResearcher
 from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
 from .websocket_manager import run_research
+import io
 
 def get_firebase_cert():
     return {
@@ -64,9 +65,17 @@ async def handle_fetch_final_report_download_url(user_key: str, file_name: str):
             'storageBucket': 'chat-psychologist-ai.appspot.com'
         })
 
+    file_obj = io.BytesIO()
+
     bucket = storage.bucket()
-    blob = bucket.blob(f'research/{user_key}/{file_name}')
-    return blob.public_url
+    blob = bucket.blob(f'research/{user_key}/final_report.md')
+    blob.download_to_file(file_obj)
+
+    contents = blob.download_as_bytes()
+
+    print("file_obj", file_obj.seek(0))
+    print("file_obj", contents.decode("utf-8"))
+    return file_obj
 
 
 async def handle_write_final_report(user_key: str):
@@ -103,6 +112,9 @@ async def handle_write_final_report(user_key: str):
 
     bucket = storage.bucket()
     blob = bucket.blob(f'research/{user_key}/{sanitized_filename}.md')
+    blob.upload_from_filename(file_path)
+
+    blob = bucket.blob(f'research/{user_key}/final_report.md')
     blob.upload_from_filename(file_path)
     return file_path
 
