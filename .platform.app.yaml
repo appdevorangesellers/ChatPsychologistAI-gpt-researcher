@@ -20,15 +20,14 @@ web:
       root: "static"
       expires: 1h
       allow: true
-      
-crons:
-  graphindexer:
-    spec: 50 */1 * * *
-    commands:
-      start: |
-        # Only run for the production environment, aka main branch
-        poetry run graphrag index --root ./rag
 
+workers:
+  queue:
+    size: S
+  commands:
+    start: |
+      ./worker.sh 
+      
 dependencies:
   python3:
     poetry: '*'
