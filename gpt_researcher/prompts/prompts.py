@@ -1,7 +1,7 @@
 import warnings
 from datetime import date, datetime, timezone
 
-from .utils.enum import Tone
+from gpt_researcher.utils.enum import Tone, ReportType
 from typing import List, Dict, Any
 
 
@@ -96,7 +96,6 @@ You must respond with a list of strings in the following format: [{dynamic_examp
 The response should contain ONLY the list.
 """
 
-
 def generate_report_prompt(
     question: str,
     context,
@@ -156,6 +155,47 @@ Assume that the current date is {date.today()}.
 """
 
 
+
+################################################################################################
+
+# DETAILED REPORT PROMPTS
+
+
+def generate_subtopics_prompt() -> str:
+    return """
+Provided the main topic:
+
+{task}
+
+and research data:
+
+{data}
+
+- Construct a list of subtopics which indicate the headers of a report document to be generated on the task. 
+- These are a possible list of subtopics : {subtopics}.
+- There should NOT be any duplicate subtopics.
+- Limit the number of subtopics to a maximum of {max_subtopics}
+- Finally order the subtopics by their tasks, in a relevant and meaningful order which is presentable in a detailed report
+
+"IMPORTANT!":
+- Every subtopic MUST be relevant to the main topic and provided research data ONLY!
+
+{format_instructions}
+"""
+
+def generate_report_introduction(question: str, research_summary: str = "") -> str:
+    return f"""{research_summary}\n 
+Using the above latest information, summarize it based on the topic -- {question}.
+If the query cannot be answered using the text, YOU MUST summarize the text in short.
+Include all factual information such as numbers, stats, quotes, etc if available. 
+- The summary should be succinct, well-structured, informative with markdown syntax.
+- As this summary will be part of a larger report, do NOT include any other sections, which are generally present in a report.
+- The summary should be preceded by an H1 heading with a suitable topic for the entire report.
+- You must include hyperlinks with markdown syntax ([url website](url)) related to the sentences wherever necessary.
+- You MUST include hyperlinks with markdown syntax ([LLM: verify]) to real-world knowledge outside the dataset applied in the summary. For example: "This is an example sentence supported by real-world knowledge [LLM: verify]."
+Assume that the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
+"""
+
 def get_report():
     return generate_report_prompt
 
@@ -163,3 +203,20 @@ def get_prompt():
     prompt_by_type = generate_report_prompt
     return prompt_by_type
 
+report_type_mapping = {
+    ReportType.ResearchReport.value: generate_report_prompt,
+    #ReportType.SubtopicReport.value: ,
+}
+
+def get_prompt_by_report_type(report_type):
+    prompt_by_type = report_type_mapping.get(report_type)
+    default_report_type = ReportType.ResearchReport.value
+    if not prompt_by_type:
+        warnings.warn(
+            f"Invalid report type: {report_type}.\n"
+            f"Please use one of the following: {', '.join([enum_value for enum_value in report_type_mapping.keys()])}\n"
+            f"Using default report type: {default_report_type} prompt.",
+            UserWarning,
+        )
+        prompt_by_type = report_type_mapping.get(default_report_type)
+    return prompt_by_type

@@ -1,5 +1,13 @@
 from enum import Enum
 
+class ReportType(Enum):
+    ResearchReport = "research_report"
+    ResourceReport = "resource_report"
+    OutlineReport = "outline_report"
+    CustomReport = "custom_report"
+    DetailedReport = "detailed_report"
+    SubtopicReport = "subtopic_report"
+
 class Tone(Enum):
     Objective = "Objective (impartial and unbiased presentation of facts and findings)"
     Formal = "Formal (adheres to academic standards with sophisticated language and structure)"

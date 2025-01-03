@@ -19,7 +19,8 @@ from backend.server.server_utils import (
     handle_fetch_final_report_download_url,
     handle_research_query,
     #handle_research_questions
-    handle_file_to_index
+    handle_file_to_index,
+    handle_research_disorder
 )
 import asyncio
 from contextlib import asynccontextmanager
@@ -195,6 +196,10 @@ async def research_questions(research_data: ResearchData):
 async def research_query(query: str):
     return await handle_research_query(query)
 
+@app.post("/research-disorder")
+async def research_disorder(disorder: str):
+    return await handle_research_disorder(disorder)
+
 @app.post("/write-final-report")
 async def write_final_report(final_report_request: FinalReportRequest):
     print("write_final_report")
@@ -204,7 +209,7 @@ async def write_final_report(final_report_request: FinalReportRequest):
 async def run_index(root: Optional[str] = "./rag"):
     """Endpoint to start the indexing job."""
     print(f"Received request for /run-index - root: {root}")
-    await handle_file_to_index('./rag/input', DOC_PATH)
+    await handle_file_to_index(os.getenv('DOC_PATH'), DOC_PATH)
 
     async with queue_lock:
         if root in running_jobs:

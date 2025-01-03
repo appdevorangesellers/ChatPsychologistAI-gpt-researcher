@@ -1,6 +1,6 @@
 import json_repair
 from ..utils.llm import create_chat_completion
-from ..prompts import generate_search_queries_prompt
+from gpt_researcher.prompts.prompts import generate_search_queries_prompt
 from typing import Any, List, Dict
 from ..config import Config
 import logging
@@ -52,7 +52,7 @@ async def generate_sub_queries(
     )
 
     print("gen_queries_prompt", gen_queries_prompt)
-    #print(c)
+    # print(c)
     if not gen_queries_prompt:
         return []
     try:

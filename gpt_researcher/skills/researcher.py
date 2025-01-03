@@ -25,6 +25,7 @@ class ResearchConductor:
         self.file_storage = create_file_storage('./outputs')
         self.stats = PipelineQueryStats()
         self.max_search_results_per_query = self.researcher.cfg.max_search_results_per_query
+        self.retriever_include_raw_content = False
 
     async def get_relevant_context(self, query):
         query_as_dict = json.loads(query)
@@ -98,7 +99,7 @@ class ResearchConductor:
             "stats.json", asdict(self.stats)
         )
         # return self.researcher.context
-        return context
+        self.researcher.context = context
 
 
     async def __get_context_by_vectorstore(self, query):
@@ -164,7 +165,7 @@ class ResearchConductor:
                 for sub_query in sub_queries
             ]
         )
-        # return context
+        return context
 
 
 
@@ -220,8 +221,8 @@ class ResearchConductor:
             )
 
         if not scraped_data:
-            # scraped_data = await self.__scrape_data_by_query(sub_query)
-            await self.__scrape_data_by_query(sub_query)
+            scraped_data = await self.__scrape_data_by_query(sub_query)
+            # await self.__scrape_data_by_query(sub_query)
 
         #content = await self.researcher.context_manager.get_similar_content_by_query(sub_query, scraped_data)
 
@@ -237,7 +238,7 @@ class ResearchConductor:
                 self.researcher.websocket,
             )'''
         # return content
-        # return scraped_data
+        return scraped_data
 
 
     async def __get_new_urls(self, url_set_input):
@@ -285,7 +286,9 @@ class ResearchConductor:
 
             # Perform the search using the current retriever
             search_results = await asyncio.to_thread(
-                retriever.search, max_results=self.max_search_results_per_query
+                retriever.search,
+                max_results=self.max_search_results_per_query,
+                include_raw_content=self.retriever_include_raw_content
             )
 
             # Collect new URLs from search results
@@ -306,19 +309,22 @@ class ResearchConductor:
             )
 
         # Scrape the new URLs
-        scraped_content = await self.researcher.scraper_manager.browse_urls(new_search_urls)
+        # scraped_content = await self.researcher.scraper_manager.browse_urls(new_search_urls)
+        scraped_content = []
 
         if self.researcher.vector_store:
             self.researcher.vector_store.load(scraped_content)
 
         self.stats.sub_queries[sub_query] = new_search_urls
 
-        await asyncio.gather(
+        '''await asyncio.gather(
             *[
                 generate_files(item["raw_content"], item["url"])
                 for item in scraped_content
             ]
-        )
+        )'''
+
+        await self._generate_files(await self.generate_summary(sub_query, search_results), sub_query)
 
         if self.researcher.verbose:
             await stream_output(
@@ -328,7 +334,13 @@ class ResearchConductor:
                 self.researcher.websocket,
             )
 
-        #return scraped_content
+        return search_results
+
+    async def generate_summary(self, sub_query, search_results):
+        return [url.get("body") for url in search_results]
+
+    async def _generate_files(self, content, title):
+        await generate_files(content, title)
 
     async def plan_research(self, query):
         await stream_output(

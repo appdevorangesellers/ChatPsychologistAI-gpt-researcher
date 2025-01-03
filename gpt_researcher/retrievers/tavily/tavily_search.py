@@ -82,7 +82,7 @@ class TavilySearch():
             # Raises a HTTPError if the HTTP request returned an unsuccessful status code
             response.raise_for_status()
 
-    def search(self, max_results=7):
+    def search(self, max_results=2, include_raw_content=True):
         """
         Searches the query
         Returns:
@@ -94,13 +94,14 @@ class TavilySearch():
         try:
             # Search the query
             results = self._search(
-                self.query, search_depth="basic", max_results=max_results, topic=self.topic)
+                self.query, search_depth="basic", max_results=max_results, include_raw_content=include_raw_content, topic=self.topic)
             sources = results.get("results", [])
             if not sources:
                 raise Exception("No results found with Tavily API search.")
             # Return the results
             search_response = [{"href": obj["url"],
-                                "body": obj["content"]} for obj in sources]
+                                "body": obj["content"],
+                                "raw_content": obj["raw_content"]} for obj in sources]
         except Exception as e:
             print(
                 f"Error: {e}. Failed fetching sources. Resulting in empty response.")

@@ -13,7 +13,7 @@ from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
 from .websocket_manager import run_research
 import io
-
+from multi_agents.agents import MedResearchAgent, SymptomResearchAgent
 def get_firebase_cert():
     return {
       "type": "service_account",
@@ -149,6 +149,13 @@ async def handle_research_questions(user_key:str, data_refs: str):
 
 async def handle_research_query(query):
     await run_research(json.dumps({'query': query}))
+
+async def handle_research_disorder(disorder):
+    #researcher = GPTResearcher()
+    #await researcher.conduct_symptom_research(disorder)
+
+    await SymptomResearchAgent(disorder=disorder).research()
+    #await MedResearchAgent(disorder=disorder).research()
 
 async def handle_research_data(user_key:str, data_ref: str):
     # Initialize Firebase

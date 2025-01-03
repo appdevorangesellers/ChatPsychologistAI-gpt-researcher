@@ -11,6 +11,7 @@ from langchain.prompts import PromptTemplate
 
 from .costs import estimate_llm_cost
 from .validators import Subtopics
+from gpt_researcher.prompts import prompts
 
 
 def get_llm(llm_provider, **kwargs):
@@ -68,3 +69,57 @@ async def create_chat_completion(
 
     logging.error(f"Failed to get response from {llm_provider} API")
     raise RuntimeError(f"Failed to get response from {llm_provider} API")
+
+async def construct_subtopics(task: str, data: str, config, subtopics: list = []) -> list:
+    """
+    Construct subtopics based on the given task and data.
+
+    Args:
+        task (str): The main task or topic.
+        data (str): Additional data for context.
+        config: Configuration settings.
+        subtopics (list, optional): Existing subtopics. Defaults to [].
+
+    Returns:
+        list: A list of constructed subtopics.
+    """
+    try:
+        parser = PydanticOutputParser(pydantic_object=Subtopics)
+
+        prompt = PromptTemplate(
+            template=prompts.generate_subtopics_prompt(),
+            input_variables=["task", "data", "subtopics", "max_subtopics"],
+            partial_variables={
+                "format_instructions": parser.get_format_instructions()},
+        )
+
+        print('construct_subtopics prompt',
+              prompt.format(task=task, data=data, subtopics=subtopics, max_subtopics=config.max_subtopics))
+        #print(c)
+        print(f"\n🤖 Calling {config.smart_llm_model}...\n")
+
+        temperature = config.temperature
+        # temperature = 0 # Note: temperature throughout the code base is currently set to Zero
+        provider = get_llm(
+            config.smart_llm_provider,
+            model=config.smart_llm_model,
+            temperature=temperature,
+            max_tokens=config.smart_token_limit,
+            **config.llm_kwargs,
+        )
+        model = provider.llm
+
+        chain = prompt | model | parser
+
+        output = chain.invoke({
+            "task": task,
+            "data": data,
+            "subtopics": subtopics,
+            "max_subtopics": config.max_subtopics
+        })
+
+        return output
+
+    except Exception as e:
+        print("Exception in parsing subtopics : ", e)
+        return subtopics

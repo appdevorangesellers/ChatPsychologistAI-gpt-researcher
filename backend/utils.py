@@ -1,6 +1,7 @@
 import aiofiles
 import urllib
 import mistune
+import os
 
 async def write_to_file(filename: str, text: str) -> None:
     """Asynchronously write text to a file in UTF-8 encoding.
@@ -28,7 +29,7 @@ async def write_to_txt_file(text: str, filename: str = "") -> str:
     Returns:
         str: The file path of the generated Markdown file.
     """
-    file_path = f"rag/input/{filename[:60]}.txt"
+    file_path = f"{os.getenv('DOC_PATH')}/{filename[:60]}.txt"
     await write_to_file(file_path, text)
     return urllib.parse.quote(file_path)
 
