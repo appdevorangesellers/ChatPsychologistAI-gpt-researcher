@@ -23,7 +23,8 @@ class MedResearchAgent:
         await self.construct_med_report(med_groups)
 
     async def _initial_research(self, query) -> None:
-        await self.gpt_researcher.conduct_context_research(query)
+        #await self.gpt_researcher.conduct_context_research(query)
+        await self.gpt_researcher.conduct_research(query)
         self.global_urls = self.gpt_researcher.visited_urls
 
     async def _get_med_groups(self) -> List[Dict]:
@@ -48,10 +49,10 @@ class MedResearchAgent:
         print('report', report)
 
     async def construct_med_report(self, med_groups: List[Dict]):
-        i = 1
+        i = 0
         for topic in med_groups:
             await self._initial_research(f'{topic.get("task")} for {self.disorder}')
-            med_names = await self._get_med_names(topic)
+            med_names = await self._get_med_names(topic.get("task"))
             report_introduction = await self.gpt_researcher.write_introduction(
                 f'{topic.get("task")} for {self.disorder}')
             print('report_introduction', report_introduction)
@@ -68,6 +69,7 @@ class MedResearchAgent:
 
         for subtopic in subtopics:
             subtopic["task"] = f"{subtopic.get('task')} for {self.disorder}"
+            print('subtopic["task"]', subtopic.get("task"))
             result = await self._get_med_group_report(subtopic)
             if result["report"]:
                 subtopic_reports.append(result)
@@ -111,7 +113,8 @@ class MedResearchAgent:
         current_subtopic_task = subtopic.get("task")
         subtopic_assistant = GPTMedResearcher(report_type="subtopic_report")
 
-        await subtopic_assistant.conduct_context_research(f'{current_subtopic_task} medication')
+        #await subtopic_assistant.conduct_context_research(f'{current_subtopic_task} medication')
+        await subtopic_assistant.conduct_research(f'{current_subtopic_task} medication')
         self.global_urls.update(subtopic_assistant.visited_urls)
 
         subtopic_report = await subtopic_assistant.write_med_report(f'{current_subtopic_task}')

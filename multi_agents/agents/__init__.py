@@ -1,4 +1,5 @@
 from .researcher import ResearchAgent
+from .diet_researcher import DietResearchAgent
 from .med_researcher import MedResearchAgent
 from .symptom_researcher import SymptomResearchAgent
 from .writer import WriterAgent
@@ -14,6 +15,7 @@ from .orchestrator import ChiefEditorAgent
 __all__ = [
     "ChiefEditorAgent",
     "ResearchAgent",
+    "DietResearchAgent",
     "MedResearchAgent",
     "SymptomResearchAgent",
     "WriterAgent",

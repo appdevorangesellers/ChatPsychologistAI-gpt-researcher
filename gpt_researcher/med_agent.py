@@ -18,13 +18,12 @@ class GPTMedResearcher(GPTResearcher):
         super(GPTMedResearcher, self).__init__(report_type, tone, config_path, subtopics, websocket, verbose)
         self.disorder = disorder
         self.report_generator: MedReportGenerator = MedReportGenerator(self)
-        self.med_research_conductor: MedResearchConductor = MedResearchConductor(self)
+        self.research_conductor: MedResearchConductor = MedResearchConductor(self)
 
     async def conduct_context_research(self, query):
         print("GPTMedResearcher conduct_research")
         # self.context = await self.research_conductor.conduct_research()
-        await self.med_research_conductor.generate_global_context(query)
-        # subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+        await self.research_conductor.generate_global_context(query)
 
     async def get_med_groups(self):
         return await self.report_generator.get_med_groups(f'medication used for {self.disorder}')

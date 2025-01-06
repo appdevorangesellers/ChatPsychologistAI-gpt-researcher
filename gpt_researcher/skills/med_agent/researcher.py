@@ -10,7 +10,7 @@ class MedResearchConductor(ResearchConductor):
     ):
         super(MedResearchConductor, self).__init__(researcher)
         self.retriever_include_raw_content = True
-        self.max_search_results_per_query = 1
+        self.max_search_results_per_query = 2
 
     async def __get_new_urls(self, url_set_input):
         """Gets the new urls from the given url set.
@@ -47,7 +47,17 @@ class MedResearchConductor(ResearchConductor):
         search_results = await get_search_results(query, self.researcher.retrievers[0])
         search_urls = [url.get("href") for url in search_results]
         new_search_urls.extend(search_urls)
-        new_search_urls = await self.__get_new_urls(new_search_urls)
+        await self.__get_new_urls(new_search_urls)
 
 
         self.researcher.context = search_results
+
+    async def generate_summary(self, sub_query, search_results):
+        return ''
+
+    async def _generate_files(self, content, title):
+        return ''
+
+    async def plan_research(self, query):
+        print("MedResearchConductor plan_research")
+        return [query]

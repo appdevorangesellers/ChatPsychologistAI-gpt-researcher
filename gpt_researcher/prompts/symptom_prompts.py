@@ -10,6 +10,13 @@ def generate_symptom_summary_report_prompt(
     tone=None,
 ):
     tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+    reference_prompt = f"""
+    You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
+    Every url should be hyperlinked: [url website](url)
+    Additionally, you MUST include hyperlinks to the relevant URLs wherever they are referenced in the report: 
+
+    eg: Author, A. A. (Year, Month Date). Title of web page. Website Name. [url website](url)
+    """
 
     return f"""
 Context: "{context}"
@@ -26,6 +33,7 @@ Please follow all of the following guidelines in your report:
 - You MUST prioritize the relevance, reliability, and significance of the sources you use. Choose trusted sources over less reliable ones.
 - You must also prioritize new articles over older articles if the source can be trusted.
 - Use in-text citation references in {report_format.upper()} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
+- {reference_prompt}
 - {tone_prompt}
 - The response may also include relevant real-world knowledge outside the dataset, but it must be explicitly annotated with a verification tag [LLM: verify]. For example: "This is an example sentence supported by real-world knowledge [LLM: verify]."
 - Add sections and commentary to the response as appropriate for the length and format. Style the response in markdown.

@@ -90,7 +90,7 @@ class GPTResearcher:
         await self.question_research_conductor.conduct_research(query)
         #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
 
-    async def conduct_research(self, query):
+    async def conduct_research(self, query=None):
         print("conduct_research")
         #from .scraper.pymupdf.pymupdf import PyMuPDFScraper
         # self.context = await self.research_conductor.conduct_research()

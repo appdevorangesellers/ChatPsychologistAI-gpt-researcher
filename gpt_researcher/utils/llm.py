@@ -83,6 +83,7 @@ async def construct_subtopics(task: str, data: str, config, subtopics: list = []
     Returns:
         list: A list of constructed subtopics.
     """
+    print("construct_subtopics task", task)
     try:
         parser = PydanticOutputParser(pydantic_object=Subtopics)
 

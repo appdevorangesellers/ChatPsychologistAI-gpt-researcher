@@ -7,9 +7,11 @@ from typing import List, Dict, Any
 def general_med_prompt(
     as_group: bool = False
 ):
-    subtopic_type = "Medications/subtopics must be specific names. No mention of group or class of medications allowed."
+    subtopic_type = "Subtopics must be specific medication names, must not be group or class of medications."
+    subtopic_desc = """medications in {task}"""
     if as_group:
         subtopic_type = "Medications/subtopics should be a concise summary, grouped according to similarity and use broader terms."
+        subtopic_desc = """{task}"""
 
     return """
 Provided the main topic:
@@ -22,8 +24,8 @@ and research data:
 
 - Construct a list of {task} which indicate the subtopics of a report document to be generated on the task. 
 - These are a possible list of subtopics : {subtopics}.
-- There should NOT be any duplicate subtopics.""" + subtopic_type + """
 - No limit for the number of subtopics. All {task} mentioned in the research data must be listed.
+- There should NOT be any duplicate subtopics. """ + subtopic_type + """
 
 
 "IMPORTANT!":

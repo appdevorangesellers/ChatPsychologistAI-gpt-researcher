@@ -93,7 +93,7 @@ async def generate_report(
     report = ""
 
     if report_type == "subtopic_report":
-        content = f"{generate_prompt(query, context, report_format=cfg.report_format, tone=tone, total_words=cfg.total_words, language=cfg.language)}"
+        content = f"{generate_prompt(query, context, report_format=cfg.report_format, tone=tone, total_words=cfg.subreport_total_words, language=cfg.language)}"
     else:
         content = f"{generate_prompt(query, context, report_format=cfg.report_format, tone=tone, total_words=cfg.total_words)}"
 

@@ -73,7 +73,7 @@ class FilePipelineStorage(PipelineStorage):
         old_content = await self.get(key, is_bytes, encoding)
         content = PipelineQueryWrapper()
         #content = {"queries": []}
-        print("old_content", old_content)
+        #print("old_content", old_content)
 
         if old_content:
             old_content = json.loads(old_content)

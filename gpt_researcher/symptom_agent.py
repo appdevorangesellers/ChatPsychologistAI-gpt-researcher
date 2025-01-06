@@ -20,9 +20,9 @@ class GPTSymptomResearcher(GPTResearcher):
         self.report_generator: SymptomReportGenerator = SymptomReportGenerator(self)
         self.research_conductor: SymptomResearchConductor = SymptomResearchConductor(self)
 
-    async def conduct_research(self, query=None):
+    '''async def conduct_research(self, query=None):
         print("GPTSymptomResearcher conduct_research")
-        await self.research_conductor.conduct_research(self.disorder)
+        await self.research_conductor.conduct_research(self.disorder)'''
 
     async def write_summary_report(self) -> str:
         report = await self.report_generator.write_report(

@@ -1,11 +1,11 @@
 from gpt_researcher.skills.researcher import ResearchConductor
-class SymptomResearchConductor(ResearchConductor):
+class DietResearchConductor(ResearchConductor):
 
     def __init__(
         self,
         researcher,
     ):
-        super(SymptomResearchConductor, self).__init__(researcher)
+        super(DietResearchConductor, self).__init__(researcher)
         self.retriever_include_raw_content = True
 
     async def generate_summary(self, sub_query, search_results):
@@ -15,4 +15,4 @@ class SymptomResearchConductor(ResearchConductor):
         return ''
 
     async def plan_research(self, query):
-        return [f'symptoms related to {self.researcher.disorder}']
+        return [query]
