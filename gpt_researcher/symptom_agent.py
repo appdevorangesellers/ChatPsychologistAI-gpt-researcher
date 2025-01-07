@@ -26,8 +26,14 @@ class GPTSymptomResearcher(GPTResearcher):
 
     async def write_summary_report(self) -> str:
         report = await self.report_generator.write_report(
-            f'symptoms related to {self.disorder}',
+            self.get_summary_query(),
             self.context
         )
 
         return report
+
+    async def get_symptom_list(self):
+        return await self.report_generator.get_symptom_list(self.disorder)
+
+    def get_summary_query(self):
+        return f'symptoms related to {self.disorder}'

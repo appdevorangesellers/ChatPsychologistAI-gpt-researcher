@@ -2,6 +2,7 @@ from .researcher import ResearchAgent
 from .diagnose_researcher import DiagnoseResearchAgent
 from .diet_researcher import DietResearchAgent
 from .med_researcher import MedResearchAgent
+from .sport_researcher import SportResearchAgent
 from .symptom_researcher import SymptomResearchAgent
 from .writer import WriterAgent
 from .publisher import PublisherAgent
@@ -19,6 +20,7 @@ __all__ = [
     "DiagnoseResearchAgent",
     "DietResearchAgent",
     "MedResearchAgent",
+    "SportResearchAgent",
     "SymptomResearchAgent",
     "WriterAgent",
     "EditorAgent",
