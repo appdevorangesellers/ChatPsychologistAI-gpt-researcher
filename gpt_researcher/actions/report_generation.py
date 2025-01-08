@@ -101,6 +101,9 @@ async def generate_report(
     #print(c)
 
     try:
+        print("cfg.smart_llm_provider", cfg.smart_llm_provider)
+        print("cfg.smart_llm_model", cfg.smart_llm_model)
+
         report = await create_chat_completion(
             model=cfg.smart_llm_model,
             messages=[

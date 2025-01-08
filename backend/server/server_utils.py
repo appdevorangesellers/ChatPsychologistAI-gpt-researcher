@@ -13,7 +13,7 @@ from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
 from .websocket_manager import run_research
 import io
-from multi_agents.agents import DiagnoseResearchAgent, DietResearchAgent, MedResearchAgent, SportResearchAgent, SymptomResearchAgent
+from multi_agents.agents import DiagnoseResearchAgent, DietResearchAgent, MedResearchAgent, RelatedDisorderResearchAgent, SportResearchAgent, SymptomResearchAgent
 def get_firebase_cert():
     return {
       "type": "service_account",
@@ -155,8 +155,9 @@ async def handle_research_disorder(query):
     for disorder in disorders:
         #await DiagnoseResearchAgent(disorder=disorder).research()
         #await DietResearchAgent(disorder=disorder).research()
-        await SportResearchAgent(disorder=disorder).research()
+        #await SportResearchAgent(disorder=disorder).research()
         #await SymptomResearchAgent(disorder=disorder).research()
+        await RelatedDisorderResearchAgent(disorder=disorder).research()
         #await MedResearchAgent(disorder=disorder).research()
 
 async def handle_research_data(user_key:str, data_ref: str):
