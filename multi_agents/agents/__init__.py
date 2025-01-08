@@ -1,6 +1,7 @@
 from .researcher import ResearchAgent
 from .diagnose_researcher import DiagnoseResearchAgent
 from .diet_researcher import DietResearchAgent
+from .lifestyle_researcher import LifestyleResearchAgent
 from .med_researcher import MedResearchAgent
 from .related_disorder_researcher import RelatedDisorderResearchAgent
 from .sport_researcher import SportResearchAgent
@@ -20,6 +21,7 @@ __all__ = [
     "ResearchAgent",
     "DiagnoseResearchAgent",
     "DietResearchAgent",
+    "LifestyleResearchAgent",
     "MedResearchAgent",
     "RelatedDisorderResearchAgent",
     "SportResearchAgent",
