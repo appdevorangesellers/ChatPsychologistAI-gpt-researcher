@@ -9,6 +9,7 @@ from gpt_researcher.document.document import DocumentLoader
 # Add this import
 from backend.utils import write_md_to_pdf, write_md_to_word, write_text_to_md
 from gpt_researcher import GPTResearcher
+from gpt_writer import GPTTopicWriter
 from firebase_admin import credentials, db, initialize_app, storage
 import firebase_admin
 from .websocket_manager import run_research
@@ -157,10 +158,70 @@ async def handle_research_disorder(query):
         #await DiagnoseResearchAgent(disorder=disorder).research()
         #await DietResearchAgent(disorder=disorder).research()
         #await SportResearchAgent(disorder=disorder).research()
-        #await SymptomResearchAgent(disorder=disorder).research()
         #await RelatedDisorderResearchAgent(disorder=disorder).research()
         #await MedResearchAgent(disorder=disorder).research()
         #await LifestyleResearchAgent(disorder=disorder).research()
+
+async def handle_summarize_data(user_key:str, data_ref: str):
+    # Initialize Firebase
+    DATABASE_URL = os.getenv('FIREBASE_DATABASE_URL')
+    cred = credentials.Certificate(get_firebase_cert())
+    if not firebase_admin._apps:
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': DATABASE_URL,
+            'storageBucket': 'chat-psychologist-ai.appspot.com'
+        })
+
+    try:
+        user_data = get_user(user_key)
+        data = user_data.get(data_ref, {})
+    except Exception as e:
+        print("empty data to research")
+        return "error"
+
+    print("data", type(data))
+    print("data keys", list(data.keys()))
+    writer = GPTTopicWriter()
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/final_report.md')
+
+    try:
+        report = blob.download_as_bytes()
+        report = report.decode("utf-8")
+        print(report)
+    except Exception as e:
+        print(e)
+        report = ''
+
+    i = 0
+    for (topic, topic_data) in data.items():
+        print("topic", topic)
+        print("topic_data", topic_data)
+        data = {}
+        for (sub_topic, sub_topic_data) in topic_data.items():
+            data[sub_topic] = sub_topic_data['score']
+        print("data", data)
+        summaries = await writer.write_report(topic, data)
+        #diagnoses = await writer.write_diagnoses(topic, topic_data)
+        #report += f"---{summaries}\n\n## Possible disorders\n\n{diagnoses}---\n\n"
+        report += f"---{summaries}---\n\n"
+        #print('----report----', report)
+        if i == 2: break
+        i += 1
+
+    report = str(report)
+    sanitized_filename = sanitize_filename(f"final_report_{int(time.time())}")
+    file_path = await generate_report_files(report, sanitized_filename)
+
+    bucket = storage.bucket()
+    blob = bucket.blob(f'research/{user_key}/{sanitized_filename}.md')
+    blob.upload_from_filename(file_path)
+
+    blob = bucket.blob(f'research/{user_key}/final_report.md')
+    blob.upload_from_filename(file_path)
+
+    return file_path
 
 async def handle_research_data(user_key:str, data_ref: str):
     # Initialize Firebase

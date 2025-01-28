@@ -6,11 +6,11 @@ from .variables.default import DEFAULT_CONFIG
 from .variables.base import BaseConfig
 from ..retrievers.utils import get_all_retriever_names
 
-
 class Config:
     """Config class for GPT Researcher."""
 
     CONFIG_DIR = os.path.join(os.path.dirname(__file__), "variables")
+    DEFAULT_CONFIG = DEFAULT_CONFIG
 
     def __init__(self, config_path: str | None = None):
         """Initialize the config class."""
@@ -101,13 +101,13 @@ class Config:
                 self.validate_doc_path()
             except Exception as e:
                 print(f"Warning: Error validating doc_path: {str(e)}. Using default doc_path.")
-                self.doc_path = DEFAULT_CONFIG['DOC_PATH']
+                self.doc_path = self.DEFAULT_CONFIG['DOC_PATH']
 
     @classmethod
     def load_config(cls, config_path: str | None) -> Dict[str, Any]:
         """Load a configuration by name."""
         if config_path is None:
-            return DEFAULT_CONFIG
+            return cls.DEFAULT_CONFIG
 
         # config_path = os.path.join(cls.CONFIG_DIR, config_path)
         if not os.path.exists(config_path):
@@ -115,13 +115,13 @@ class Config:
                 print(f"Warning: Configuration not found at '{config_path}'. Using default configuration.")
                 if not config_path.endswith(".json"):
                     print(f"Do you mean '{config_path}.json'?")
-            return DEFAULT_CONFIG
+            return cls.DEFAULT_CONFIG
 
         with open(config_path, "r") as f:
             custom_config = json.load(f)
 
         # Merge with default config to ensure all keys are present
-        merged_config = DEFAULT_CONFIG.copy()
+        merged_config = cls.DEFAULT_CONFIG.copy()
         merged_config.update(custom_config)
         return merged_config
 

@@ -20,7 +20,8 @@ from backend.server.server_utils import (
     handle_research_query,
     #handle_research_questions
     handle_file_to_index,
-    handle_research_disorder
+    handle_research_disorder,
+    handle_summarize_data
 )
 import asyncio
 from contextlib import asynccontextmanager
@@ -184,9 +185,13 @@ async def read_admin_root(request: Request):
 
 @app.post("/research-data")
 async def research_data(research_data: ResearchData):
-    await handle_research_data(research_data.user_key, research_data.data_ref)
+    await handle_summarize_data(research_data.user_key, research_data.data_ref)
     if research_data.write_report:
         await write_final_report(FinalReportRequest.model_validate({'user_key': research_data.user_key}))
+
+@app.post("/summarize-data")
+async def summarize_data(research_data: ResearchData):
+    await handle_summarize_data(research_data.user_key, research_data.data_ref)
 
 '''@app.post("/research-questions")
 async def research_questions(research_data: ResearchData):
