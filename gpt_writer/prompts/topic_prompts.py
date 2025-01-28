@@ -13,6 +13,40 @@ def generate_subtopic_report_prompt(
     tone=None,
     language: str = "english",
 ):
+    if current_subtopic == "Background":
+        return generate_background_report_prompt(current_subtopic, context, report_format, total_words, tone, language)
+    return generate_other_topic_report_prompt(current_subtopic, context, report_format, total_words, tone, language)
+
+def generate_background_report_prompt(
+    current_subtopic: str,
+    context,
+    report_format="apa",
+    total_words=1000,
+    tone=None,
+    language: str = "english",
+):
+    return f"""
+Context:
+{context}
+
+Using the above information, summarize it based on the topic -- {current_subtopic}.
+Include all factual information such as numbers, stats, quotes, etc if available. 
+- The summary should be succinct, well-structured, informative with markdown syntax.
+- As this summary will be part of a larger report, do NOT include any other sections, which are generally present in a report.
+- The summary should be preceded by an H1 heading with a suitable topic for the entire report.
+- The report should have a minimum length of {total_words}.
+Assume that the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
+"""
+
+
+def generate_other_topic_report_prompt(
+    current_subtopic: str,
+    context,
+    report_format="apa",
+    total_words=1000,
+    tone=None,
+    language: str = "english",
+):
     return f"""
 Context:
 "{context}"

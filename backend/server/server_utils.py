@@ -194,13 +194,18 @@ async def handle_summarize_data(user_key:str, data_ref: str):
         print(e)
         report = ''
 
-    i = 0
+    i = 1
     for (topic, topic_data) in data.items():
         print("topic", topic)
         print("topic_data", topic_data)
         data = {}
+
         for (sub_topic, sub_topic_data) in topic_data.items():
-            data[sub_topic] = sub_topic_data['score']
+            if isinstance(sub_topic_data, dict) and 'score' in sub_topic_data:
+                data[sub_topic] = sub_topic_data['score']
+            else:
+                data[sub_topic] = sub_topic_data
+
         print("data", data)
         summaries = await writer.write_report(topic, data)
         #diagnoses = await writer.write_diagnoses(topic, topic_data)
