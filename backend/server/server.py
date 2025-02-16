@@ -17,7 +17,11 @@ from backend.server.server_utils import (
     handle_fetch_search_queries,
     handle_write_final_report,
     handle_fetch_final_report_download_url,
-    handle_research_query
+    handle_research_query,
+    #handle_research_questions
+    handle_file_to_index,
+    handle_research_disorder,
+    handle_summarize_data
 )
 import asyncio
 from contextlib import asynccontextmanager
@@ -31,6 +35,8 @@ class ResearchRequest(BaseModel):
     report_type: str
     agent: str
 
+class FinalReportRequest(BaseModel):
+    user_key: str
 
 class ConfigRequest(BaseModel):
     ANTHROPIC_API_KEY: str
@@ -53,7 +59,7 @@ class ConfigRequest(BaseModel):
 async def lifespan(app: FastAPI):
     """Context manager for FastAPI lifespan, to start the background job processor."""
     startup_event()
-    scheduled_run_index()
+    # scheduled_run_index()
     # await run_index()
     asyncio.create_task(background_job_processor())
     yield
@@ -83,7 +89,7 @@ app.add_middleware(
 class ResearchData(BaseModel):
     user_key: str
     data_ref: str
-
+    write_report: bool
 
 # Constants
 DOC_PATH = os.getenv("DOC_PATH", "./my-docs")
@@ -122,6 +128,8 @@ async def run_command(root: str):
 
         rc = await process.wait()
         print(f"Indexing finished with return code: {rc}")
+        print(f"Indexing finished with stderr: {stderr_output}")
+        print(f"Indexing finished with stdout: {stdout_output}")
 
         return {
             "status": "success" if rc == 0 else "error",
@@ -177,20 +185,36 @@ async def read_admin_root(request: Request):
 
 @app.post("/research-data")
 async def research_data(research_data: ResearchData):
-    return await handle_research_data(research_data.user_key, research_data.data_ref)
+    await handle_summarize_data(research_data.user_key, research_data.data_ref)
+    if research_data.write_report:
+        await write_final_report(FinalReportRequest.model_validate({'user_key': research_data.user_key}))
+
+@app.post("/summarize-data")
+async def summarize_data(research_data: ResearchData):
+    await handle_summarize_data(research_data.user_key, research_data.data_ref)
+
+'''@app.post("/research-questions")
+async def research_questions(research_data: ResearchData):
+    return await handle_research_questions(research_data.user_key, research_data.data_ref)'''
 
 @app.post("/research-query")
 async def research_query(query: str):
     return await handle_research_query(query)
 
+@app.post("/research-disorder")
+async def research_disorder(disorder: str):
+    return await handle_research_disorder(disorder)
+
 @app.post("/write-final-report")
-async def write_final_report(user_key:str):
-    return await handle_write_final_report(user_key)
+async def write_final_report(final_report_request: FinalReportRequest):
+    print("write_final_report")
+    return await handle_write_final_report(final_report_request.user_key)
 
 @app.get("/run-index")
 async def run_index(root: Optional[str] = "./rag"):
     """Endpoint to start the indexing job."""
     print(f"Received request for /run-index - root: {root}")
+    await handle_file_to_index(os.getenv('DOC_PATH'), DOC_PATH)
 
     async with queue_lock:
         if root in running_jobs:
@@ -207,9 +231,9 @@ async def run_index(root: Optional[str] = "./rag"):
 def fetch_search_queries(user_key:str):
     return handle_fetch_search_queries(user_key)
 
-'''@app.get("/final-report-url")
+@app.get("/final-report-url")
 async def fetch_final_report_url(user_key:str, file_name:str):
-    return await handle_fetch_final_report_download_url(user_key, file_name)'''
+    return await handle_fetch_final_report_download_url(user_key, file_name)
 
 '''@app.get("/files/")
 async def list_files():

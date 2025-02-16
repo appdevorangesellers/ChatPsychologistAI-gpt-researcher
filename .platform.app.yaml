@@ -2,7 +2,7 @@ name: 'app'
 type: 'python:3.12'
 relationships:
   rediscache: "cache:redis"
-disk: 2048
+disk: 4096
 web:
   commands:
     start: "poetry run uvicorn main:app --port $PORT --workers 1"
@@ -35,7 +35,7 @@ hooks:
   # More information: https://docs.platform.sh/create-apps/hooks/hooks-comparison.html#build-hook
   build: |
     set -eu
-    python3.12 -m pip install --upgrade uvicorn  
+    python3.11 -m pip install --upgrade uvicorn  
     poetry install
   deploy: |
     # Install dependencies

@@ -13,6 +13,7 @@ from .researcher import ResearchConductor
 from graphrag.cli.query import run_global_search
 from pathlib import Path
 import subprocess
+from typing import List
 
 async def read_stream(stream, prefix):
     """Read and print lines from an async stream."""
@@ -34,19 +35,20 @@ class DataResearchConductor(ResearchConductor):
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE
             )
-
+            print('here')
             stdout_output, stderr_output = await asyncio.gather(
                 read_stream(process.stdout, "stdout"),
                 read_stream(process.stderr, "stderr")
             )
 
-            print('here')
+
 
             rc = await process.wait()
+            print(rc)
 
             return stdout_output.split("--local_extract_response--")[1]
         except Exception as e:
-            return "error"
+            return e
 
     async def get_relevant_context(self, query):
         '''query_as_dict = json.loads(query)
@@ -74,6 +76,14 @@ class DataResearchConductor(ResearchConductor):
 
         # return context
 
+    async def conduct_research(self, query):
+        """
+        Runs the GPT Researcher to conduct research
+        """
+        sub_queries = await self.plan_research(query)
+        # sub_queries.append(query)
+        print('sub_queries', sub_queries)
+        self.sub_queries = sub_queries
 
     async def plan_research(self, query):
         await stream_output(
@@ -84,8 +94,9 @@ class DataResearchConductor(ResearchConductor):
         )
 
         return await plan_research_outline(
-            query=query,
-            search_results=[],
+            query='',
+            type="data",
+            search_results=query,
             cfg=self.researcher.cfg,
             cost_callback=self.researcher.add_costs,
         )

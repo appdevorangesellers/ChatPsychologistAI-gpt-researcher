@@ -11,7 +11,8 @@ from .skills.context_manager import ContextManager
 from .skills.writer import ReportGenerator
 from .skills.researcher import ResearchConductor
 from .skills.data_researcher import DataResearchConductor
-from .utils.enum import Tone
+from .skills.question_researcher import QuestionResearchConductor
+from .utils.enum import Tone, ReportType
 from .vector_store import VectorStoreWrapper
 from langchain_chroma import Chroma
 from pathlib import Path
@@ -21,6 +22,11 @@ from graphrag.index.emit.types import TableEmitterType
 from graphrag.logging.types import ReporterType
 import asyncio
 import subprocess
+
+from .actions import (
+    add_references,
+    table_of_contents,
+)
 
 async def read_stream(stream, prefix):
     """Read and print lines from an async stream."""
@@ -35,12 +41,15 @@ class GPTResearcher:
     def __init__(
             self,
             # query: str,
+            report_type: str = ReportType.ResearchReport.value,
             tone: Tone = Tone.Objective,
             config_path="default",
+            subtopics: list = [],
             websocket=None,
             verbose: bool = True
     ):
         # self.query = query
+        self.report_type = report_type
         self.cfg = Config(config_path)
         self.llm = GenericLLMProvider(self.cfg)
         self.tone = tone if isinstance(tone, Tone) else Tone.Objective
@@ -48,7 +57,8 @@ class GPTResearcher:
         self.research_sources = []
         self.websocket = websocket
         self.agent = "🧠 Psychological Assessment Agent"
-        self.role = "You are an experienced psychological assessment assistant. Your main task is to offer a comprehensive, insightful, and unbiased analysis of the provided information, offering general guidance based on psychological theories and frameworks. However, be aware that a full diagnosis requires professional evaluation by a licensed mental health expert."
+        self.role = "You are an experienced psychological assessment assistant. Your main task is to offer a comprehensive, insightful, and unbiased analysis of the provided information, offering general guidance based on psychological theories and frameworks."
+        self.subtopics = subtopics
         self.visited_urls = set()
         self.verbose = verbose
         self.context = []
@@ -63,6 +73,7 @@ class GPTResearcher:
         self.vector_store = None
         self.research_conductor: ResearchConductor = ResearchConductor(self)
         self.data_research_conductor: DataResearchConductor = DataResearchConductor(self)
+        self.question_research_conductor: QuestionResearchConductor = QuestionResearchConductor(self)
         self.report_generator: ReportGenerator = ReportGenerator(self)
         self.context_manager: ContextManager = ContextManager(self)
         self.scraper_manager: BrowserManager = BrowserManager(self)
@@ -73,7 +84,13 @@ class GPTResearcher:
         await self.data_research_conductor.conduct_research(query)
         #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
 
-    async def conduct_research(self, query):
+    async def conduct_question_research(self, query):
+        print("conduct_question_research")
+        # self.context = await self.research_conductor.conduct_research()
+        await self.question_research_conductor.conduct_research(query)
+        #subprocess.run(['graphrag', 'index', '--root', './ragtest'])
+
+    async def conduct_research(self, query=None):
         print("conduct_research")
         #from .scraper.pymupdf.pymupdf import PyMuPDFScraper
         # self.context = await self.research_conductor.conduct_research()
@@ -117,6 +134,18 @@ class GPTResearcher:
         print('stdout_output', stdout_output)
         print('---------------------')'''
 
+    async def write_introduction(self, query):
+        #await self._log_event("research", step="writing_introduction")
+        intro = await self.report_generator.write_introduction(query)
+        #await self._log_event("research", step="introduction_completed")
+        return intro
+
+    async def get_subtopics(self, query):
+        return await self.report_generator.get_subtopics(query)
+
+    def table_of_contents(self, markdown_text: str) -> str:
+        return table_of_contents(markdown_text)
+
     def get_research_sources(self) -> List[Dict[str, Any]]:
         return self.research_sources
 
@@ -125,6 +154,9 @@ class GPTResearcher:
 
     def add_research_sources(self, sources: List[Dict[str, Any]]) -> None:
         self.research_sources.extend(sources)
+
+    def add_references(self, report_markdown: str, visited_urls: set) -> str:
+        return add_references(report_markdown, visited_urls)
 
     def get_costs(self) -> float:
         return self.research_costs

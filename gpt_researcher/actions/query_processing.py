@@ -1,6 +1,6 @@
 import json_repair
 from ..utils.llm import create_chat_completion
-from ..prompts import generate_search_queries_prompt
+from gpt_researcher.prompts.prompts import generate_search_queries_prompt
 from typing import Any, List, Dict
 from ..config import Config
 import logging
@@ -23,6 +23,7 @@ async def get_search_results(query: str, retriever: Any) -> List[Dict[str, Any]]
 
 async def generate_sub_queries(
     query: str,
+    type: str,
     context: List[Dict[str, Any]],
     cfg: Config,
     cost_callback: callable = None
@@ -44,6 +45,7 @@ async def generate_sub_queries(
     """
     gen_queries_prompt = generate_search_queries_prompt(
         query,
+        type,
         max_iterations=cfg.max_iterations or 1,
         context=context
         # context=[]
@@ -51,6 +53,8 @@ async def generate_sub_queries(
 
     print("gen_queries_prompt", gen_queries_prompt)
     # print(c)
+    if not gen_queries_prompt:
+        return []
     try:
         response = await create_chat_completion(
             model=cfg.strategic_llm_model,
@@ -82,6 +86,7 @@ async def plan_research_outline(
     query: str,
     search_results: List[Dict[str, Any]],
     cfg: Config,
+    type: str = 'query',
     cost_callback: callable = None,
 ) -> List[str]:
     """
@@ -101,6 +106,7 @@ async def plan_research_outline(
     
     sub_queries = await generate_sub_queries(
         query,
+        type,
         search_results,
         cfg,
         cost_callback

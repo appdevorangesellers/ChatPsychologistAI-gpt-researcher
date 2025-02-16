@@ -1,11 +1,14 @@
 from typing import Dict, Optional
 import json
+from ..utils.llm import construct_subtopics
 
 from ..actions import (
     stream_output,
     generate_report,
+    write_report_introduction
 )
 
+from gpt_researcher import actions
 
 class ReportGenerator:
     """Generates reports based on research data."""
@@ -15,6 +18,7 @@ class ReportGenerator:
         self.research_params = {
             # "query": self.researcher.query,
             "agent_role_prompt": self.researcher.cfg.agent_role or self.researcher.role,
+            "report_type": self.researcher.report_type,
             "tone": self.researcher.tone,
             "websocket": self.researcher.websocket,
             "cfg": self.researcher.cfg,
@@ -50,7 +54,7 @@ class ReportGenerator:
 
         report_params["cost_callback"] = self.researcher.add_costs
 
-        report = await generate_report(**report_params)
+        report = await actions.generate_report(**report_params)
 
         if self.researcher.verbose:
             await stream_output(
@@ -68,3 +72,59 @@ class ReportGenerator:
             )
 
         return report
+
+    async def get_subtopics(self, query):
+        """Retrieve subtopics for the research."""
+        if self.researcher.verbose:
+            await stream_output(
+                "logs",
+                "generating_subtopics",
+                f"🌳 Generating subtopics for '{query}'...",
+                self.researcher.websocket,
+            )
+
+        subtopics = await construct_subtopics(
+            task=query,
+            data=self.researcher.context,
+            config=self.researcher.cfg,
+            subtopics=self.researcher.subtopics,
+        )
+
+        if self.researcher.verbose:
+            await stream_output(
+                "logs",
+                "subtopics_generated",
+                f"📊 Subtopics generated for '{query}'",
+                self.researcher.websocket,
+            )
+
+        return subtopics
+
+    async def write_introduction(self, query):
+        """Write the introduction section of the report."""
+        if self.researcher.verbose:
+            await stream_output(
+                "logs",
+                "writing_introduction",
+                f"✍️ Writing introduction for '{query}'...",
+                self.researcher.websocket,
+            )
+
+        introduction = await write_report_introduction(
+            query=query,
+            context=self.researcher.context,
+            agent_role_prompt=self.researcher.cfg.agent_role or self.researcher.role,
+            config=self.researcher.cfg,
+            websocket=self.researcher.websocket,
+            cost_callback=self.researcher.add_costs,
+        )
+
+        if self.researcher.verbose:
+            await stream_output(
+                "logs",
+                "introduction_written",
+                f"📝 Introduction written for '{query}'",
+                self.researcher.websocket,
+            )
+
+        return introduction

@@ -48,8 +48,9 @@ class LocalExtract(LocalSearch):
         """Build local search context that fits a single context window and generate answer for the user query."""
         start_time = time.time()
 
-        sub_queries = query.split('\n')
-        print("sub_queries", sub_queries)
+        #sub_queries = query.split('\n')
+        #print("sub_queries", sub_queries)
+        #query = f"""What potential mental health issues/disorders stand out from these data: {query}"""
 
         '''context_results = [
             self.context_builder.build_context(
@@ -65,70 +66,72 @@ class LocalExtract(LocalSearch):
             for r in context_results
         ])
         print(c)'''
+        print('asearch query', query)
 
         summaries = []
 
-        for q in sub_queries:
-            if len(q.strip()) == 0: continue
-            search_prompt = ""
-            llm_calls, prompt_tokens, output_tokens = {}, {}, {}
-            context_result = self.context_builder.build_context(
-                query=q,
-                conversation_history=conversation_history,
-                **kwargs,
-                **self.context_builder_params,
+        #for q in sub_queries:
+        #for q in query:
+        #if len(q.strip()) == 0: continue
+        search_prompt = ""
+        llm_calls, prompt_tokens, output_tokens = {}, {}, {}
+        context_result = self.context_builder.build_context(
+            query=query,
+            conversation_history=conversation_history,
+            **kwargs,
+            **self.context_builder_params,
+        )
+        llm_calls["build_context"] = context_result.llm_calls
+        prompt_tokens["build_context"] = context_result.prompt_tokens
+        output_tokens["build_context"] = context_result.output_tokens
+
+        log.info("GENERATE ANSWER: %s. QUERY: %s", start_time, query)
+        try:
+            if "drift_query" in kwargs:
+                drift_query = kwargs["drift_query"]
+                search_prompt = self.system_prompt.format(
+                    context_data=context_result.context_chunks,
+                    response_type=self.response_type,
+                    global_query=drift_query,
+                )
+            else:
+                search_prompt = self.system_prompt.format(
+                    context_data=context_result.context_chunks,
+                    response_type=self.response_type,
+                )
+            search_messages = [
+                {"role": "system", "content": search_prompt},
+                {"role": "user", "content": query},
+            ]
+
+            response = await self.llm.agenerate(
+                messages=search_messages,
+                streaming=True,
+                callbacks=self.callbacks,
+                **self.llm_params,
             )
-            llm_calls["build_context"] = context_result.llm_calls
-            prompt_tokens["build_context"] = context_result.prompt_tokens
-            output_tokens["build_context"] = context_result.output_tokens
 
-            log.info("GENERATE ANSWER: %s. QUERY: %s", start_time, query)
-            try:
-                if "drift_query" in kwargs:
-                    drift_query = kwargs["drift_query"]
-                    search_prompt = self.system_prompt.format(
-                        context_data=context_result.context_chunks,
-                        response_type=self.response_type,
-                        global_query=drift_query,
-                    )
-                else:
-                    search_prompt = self.system_prompt.format(
-                        context_data=context_result.context_chunks,
-                        response_type=self.response_type,
-                    )
-                search_messages = [
-                    {"role": "system", "content": search_prompt},
-                    {"role": "user", "content": q},
-                ]
+            print('response', response)
 
-                response = await self.llm.agenerate(
-                    messages=search_messages,
-                    streaming=True,
-                    callbacks=self.callbacks,
-                    **self.llm_params,
-                )
+            formatted_response_data = []
+            '''formatted_response_data.append(
+                f'##{query}'
+            )'''
+            formatted_response_data.append(formatted_response_data)  # type: ignore
+            #formatted_response_text = "\n".join(formatted_response_data)
 
-                print('response', response)
+            #summaries.append(formatted_response_text)
+            summaries.append(response)
 
-                formatted_response_data = []
-                formatted_response_data.append(
-                    f'##{q}'
-                )
-                formatted_response_data.append(response)  # type: ignore
-                formatted_response_text = "\n".join(formatted_response_data)
-
-                summaries.append(formatted_response_text)
-
-                llm_calls["response"] = 1
-                prompt_tokens["response"] = num_tokens(search_prompt, self.token_encoder)
-                output_tokens["response"] = num_tokens(response, self.token_encoder)
-            except Exception:
-                log.exception("Exception in _asearch")
-                response = ""
+            llm_calls["response"] = 1
+            prompt_tokens["response"] = num_tokens(search_prompt, self.token_encoder)
+            output_tokens["response"] = num_tokens(response, self.token_encoder)
+        except Exception:
+            log.exception("Exception in _asearch")
+            response = ""
 
         text_summaries= "\n\n".join(summaries)
         print("text_summaries", text_summaries)
-
         return LocalExtractResult(
                 #response=response,
                 response=text_summaries,

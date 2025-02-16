@@ -43,22 +43,21 @@ class TavilySearch():
         return api_key
 
     def _search(self,
-                query: str,
-                search_depth: Literal["basic", "advanced"] = "basic",
-                topic: str = "general",
-                days: int = 2,
-                max_results: int = 5,
-                include_domains: Sequence[str] = None,
-                exclude_domains: Sequence[str] = None,
-                include_answer: bool = False,
-                include_raw_content: bool = False,
-                include_images: bool = False,
-                use_cache: bool = True,
-                ) -> dict:
+        query: str,
+        search_depth: Literal["basic", "advanced"] = "basic",
+        topic: str = "general",
+        days: int = 2,
+        max_results: int = 5,
+        include_domains: Sequence[str] = None,
+        exclude_domains: Sequence[str] = None,
+        include_answer: bool = False,
+        include_raw_content: bool = False,
+        include_images: bool = False,
+        use_cache: bool = True,
+    ) -> dict:
         """
         Internal search method to send the request to the API.
         """
-
         data = {
             "query": query,
             "search_depth": search_depth,
@@ -83,22 +82,26 @@ class TavilySearch():
             # Raises a HTTPError if the HTTP request returned an unsuccessful status code
             response.raise_for_status()
 
-    def search(self, max_results=7):
+    def search(self, max_results=2, include_raw_content=True):
         """
         Searches the query
         Returns:
 
         """
+        print("max_results", max_results)
+        # print(c)
+
         try:
             # Search the query
             results = self._search(
-                self.query, search_depth="basic", max_results=max_results, topic=self.topic)
+                self.query, search_depth="basic", max_results=max_results, include_raw_content=include_raw_content, topic=self.topic)
             sources = results.get("results", [])
             if not sources:
                 raise Exception("No results found with Tavily API search.")
             # Return the results
             search_response = [{"href": obj["url"],
-                                "body": obj["content"]} for obj in sources]
+                                "body": obj["content"],
+                                "raw_content": obj["raw_content"]} for obj in sources]
         except Exception as e:
             print(
                 f"Error: {e}. Failed fetching sources. Resulting in empty response.")
