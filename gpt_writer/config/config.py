@@ -2,7 +2,7 @@ import json
 import os
 import warnings
 
-import gpt_researcher_orig.config.variables.default
+import gpt_researcher.config.variables.default
 from .variables.default import DEFAULT_CONFIG
 from gpt_researcher.config import Config as GptResearcherConfig
 from typing import Dict, Any, List, Union, Type, get_origin, get_args
