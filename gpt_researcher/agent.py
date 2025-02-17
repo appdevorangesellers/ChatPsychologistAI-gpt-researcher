@@ -17,9 +17,9 @@ from .vector_store import VectorStoreWrapper
 from langchain_chroma import Chroma
 from pathlib import Path
 from graphrag.cli.index import index_cli
-from graphrag.logging.types import ReporterType
-from graphrag.index.emit.types import TableEmitterType
-from graphrag.logging.types import ReporterType
+# from graphrag.logging.types import ReporterType
+# from graphrag.index.emit.types import TableEmitterType
+# from graphrag.logging.types import ReporterType
 import asyncio
 import subprocess
 

@@ -12,7 +12,7 @@ from aiofiles.ospath import exists
 from datashaper import Progress
 
 from .pipeline_storage import PipelineStorage
-from graphrag.logging.base import ProgressReporter
+# from graphrag.logging.base import ProgressReporter
 from ..utils.storage_context import PipelineQueryStats, PipelineQueryWrapper
 import json
 from dataclasses import asdict
